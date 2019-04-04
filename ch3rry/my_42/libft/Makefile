@@ -14,13 +14,13 @@ NAME := libft.a
 
 TEST := test.out
 
-SOURCE := *.c
+SOURCE := ft_*.c
 
-FLAGS := -Wall -Wextra -Werror 
+#FLAGS := -Wall -Wextra -Werror
 
-HEADERS := 
+HEADERS :=
 
-OBJECTS := *.o
+OBJECTS := ft_*.o
 
 all : $(NAME)
 
@@ -31,11 +31,13 @@ $(NAME) :
 test : re
 	@gcc -o $(TEST) test_func.c -L. -lft
 	@./$(TEST)
+#	@norminette *.c
 
 clean :
 	@rm -rf $(OBJECTS)
 
 fclean : clean
-	@rm -rf $(NAME) $(TEST)
+	@rm -rf $(NAME)
+	@rm -rf $(TEST) test_func.o
 
 re : fclean all

@@ -12,25 +12,34 @@
 
 #include "libft.h"
 
-# define S_TEST "HEIL CHERRY"
+# define S_TEST "H3IL CH3RRY"
 # define LEN_ST 12
-# define B_TEST "00001010"
-# define C_TEST 'A'
+# define OK "_____GOOD__BOI_____\n"
+# define NOK "XXX__BAD_DOGE__XXX\n"
 
-int		main(void)
+static void	checker(char *s1, char *s2)
 {
-	char	str[LEN_ST] = {S_TEST};
+	if (strcmp(s1, s2))
+		printf(" ...\t...\t...\n"NOK" ...\t...\t...\n");
+	else
+		printf(" ...\t...\t...\n"OK" ...\t...\t...\n");
+}
 
-	printf("Hello, Master!\nThese are your tests!\n");
-	printf("Please, enjoy!\n");
+int			main(void)
+{
+	char	str1[LEN_ST] = S_TEST;
+	char	str2[LEN_ST] = S_TEST;
+
+	printf("Hello, Master!\nHere are your tests..\n");
+	printf("Please, enjoy\n");
 	printf(" ...\t...\t...\n");
-	printf("S_TEST OK: %s\n", S_TEST);
+	printf(" .. %s  ..\n", S_TEST);
 	printf(" ...\t...\t...\n");
 
-	//FT_MEMSET
-	printf("TESTING ft_memset()\n");
-	memset(str, 48, LEN_ST);
-	printf("%s\n", str);
+	printf("\n ...GO FT_MEMSET...\n");	//FT_MEMSET
+	printf("memset() out:\n%s\n", memset(str1, 33, 4));
+	printf("ft_memset() out:\n%s\n", ft_memset(str2, 33, 4));
+	checker(str1, str2);
 
 	return (0);
 }
