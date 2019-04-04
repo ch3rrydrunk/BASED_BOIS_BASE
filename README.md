@@ -23,9 +23,12 @@ echo KAEF
 ```
 git branch *branch_name* // name can be anything
 git checkout *branch_name*
-//continue working as usual with add-commit-push as needed
-//Rep owner will see your branch and then will be able to add your changes
-//Your branch will also be seen in "BRANCHES" section on GitHub
 echo KAEF
 ```
+Simple as that! Then just continue working as usual with "add-commit-push" as needed.
+Remember, you are now pushing to the new branch, you just created.
+
+Rep owner will be able to see your branch and then will be able to merge your changes.
+Your branch will also be seen in "BRANCHES" section on GitHub
+
 *To Be Updated...*
