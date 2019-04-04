@@ -18,4 +18,14 @@ git fetch
 git pull https://github.com/ch3rrydrunk/BASED_BOIS_BASE.git
 echo KAEF
 ```
+
+-=TO CREATE OWN BRANCH=-
+```
+git branch *branch_name* // name can be anything
+git checkout *branch_name*
+//continue working as usual with add-commit-push as needed
+//Rep owner will see your branch and then will be able to add your changes
+//Your branch will also be seen in "BRANCHES" section on GitHub
+echo KAEF
+```
 *To Be Updated...*
