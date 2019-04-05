@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:26:59 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/05 18:27:11 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/05 21:26:16 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,10 @@ int			main(void)
 	ft_strcpy(str1, S_TEST); //set args
 	printf("ft_memccpy() opt1(no 'A' met) out:\n%s\n", ft_memccpy(str1, str2, 'A', LEN_ST - 1));
 	checker(str1, str2, ft_cmp_s);
-	ft_cmp_s = (int (*)(void *, void *))check_adr_inter; //set checker
 	printf("memccpy() opt2(' ' met) out:\n%s\n", buff = memccpy(str1, str2, ' ', LEN_ST - 1));
 	ft_strcpy(str1, S_TEST); //set args
 	printf("ft_memccpy() opt2(' ' met) out:\n%s\n", ft_memccpy(str1, str2, ' ', LEN_ST - 1));
-	checker(buff, str1, ft_cmp_s);
+	checker(str1, str2, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 	return (0);
 }
