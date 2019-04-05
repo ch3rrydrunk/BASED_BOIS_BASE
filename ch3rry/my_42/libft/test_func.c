@@ -56,7 +56,7 @@ int			main(void)
 {
 	char	str1[LEN_ST] = S_TEST;
 	char	str2[LEN_ST] = S_TEST;
-	//char	*buff;
+	char	*buff;
 	int		(*ft_cmp_s)(void *, void *);
 
 	printf("\nHi, Master!\nHere are your tests..\n");
@@ -101,14 +101,17 @@ int			main(void)
 
 	printf("\n ...GO FT_MEMMOVE...\n");	//FT_MEMMOVE
 	ft_memset(str2, 33, 4); //set args
-	printf("memmove() opt1(no 'A' met) out:\n%s\n", memmove(str1, str2, 'A', LEN_ST - 1));
-	ft_strcpy(str1, S_TEST); //set args
-	printf("ft_memmove() opt1(no 'A' met) out:\n%s\n", ft_memmove(str1, str2, 'A', LEN_ST - 1));
+	printf("memmove() opt1(no crossin) out:\n%s\n", memmove(str1, str2, 4));
+	ft_strcpy(str1, S_TEST); ft_memset(str2, 33, 4); //set args
+	printf("ft_memmove() opt1(no crossin) out:\n%s\n", ft_memmove(str1, str2, 4));
 	checker(str1, str2, ft_cmp_s);
-	printf("memmove() opt2(' ' met) out:\n%s\n", memmove(str1, str2, ' ', LEN_ST - 1));
-	ft_strcpy(str1, S_TEST); //set args
-	printf("ft_memmove() opt2(' ' met) out:\n%s\n", ft_memmove(str1, str2, ' ', LEN_ST - 1));
-	checker(str1, str2, ft_cmp_s);
+	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
+	//now let's try f###in things up:)
+	ft_memset(str1, 33, 5); buff = str1; //set args
+	printf("memmove() opt2(screwed up) out:\n%s\n", memmove(str1, str1 + 1, 3));
+	ft_strcpy(str1, S_TEST); ft_memset(str1, 33, 5); //set args
+	printf("ft_memmove() opt2(screwed up) out:\n%s\n", ft_memmove(str1, str1 + 1, 3));
+	checker(buff, str1, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 	return (0);
 }
