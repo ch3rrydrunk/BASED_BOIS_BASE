@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 19:58:40 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/05 13:49:36 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/05 13:50:03 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/05 16:06:34 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
+#include "libft.h"
 
-# define LIBFT_H
-
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-
-# define UC(n) (unsigned char)n
-
-/*DELETE THIS AT ANY COST*/
-#include <stdio.h>
-/*UP TO THIS POINT*/
-
-void	*ft_memset(void *s, int c, size_t len);
-void	ft_bzero(void *s, size_t n);
-void	*ft_memcpy(void *dst, const void *src, size_t n);
-
-#endif
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	unsigned char	*buff;
+	unsigned char	*cast;
+	
+	if (n != 0 && src != NULL && dst != NULL)
+	{
+		buff = (unsigned char *)dst;
+		cast = (unsigned char *)src;
+		while (n--)
+			*(buff++) = *(cast++);
+	}
+	return (dst);
+}

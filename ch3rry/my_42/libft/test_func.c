@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:26:59 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/05 13:44:08 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/05 15:51:04 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,23 @@ int			main(void)
 	printf("memset() out:\n%s\n", memset(str1, 33, 4));
 	printf("ft_memset() out:\n%s\n", ft_memset(str2, 33, 4));
 	checker(str1, str2);
-	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST);
+	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 
 	printf("\n ...GO FT_BZERO...\n");	//FT_BZERO
 	bzero(str1, 4); ft_bzero(str2, 4);
 	printf("bzero() out:\n%s\n", str1);
 	printf("ft_bzero() out:\n%s\n", str2);
 	checker(str1, str2);
-	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST);
+	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 
+	printf("\n ...GO FT_MEMCPY...\n");	//FT_MEMCPY
+	ft_memset(str2, 33, 4); //set args
+	printf("memcpy() out:\n%s\n", memcpy(str1, str2, LEN_ST - 1));
+	ft_strcpy(str1, S_TEST); //set args
+	printf("ft_memcpy() out:\n%s\n", ft_memcpy(str1, str2, LEN_ST - 1));
+	checker(str1, str2);
+	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 	return (0);
+
+	
 }
