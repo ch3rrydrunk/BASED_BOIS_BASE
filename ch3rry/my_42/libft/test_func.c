@@ -56,7 +56,7 @@ int			main(void)
 {
 	char	str1[LEN_ST] = S_TEST;
 	char	str2[LEN_ST] = S_TEST;
-	char	*buff;
+	//char	*buff;
 	int		(*ft_cmp_s)(void *, void *);
 
 	printf("\nHi, Master!\nHere are your tests..\n");
@@ -64,7 +64,7 @@ int			main(void)
 	printf(" ...\t...\t...\n");
 	printf(" .. %s  ..\n", S_TEST);
 	printf(" ...\t...\t...\n\n");
-	
+
 	ft_cmp_s = (int (*)(void *, void *))strcmp;
 	printf("\n ...GO FT_MEMSET...\n");	//FT_MEMSET
 	printf("memset() out:\n%s\n", memset(str1, 33, 4));
@@ -89,13 +89,25 @@ int			main(void)
 
 	printf("\n ...GO FT_MEMCCPY...\n");	//FT_MEMCCPY
 	ft_memset(str2, 33, 4); //set args
-	printf("memccpy() opt1(no 'A' met) out:\n%s\n", buff = memccpy(str1, str2, 'A', LEN_ST - 1));
+	printf("memccpy() opt1(no 'A' met) out:\n%s\n", memccpy(str1, str2, 'A', LEN_ST - 1));
 	ft_strcpy(str1, S_TEST); //set args
 	printf("ft_memccpy() opt1(no 'A' met) out:\n%s\n", ft_memccpy(str1, str2, 'A', LEN_ST - 1));
 	checker(str1, str2, ft_cmp_s);
-	printf("memccpy() opt2(' ' met) out:\n%s\n", buff = memccpy(str1, str2, ' ', LEN_ST - 1));
+	printf("memccpy() opt2(' ' met) out:\n%s\n", memccpy(str1, str2, ' ', LEN_ST - 1));
 	ft_strcpy(str1, S_TEST); //set args
 	printf("ft_memccpy() opt2(' ' met) out:\n%s\n", ft_memccpy(str1, str2, ' ', LEN_ST - 1));
+	checker(str1, str2, ft_cmp_s);
+	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
+
+	printf("\n ...GO FT_MEMMOVE...\n");	//FT_MEMMOVE
+	ft_memset(str2, 33, 4); //set args
+	printf("memmove() opt1(no 'A' met) out:\n%s\n", memmove(str1, str2, 'A', LEN_ST - 1));
+	ft_strcpy(str1, S_TEST); //set args
+	printf("ft_memmove() opt1(no 'A' met) out:\n%s\n", ft_memmove(str1, str2, 'A', LEN_ST - 1));
+	checker(str1, str2, ft_cmp_s);
+	printf("memmove() opt2(' ' met) out:\n%s\n", memmove(str1, str2, ' ', LEN_ST - 1));
+	ft_strcpy(str1, S_TEST); //set args
+	printf("ft_memmove() opt2(' ' met) out:\n%s\n", ft_memmove(str1, str2, ' ', LEN_ST - 1));
 	checker(str1, str2, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 	return (0);
