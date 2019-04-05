@@ -1,30 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/03 19:58:40 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/05 13:17:22 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/05 12:59:39 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/05 13:23:59 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
+#include "libft.h"
 
-# define LIBFT_H
+void	ft_bzero(void *s, size_t n)
+{
+	unsigned char	*buff;
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <string.h>
-
-# define UC(n) (unsigned char)n
-
-/*DELETE THIS AT ANY COST*/
-#include <stdio.h>
-/*UP TO THIS POINT*/
-
-void	*ft_memset(void *s, int c, size_t len);
-void	ft_bzero(void *s, size_t n);
-
-#endif
+	if (n <= 0 || s == NULL)
+		return ;
+	buff = (unsigned char *)s;
+	while (n--)
+		*(buff++) = UC(0);
+}
