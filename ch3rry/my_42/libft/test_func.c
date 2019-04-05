@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:26:59 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/05 13:21:32 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/05 13:44:08 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	checker(char *s1, char *s2)
 	if (strcmp(s1, s2))
 		printf(" ...\t...\t...\n"NOK" ...\t...\t...\n");
 	else
-		printf(" ...\t...\t...\n"OK" ...\t...\t...\n");
+		printf(" ...\t...\t...\n"OK" ...\t...\t...\n\n");
 }
 
 int			main(void)
@@ -44,11 +44,11 @@ int			main(void)
 	char	str1[LEN_ST] = S_TEST;
 	char	str2[LEN_ST] = S_TEST;
 
-	printf("Hello, Master!\nHere are your tests..\n");
-	printf("Please, enjoy\n");
+	printf("\nHi, Master!\nHere are your tests..\n");
+	printf("Please, enjoy\n\n");
 	printf(" ...\t...\t...\n");
 	printf(" .. %s  ..\n", S_TEST);
-	printf(" ...\t...\t...\n");
+	printf(" ...\t...\t...\n\n");
 
 	printf("\n ...GO FT_MEMSET...\n");	//FT_MEMSET
 	printf("memset() out:\n%s\n", memset(str1, 33, 4));
