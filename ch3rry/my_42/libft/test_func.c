@@ -6,11 +6,13 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:26:59 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/05 21:26:16 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/06 11:36:34 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+#include <stdio.h>
 
 # define S_TEST "H3IL CH3RRY"
 # define LEN_ST 12
@@ -113,5 +115,12 @@ int			main(void)
 	printf("ft_memmove() opt2(screwed up) out:\n%s\n", ft_memmove(str1, str1 + 1, 3));
 	checker(buff, str1, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
+	
+	printf("\n ...GO FT_MEMCHR...\n");	//FT_MEMCHR
+	printf("memchr() out:\n%s\n", memchr(str1, 'Y', LEN_ST - 1));
+	printf("ft_memchr() out:\n%s\n", ft_memchr(str2, 'Y', LEN_ST - 1));
+	checker(str1, str2, ft_cmp_s);
+	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
+
 	return (0);
 }
