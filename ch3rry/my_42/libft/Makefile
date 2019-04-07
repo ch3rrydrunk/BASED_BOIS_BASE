@@ -30,6 +30,7 @@ $(NAME) :
 
 test : re
 	@gcc -o $(TEST) test_func.c -L. -lft
+	@ say "HEIL CHERRY, here are your tests... Please enjoy!"
 	@./$(TEST)
 #	@norminette *.c
 

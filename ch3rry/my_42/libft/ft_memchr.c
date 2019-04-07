@@ -29,6 +29,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 		i++;
 	}
 	if (*buff == waldo)
-		return (s + i);
+		return (buff);
 	return (NULL);
 }

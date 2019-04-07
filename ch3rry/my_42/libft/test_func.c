@@ -15,21 +15,14 @@
 #include <stdio.h>
 
 # define S_TEST "H3IL CH3RRY"
+# define S_TEST2 "H3IL BADBOI"
 # define LEN_ST 12
 # define OK "_____GOOD__BOI_____\n"
 # define NOK "XXX__BAD_DOGE__XXX\n"
 
-static int	check_adr_inter(char *s1, char *s2)
+static int	intcmp(int *n1, int *n2)
 {
-	while (s1++)
-	{
-		while(s2++)
-		{
-			if (s1 == s2)
-				return (1);
-		}
-	}
-	return (0);
+	return (n1 - n2);
 }
 
 static char	*ft_strcpy(char *dest, char *src)
@@ -48,7 +41,7 @@ static char	*ft_strcpy(char *dest, char *src)
 
 static void	checker(char *s1, char *s2, int (*f)(void *, void *))
 {
-	if (f(s1, s2))
+	if (f(s1, s2) < 0)
 		printf(" ...\t...\t...\n"NOK" ...\t...\t...\n");
 	else
 		printf(" ...\t...\t...\n"OK" ...\t...\t...\n\n");
@@ -58,6 +51,8 @@ int			main(void)
 {
 	char	str1[LEN_ST] = S_TEST;
 	char	str2[LEN_ST] = S_TEST;
+	int		n1;
+	int		n2;
 	char	*buff;
 	int		(*ft_cmp_s)(void *, void *);
 
@@ -115,12 +110,19 @@ int			main(void)
 	printf("ft_memmove() opt2(screwed up) out:\n%s\n", ft_memmove(str1, str1 + 1, 3));
 	checker(buff, str1, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
-	
-	printf("\n ...GO FT_MEMCHR...\n");	//FT_MEMCHR
-	printf("memchr() out:\n%s\n", memchr(str1, 'Y', LEN_ST - 1));
-	printf("ft_memchr() out:\n%s\n", ft_memchr(str2, 'Y', LEN_ST - 1));
-	checker(str1, str2, ft_cmp_s);
+
+	printf("\n ...GO FT_MEMСMP...\n");	//FT_MEMCHR
+	n1 = memcmp(str1, str2, LEN_ST - 1); n2 = ft_memcmp(str1, str2, LEN_ST - 1);
+	printf("memcmp() out:\n%i\nft_memcmp() out:\n%i\n", n1, n2);
+	ft_cmp_s = (int (*)(void *, void *))intcmp; //set func
+	checker((char *)&n1, (char *)&n2, ft_cmp_s);
+	//test 2 unequal strings
+	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST2);
+	n1 = memcmp(str1, str2, LEN_ST - 1); n2 = ft_memcmp(str1, str2, LEN_ST - 1);
+	printf("memcmp() unmatch test out:\n%i\nft_memcmp() unmatch test out:\n%i\n", n1, n2);
+	checker((char *)&n1, (char *)&n2, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
+	ft_cmp_s = (int (*)(void *, void *))strcmp; //reset func
 
 	return (0);
 }
