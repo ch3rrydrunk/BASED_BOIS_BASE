@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: caellis <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Create: 2019/04/03 16:54:30 by caellis           #+#    #+#              #
-#    Updated: 2019/04/06 10:42:47 by caellis          ###   ########.fr        #
+#    Created: 2019/04/08 14:04:08 by caellis           #+#    #+#              #
+#    Updated: 2019/04/08 14:04:30 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,9 @@ $(NAME) :
 
 test : re
 	@gcc -o $(TEST) test_func.c -L. -lft
-	@ say "HEIL CHERRY, here are your tests... Please enjoy!"
 	@./$(TEST)
-#	@norminette *.c
+#	@echo "HEIL CHERRY, here are your tests... Please enjoy!" > text; cat text | say; rm -rf text
+	@norminette ft_*.c
 
 clean :
 	@rm -rf $(OBJECTS)

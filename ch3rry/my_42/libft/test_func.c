@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:26:59 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/06 11:36:34 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/08 14:19:58 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 
 static int	intcmp(int *n1, int *n2)
 {
-	return (n1 - n2);
+	return (n1 == n2);
 }
 
 static char	*ft_strcpy(char *dest, char *src)
@@ -61,7 +61,7 @@ int			main(void)
 	printf(" ...\t...\t...\n");
 	printf(" .. %s  ..\n", S_TEST);
 	printf(" ...\t...\t...\n\n");
-
+	
 	ft_cmp_s = (int (*)(void *, void *))strcmp;
 	printf("\n ...GO FT_MEMSET...\n");	//FT_MEMSET
 	printf("memset() out:\n%s\n", memset(str1, 33, 4));
