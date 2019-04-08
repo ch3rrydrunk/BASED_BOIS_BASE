@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:26:59 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/08 14:37:25 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/08 16:23:35 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,20 +23,6 @@
 static int	intcmp(int *n1, int *n2)
 {
 	return (n1 == n2);
-}
-
-static char	*ft_strcpy(char *dest, char *src)
-{
-	int i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
 }
 
 static void	checker(char *s1, char *s2, int (*f)(void *, void *))
@@ -133,9 +119,19 @@ int			main(void)
 	n1 = strlen(""); n2 = ft_strlen("");
 	printf("strlen() empty str out:\n%i\n", n1); printf("ft_strlen() out:\n%i\n", n2);
 	checker((char *)&n1, (char *)&n2, ft_cmp_s);
-
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 	ft_cmp_s = (int (*)(void *, void *))strcmp; //reset func
 
+	printf("\n ...GO FT_STRCPY...\n");	//FT_STRCPY
+	printf("strcpy() ok out:\n%s\n", strcpy(str1, "!!!!"));
+	printf("ft_strcpy() ok out:\n%s\n", ft_strcpy(str2, "!!!!"));
+	checker(str1, str2, ft_cmp_s);
+	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //set args
+	// now destination < source
+	printf("strcpy() opt2 (dest < src) out:\n%s\n", strcpy(str1, S_TEST"yo"));
+	ft_strcpy(str1, S_TEST); //set args
+	printf("ft_strcpy() opt2(dest < src) out:\n%s\n", ft_strcpy(str2, S_TEST"yo"));
+	checker(str1, str2, ft_cmp_s);
+	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 	return (0);
 }
