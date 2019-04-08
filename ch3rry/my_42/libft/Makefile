@@ -30,7 +30,7 @@ test : re
 	@gcc -o $(TEST) test_func.c test_printer_color.c -L. -lft
 	@./$(TEST)
 #	@echo "HEIL CHERRY, here are your tests... Please enjoy!" > text; cat text | say; rm -rf text
-	@norminette ft_*.c
+#	@norminette ft_*.c
 
 clean :
 	@rm -rf $(OBJECTS)

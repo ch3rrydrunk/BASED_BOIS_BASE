@@ -16,10 +16,13 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
 	char	*buff;
 
-	if (src == NULL || dst == NULL)
-	while (len--)
+	if ((buff = dst) && src)
 	{
-		
+		while (*src && len--)
+			*(buff++) = *(src++);
+		*buff = '\0';
+		while (len--)
+			*(buff++) = '\0';
 	}
 	return (dst);
 }
