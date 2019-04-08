@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:26:59 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/08 14:19:58 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/08 14:37:25 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,19 @@ int			main(void)
 	n1 = memcmp(str1, str2, LEN_ST - 1); n2 = ft_memcmp(str1, str2, LEN_ST - 1);
 	printf("memcmp() unmatch test out:\n%i\nft_memcmp() unmatch test out:\n%i\n", n1, n2);
 	checker((char *)&n1, (char *)&n2, ft_cmp_s);
+	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
+	ft_cmp_s = (int (*)(void *, void *))strcmp; //reset func
+
+	printf("\n ...GO FT_STRLEN...\n");	//FT_STRLEN
+	ft_cmp_s = (int (*)(void *, void *))intcmp; //set func
+	n1 = strlen(str1); n2 = ft_strlen(str1);
+	printf("strlen() out:\n%i\n", n1); printf("ft_strlen() out:\n%i\n", n2);
+	checker((char *)&n1, (char *)&n2, ft_cmp_s);
+	// now let's go empty
+	n1 = strlen(""); n2 = ft_strlen("");
+	printf("strlen() empty str out:\n%i\n", n1); printf("ft_strlen() out:\n%i\n", n2);
+	checker((char *)&n1, (char *)&n2, ft_cmp_s);
+
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 	ft_cmp_s = (int (*)(void *, void *))strcmp; //reset func
 
