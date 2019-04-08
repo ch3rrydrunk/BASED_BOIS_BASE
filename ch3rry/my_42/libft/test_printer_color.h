@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   test_printer_color.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/08 15:03:45 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/08 17:44:48 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/08 16:51:57 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/08 17:10:35 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strcpy(char *dst, const char *src)
-{
-	char	*buff;
-
-	buff = dst;
-	while (*src)
-		*(buff++) = *(src++);
-	*buff = '\0';
-	return (dst);
-}
+void	red();
+void	green();
+void	yellow();
+void	blue();
+void	magenta();
+void	b_red();
+void	b_green();
+void	b_yellow();
+void	b_blue();
+void	b_magenta();
+void	reset();

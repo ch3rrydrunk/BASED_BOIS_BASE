@@ -6,13 +6,14 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:26:59 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/08 16:23:35 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/08 17:42:09 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
 #include <stdio.h>
+
+#include "libft.h"
+#include "test_printer_color.h"
 
 # define S_TEST "H3IL CH3RRY"
 # define S_TEST2 "H3IL BADBOI"
@@ -25,12 +26,16 @@ static int	intcmp(int *n1, int *n2)
 	return (n1 == n2);
 }
 
-static void	checker(char *s1, char *s2, int (*f)(void *, void *))
+static void	checker(void *s1, void *s2, int (*f)(void *, void *))
 {
-	if (f(s1, s2) < 0)
-		printf(" ...\t...\t...\n"NOK" ...\t...\t...\n");
+	if (f(s1, s2) != 0)
+	{
+		b_red(); printf(" ...\t...\t...\n"NOK" ...\t...\t...\n"); reset();
+	}
 	else
-		printf(" ...\t...\t...\n"OK" ...\t...\t...\n\n");
+	{
+		b_green(); printf(" ...\t...\t...\n"OK" ...\t...\t...\n\n"); reset();
+	}
 }
 
 int			main(void)
@@ -44,25 +49,25 @@ int			main(void)
 
 	printf("\nHi, Master!\nHere are your tests..\n");
 	printf("Please, enjoy\n\n");
-	printf(" ...\t...\t...\n");
-	printf(" .. %s  ..\n", S_TEST);
-	printf(" ...\t...\t...\n\n");
+	magenta(); printf(" ...\t...\t...\n"); reset();
+	red(); printf(" .. %s  ..\n", S_TEST); reset();
+	magenta(); printf(" ...\t...\t...\n\n"); reset();
 	
 	ft_cmp_s = (int (*)(void *, void *))strcmp;
-	printf("\n ...GO FT_MEMSET...\n");	//FT_MEMSET
+	yellow(); printf("\n ...GO FT_MEMSET...\n"); reset();	//FT_MEMSET
 	printf("memset() out:\n%s\n", memset(str1, 33, 4));
 	printf("ft_memset() out:\n%s\n", ft_memset(str2, 33, 4));
 	checker(str1, str2, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 
-	printf("\n ...GO FT_BZERO...\n");	//FT_BZERO
+	yellow(); printf("\n ...GO FT_BZERO...\n"); reset();	//FT_BZERO
 	bzero(str1, 4); ft_bzero(str2, 4);
 	printf("bzero() out:\n%s\n", str1);
 	printf("ft_bzero() out:\n%s\n", str2);
 	checker(str1, str2, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 
-	printf("\n ...GO FT_MEMCPY...\n");	//FT_MEMCPY
+	yellow(); printf("\n ...GO FT_MEMCPY...\n"); reset();	//FT_MEMCPY
 	ft_memset(str2, 33, 4); //set args
 	printf("memcpy() out:\n%s\n", memcpy(str1, str2, LEN_ST - 1));
 	ft_strcpy(str1, S_TEST); //set args
@@ -70,7 +75,7 @@ int			main(void)
 	checker(str1, str2, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 
-	printf("\n ...GO FT_MEMCCPY...\n");	//FT_MEMCCPY
+	yellow(); printf("\n ...GO FT_MEMCCPY...\n"); reset();	//FT_MEMCCPY
 	ft_memset(str2, 33, 4); //set args
 	printf("memccpy() opt1(no 'A' met) out:\n%s\n", memccpy(str1, str2, 'A', LEN_ST - 1));
 	ft_strcpy(str1, S_TEST); //set args
@@ -82,7 +87,7 @@ int			main(void)
 	checker(str1, str2, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 
-	printf("\n ...GO FT_MEMMOVE...\n");	//FT_MEMMOVE
+	yellow(); printf("\n ...GO FT_MEMMOVE...\n"); reset();	//FT_MEMMOVE
 	ft_memset(str2, 33, 4); //set args
 	printf("memmove() opt1(no crossin) out:\n%s\n", memmove(str1, str2, 4));
 	ft_strcpy(str1, S_TEST); ft_memset(str2, 33, 4); //set args
@@ -97,7 +102,7 @@ int			main(void)
 	checker(buff, str1, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 
-	printf("\n ...GO FT_MEMСMP...\n");	//FT_MEMCHR
+	yellow(); printf("\n ...GO FT_MEMСMP...\n"); reset();	//FT_MEMCHR
 	n1 = memcmp(str1, str2, LEN_ST - 1); n2 = ft_memcmp(str1, str2, LEN_ST - 1);
 	printf("memcmp() out:\n%i\nft_memcmp() out:\n%i\n", n1, n2);
 	ft_cmp_s = (int (*)(void *, void *))intcmp; //set func
@@ -110,7 +115,7 @@ int			main(void)
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 	ft_cmp_s = (int (*)(void *, void *))strcmp; //reset func
 
-	printf("\n ...GO FT_STRLEN...\n");	//FT_STRLEN
+	yellow(); printf("\n ...GO FT_STRLEN...\n"); reset();	//FT_STRLEN
 	ft_cmp_s = (int (*)(void *, void *))intcmp; //set func
 	n1 = strlen(str1); n2 = ft_strlen(str1);
 	printf("strlen() out:\n%i\n", n1); printf("ft_strlen() out:\n%i\n", n2);
@@ -119,19 +124,19 @@ int			main(void)
 	n1 = strlen(""); n2 = ft_strlen("");
 	printf("strlen() empty str out:\n%i\n", n1); printf("ft_strlen() out:\n%i\n", n2);
 	checker((char *)&n1, (char *)&n2, ft_cmp_s);
-	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
+	strcpy(str1, S_TEST); strcpy(str2, S_TEST); //reset
 	ft_cmp_s = (int (*)(void *, void *))strcmp; //reset func
 
-	printf("\n ...GO FT_STRCPY...\n");	//FT_STRCPY
+	yellow() ; printf("\n ...GO FT_STRCPY...\n"); reset();	//FT_STRCPY
 	printf("strcpy() ok out:\n%s\n", strcpy(str1, "!!!!"));
 	printf("ft_strcpy() ok out:\n%s\n", ft_strcpy(str2, "!!!!"));
 	checker(str1, str2, ft_cmp_s);
-	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //set args
-	// now destination < source
-	printf("strcpy() opt2 (dest < src) out:\n%s\n", strcpy(str1, S_TEST"yo"));
-	ft_strcpy(str1, S_TEST); //set args
-	printf("ft_strcpy() opt2(dest < src) out:\n%s\n", ft_strcpy(str2, S_TEST"yo"));
+	strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //set args
+	// now dest > src
+	printf("strcpy() opt2 (dest > src) out:\n%s\n", strcpy(str1, "YEAH"));
+	printf("ft_strcpy() opt2(dest > src) out:\n%s\n", ft_strcpy(str2, "YEAH"));
 	checker(str1, str2, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 	return (0);
+
 }
