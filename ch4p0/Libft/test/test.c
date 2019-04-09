@@ -6,7 +6,7 @@
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 11:31:36 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/09 18:55:28 by cormund          ###   ########.fr       */
+/*   Updated: 2019/04/09 21:38:46 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void checker(void *s1, void *s2, int (*f)(void *, void *))
 	}
 }
 
-static void	checker_str(int *s1)
+static void	checker_str(int s1)
 {
 	if (s1 != 0)
 	{
@@ -51,6 +51,10 @@ int		main()
 	str_ft = "hello, world";
 	char dst_lb[13] = "privet, mir!";
 	char dst_ft[13] = "privet, mir!";
+	
+	//big buf
+	char buf_lb[50];
+	char buf_ft[50];
 	char *str_zero;
 	str_zero = "";;
 
@@ -62,7 +66,7 @@ int		main()
 	int n2;
 	int len;
  
-	len = 12;
+	len = 13;
 
 	int		(*ft_cmp_s)(void *, void *);
 
@@ -155,12 +159,12 @@ int		main()
 	//
 	//___strdup___
 	//
-	printf("\n...FT_STRDUP...\n"); reset();
+	/*printf("\n...FT_STRDUP...\n"); reset();
 	n1 = memcmp(strdup(str_lb), ft_strdup(str_lb), len);
 	printf("strdup(str_lb) out:\n%s\n\n", strdup(str_lb));
 	printf("ft_strdup(str_lb) out:\n%s\n\n", ft_strdup(str_lb));
 	printf("memcmp(strdup(str_lb), ft_strdup(str_lb), len):\n%i\n", n1);
-	checker_str(n1);
+	checker_str(n1);*/
 	//
 
 
@@ -171,11 +175,18 @@ int		main()
 	//printf("ft_strlen (\"privet, mir!\") out:\n%d\n", ft_strlen("privet, mir!"));
 	
 	//___
-	printf("\n...FT_STRCOPY...\n"); reset();
+/*	printf("\n...FT_STRCOPY...\n"); reset();
 	n1 = memcmp(strcpy(dst_lb, str_lb), ft_strcpy(dst_ft, str_ft), len);
 	printf("strcpy(dst_lb,str_lb) out:\n%s\n\n", strcpy(dst_lb,str_lb));
 	printf("ft_strcpy(dst_ft, str_ft) out:\n%s\n\n", ft_strcpy(dst_ft, str_ft));
 	printf("memcmp(strcpy(dst_lb,str_lb)), ft_strcpy(dst_ft, str_ft), len):\n%i\n", n1);
+	checker_str(n1);*/
+
+	printf("\n...FT_STRNCOPY...\n"); reset();
+	n1 = memcmp(strncpy(dst_lb, "hel", 12), ft_strncpy(dst_ft, "hel", len), 12);
+	printf("strncpy(dst_lb,str_lb, len) out:\n%s\n\n", strncpy(dst_lb, "hel", len));
+	printf("ft_strcpy(dst_ft, str_ft, len) out:\n%s\n\n", ft_strncpy(dst_ft, "hel", len));
+	printf("memcmp(strncpy(dst_lb,str_lb, len)), ft_strncpy(dst_ft, str_ft, len), len):\n%i\n", n1);
 	checker_str(n1);
 
 	

@@ -6,7 +6,7 @@
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 09:57:14 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/09 18:55:34 by cormund          ###   ########.fr       */
+/*   Updated: 2019/04/09 21:38:40 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 size_t  ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 char    *ft_strcpy(char *dst, const char *src);
+char    *ft_strncpy(char *dst, const char *src, size_t len);
 //
 //
 //
