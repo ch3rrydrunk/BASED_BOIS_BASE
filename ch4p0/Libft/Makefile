@@ -6,7 +6,7 @@
 #    By: cormund <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/03 18:56:45 by cormund           #+#    #+#              #
-#    Updated: 2019/04/08 11:47:33 by cormund          ###   ########.fr        #
+#    Updated: 2019/04/09 15:26:03 by cormund          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ $(NAME) :
 	ar rc $(NAME) $(OBJ)
 
 test: re
-	gcc -o test.out ./test/test.c -L. -lft
-	./test.out | cat -e
+	gcc -o test.out ./test/test.c ./test/test_printer_color.c  -L. -lft
+	./test.out
 
 clean:
 	/bin/rm -f $(OBJ)
