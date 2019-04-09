@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strccat.c                                       :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 16:00:24 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/09 16:50:15 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/09 17:01:35 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/09 17:23:14 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcat(char *s1, const char *s2)
+char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
 	char	*buff;
 
-	if (s1 && s2)
+	if (s1 && s2 && (n != 0))
 	{
 		buff = s1;
-		while(*buff)
+		while (*buff)
 			buff++;
-		while (*s2)
+		while (n--)
 			*(buff++) = *(s2++);
+		*buff = '\0';
 	}
 	return (s1);
 }

@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:26:59 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/09 16:56:05 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/09 20:19:30 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,12 +161,34 @@ int			main(void)
 	printf("strcat() ok out:\n%s\n", strcat(str24, "ORLY!?"));
 	printf("ft_strcat() ok out:\n%s\n", ft_strcat(str242, "ORLY!?"));
 	checker(str24, str242, ft_cmp_s);
-	strncpy(str24, "Almost empty...", 5); strncpy(str242, "Almost empty...", 23); //set args
-	// now no s2
-	
+	strcpy(str24, "Almost empty..."); strcpy(str242, "Almost empty..."); //set args
+	// now no s2	
 	//printf("strcat() s2 = NULL out:\n%s\n", strcat(str24, NULL));
-	printf("ft_strcat() s2 = NULL out:\n%s\n", ft_strcat(str242, NULL));
-	strncpy(str24, "Almost empty...", 23); strncpy(str242, "Almost empty...", 23); //set args
+	//printf("ft_strcat() s2 = NULL out:\n%s\n", ft_strcat(str242, NULL));
+
+	yellow() ; printf("\n ...GO FT_STRNCAT...\n"); reset();	//FT_STRNCAT
+	printf("strncat() ok out:\n%s\n", strncat(str24, "ORLY!?", 6));
+	printf("ft_strncat() ok out:\n%s\n", ft_strncat(str242, "ORLY!?", 6));
+	checker(str24, str242, ft_cmp_s);
+	strcpy(str24, "Almost empty..."); strcpy(str242, "Almost empty..."); //set args
+	// now n < len (s2)
+	printf("strncat() n < len(s2) out:\n%s\n", strncat(str24, "ORLY!?", 2));
+	printf("ft_strncat() n < len(s2) out:\n%s\n", ft_strncat(str242, "ORLY!?", 2));
+	checker(str24, str242, ft_cmp_s);
+	strcpy(str24, "Almost empty..."); strcpy(str242, "Almost empty..."); //set args
+	/*
+	yellow(); printf("\n ...GO FT_STRLCAT...\n"); reset();	//FT_STRLCAT
+	ft_cmp_s = (int (*)(void *, void *))intcmp; //set func
+	n1 = strlcat(str24, "!!!!", 20); n2 = ft_strlcat(str242, "!!!!", 20);
+	printf("strlcat() out:\n%i\n", n1); printf("ft_strlcat() out:\n%i\n", n2);
+	checker((char *)&n1, (char *)&n2, ft_cmp_s);
+	strncpy(str24, "Almost empty...", 5); strncpy(str242, "Almost empty...", 23); //set args
+
+	// now let's go size < len(src)
+	checker((char *)&n1, (char *)&n2, ft_cmp_s);
+	strcpy(str1, S_TEST); strcpy(str2, S_TEST); //reset
+	ft_cmp_s = (int (*)(void *, void *))strcmp; //reset func
+*/
 
 
 	return (0);
