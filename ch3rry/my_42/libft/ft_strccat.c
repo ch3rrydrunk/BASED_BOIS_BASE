@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_strccat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 12:59:39 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/09 13:03:50 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/09 16:00:24 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/09 16:50:15 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+char	*ft_strcat(char *s1, const char *s2)
 {
-	unsigned char	*buff;
+	char	*buff;
 
-	if (n == 0 || s == NULL)
-		return ;
-	buff = (unsigned char *)s;
-	while (n--)
-		*(buff++) = (unsigned char)0;
+	if (s1 && s2)
+	{
+		buff = s1;
+		while(*buff)
+			buff++;
+		while (*s2)
+			*(buff++) = *(s2++);
+	}
+	return (s1);
 }

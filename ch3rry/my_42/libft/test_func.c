@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:26:59 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/08 17:42:09 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/09 16:56:05 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@
 
 # define S_TEST "H3IL CH3RRY"
 # define S_TEST2 "H3IL BADBOI"
-# define LEN_ST 12
+# define LEN_1 12
+# define LEN_2 24
 # define OK "_____GOOD__BOI_____\n"
 # define NOK "XXX__BAD_DOGE__XXX\n"
 
@@ -40,8 +41,10 @@ static void	checker(void *s1, void *s2, int (*f)(void *, void *))
 
 int			main(void)
 {
-	char	str1[LEN_ST] = S_TEST;
-	char	str2[LEN_ST] = S_TEST;
+	char	str1[LEN_1] = S_TEST;
+	char	str2[LEN_1] = S_TEST;
+	char	str24[LEN_2] = {"Almost empty..."};
+	char	str242[LEN_2] = {"Almost empty..."};
 	int		n1;
 	int		n2;
 	char	*buff;
@@ -69,21 +72,21 @@ int			main(void)
 
 	yellow(); printf("\n ...GO FT_MEMCPY...\n"); reset();	//FT_MEMCPY
 	ft_memset(str2, 33, 4); //set args
-	printf("memcpy() out:\n%s\n", memcpy(str1, str2, LEN_ST - 1));
+	printf("memcpy() out:\n%s\n", memcpy(str1, str2, LEN_1 - 1));
 	ft_strcpy(str1, S_TEST); //set args
-	printf("ft_memcpy() out:\n%s\n", ft_memcpy(str1, str2, LEN_ST - 1));
+	printf("ft_memcpy() out:\n%s\n", ft_memcpy(str1, str2, LEN_1 - 1));
 	checker(str1, str2, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 
 	yellow(); printf("\n ...GO FT_MEMCCPY...\n"); reset();	//FT_MEMCCPY
 	ft_memset(str2, 33, 4); //set args
-	printf("memccpy() opt1(no 'A' met) out:\n%s\n", memccpy(str1, str2, 'A', LEN_ST - 1));
+	printf("memccpy() opt1(no 'A' met) out:\n%s\n", memccpy(str1, str2, 'A', LEN_1 - 1));
 	ft_strcpy(str1, S_TEST); //set args
-	printf("ft_memccpy() opt1(no 'A' met) out:\n%s\n", ft_memccpy(str1, str2, 'A', LEN_ST - 1));
+	printf("ft_memccpy() opt1(no 'A' met) out:\n%s\n", ft_memccpy(str1, str2, 'A', LEN_1 - 1));
 	checker(str1, str2, ft_cmp_s);
-	printf("memccpy() opt2(' ' met) out:\n%s\n", memccpy(str1, str2, ' ', LEN_ST - 1));
+	printf("memccpy() opt2(' ' met) out:\n%s\n", memccpy(str1, str2, ' ', LEN_1 - 1));
 	ft_strcpy(str1, S_TEST); //set args
-	printf("ft_memccpy() opt2(' ' met) out:\n%s\n", ft_memccpy(str1, str2, ' ', LEN_ST - 1));
+	printf("ft_memccpy() opt2(' ' met) out:\n%s\n", ft_memccpy(str1, str2, ' ', LEN_1 - 1));
 	checker(str1, str2, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 
@@ -103,13 +106,13 @@ int			main(void)
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
 
 	yellow(); printf("\n ...GO FT_MEMСMP...\n"); reset();	//FT_MEMCHR
-	n1 = memcmp(str1, str2, LEN_ST - 1); n2 = ft_memcmp(str1, str2, LEN_ST - 1);
+	n1 = memcmp(str1, str2, LEN_1 - 1); n2 = ft_memcmp(str1, str2, LEN_1 - 1);
 	printf("memcmp() out:\n%i\nft_memcmp() out:\n%i\n", n1, n2);
 	ft_cmp_s = (int (*)(void *, void *))intcmp; //set func
 	checker((char *)&n1, (char *)&n2, ft_cmp_s);
 	//test 2 unequal strings
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST2);
-	n1 = memcmp(str1, str2, LEN_ST - 1); n2 = ft_memcmp(str1, str2, LEN_ST - 1);
+	n1 = memcmp(str1, str2, LEN_1 - 1); n2 = ft_memcmp(str1, str2, LEN_1 - 1);
 	printf("memcmp() unmatch test out:\n%i\nft_memcmp() unmatch test out:\n%i\n", n1, n2);
 	checker((char *)&n1, (char *)&n2, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
@@ -137,6 +140,34 @@ int			main(void)
 	printf("ft_strcpy() opt2(dest > src) out:\n%s\n", ft_strcpy(str2, "YEAH"));
 	checker(str1, str2, ft_cmp_s);
 	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
-	return (0);
 
+	yellow() ; printf("\n ...GO FT_STRCPY...\n"); reset();	//FT_STRNCPY
+	printf("strncpy() ok out:\n%s\n", strncpy(str1, "!!!!", 4));
+	printf("ft_strncpy() ok out:\n%s\n", ft_strncpy(str2, "!!!!", 4));
+	checker(str1, str2, ft_cmp_s);
+	strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //set args
+	// now len < len(src)
+	printf("strncpy() opt2 (len < len(src) YEAL CH3RRY) out:\n%s\n", strncpy(str1, "YEAH", 3));
+	printf("ft_strncpy() opt2 (len < len(src) - YEAL CH3RRY) out:\n%s\n", ft_strncpy(str2, "YEAH", 3));
+	checker(str1, str2, ft_cmp_s);
+	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
+	// now len > len(src)
+	printf("strncpy() opt2 (len > len(src) YEAH) out:\n%s\n", strncpy(str1, "YEAH", 5));
+	printf("ft_strncpy() opt2 (len > len(src) YEAH) out:\n%s\n", ft_strncpy(str2, "YEAH", 5));
+	checker(str1, str2, ft_cmp_s);
+	ft_strcpy(str1, S_TEST); ft_strcpy(str2, S_TEST); //reset
+
+	yellow() ; printf("\n ...GO FT_STRCAT...\n"); reset();	//FT_STRCAT
+	printf("strcat() ok out:\n%s\n", strcat(str24, "ORLY!?"));
+	printf("ft_strcat() ok out:\n%s\n", ft_strcat(str242, "ORLY!?"));
+	checker(str24, str242, ft_cmp_s);
+	strncpy(str24, "Almost empty...", 5); strncpy(str242, "Almost empty...", 23); //set args
+	// now no s2
+	
+	//printf("strcat() s2 = NULL out:\n%s\n", strcat(str24, NULL));
+	printf("ft_strcat() s2 = NULL out:\n%s\n", ft_strcat(str242, NULL));
+	strncpy(str24, "Almost empty...", 23); strncpy(str242, "Almost empty...", 23); //set args
+
+
+	return (0);
 }

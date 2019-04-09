@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 17:47:34 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/08 20:20:15 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/09 16:00:30 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,15 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 {
 	char	*buff;
 
-	if ((buff = dst) && src)
+	if (((buff = dst) || src) && len != 0)
 	{
-		while (*src && len--)
+		while (len && *src)
+		{
 			*(buff++) = *(src++);
-		*buff = '\0';
-		while (len--)
-			*(buff++) = '\0';
+			len--;
+		}
+		if (len)
+			ft_bzero(buff, len);
 	}
 	return (dst);
 }
