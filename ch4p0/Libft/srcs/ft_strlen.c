@@ -6,16 +6,18 @@
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 11:56:34 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/05 15:59:29 by cormund          ###   ########.fr       */
+/*   Updated: 2019/04/08 15:07:54 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(const char *s)
+#include "libft.h"
+
+size_t	ft_strlen(const char *s)
 {
-	int l;
+	size_t l;
 
 	l = 0;
-	while (s[l])
+	while (*(s++) != '\0')
 		l++;
 	return (l);
 }
