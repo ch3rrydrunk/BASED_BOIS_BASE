@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/05 12:01:21 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/05 17:41:23 by cormund          ###   ########.fr       */
+/*   Created: 2019/04/08 09:50:56 by cormund           #+#    #+#             */
+/*   Updated: 2019/04/08 14:39:06 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/cormund/42/Libft/includes/libft.h"
+#include "libft.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	*ft_memcpy(void *restrict dst, const void *restrict src, size_t n)
 {
-	size_t	i;
+	unsigned char *dst_str;
 
-	i = 0;
-	while (i < len)
-		*(unsigned char *)(b+i++) = (unsigned char)c;
-	return ((void*)b);
+	dst_str = (unsigned char *)dst;
+	while (n--)
+		*(unsigned char *)(dst_str++) = *(unsigned char *)(src++);
+	return ((void *)dst);
 }

@@ -6,7 +6,7 @@
 #    By: cormund <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/03 18:56:45 by cormund           #+#    #+#              #
-#    Updated: 2019/04/08 10:49:08 by cormund          ###   ########.fr        #
+#    Updated: 2019/04/08 11:47:33 by cormund          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ SRCS = ./srcs/
 FUN = $(SRCS)ft_*.c
 OBJ = ft_*.o
 INLC = libft.h
-FLAG = -c -Wall -Wextra -Werror
+FLAG = -c 
+#вернуть-Wall -Wextra -Werror
 
 all: $(NAME) $(TEST)
 
