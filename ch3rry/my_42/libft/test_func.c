@@ -24,7 +24,7 @@
 
 static int	intcmp(int *n1, int *n2)
 {
-	return (n1 == n2);
+	return (!(*n1 == *n2));
 }
 
 static void	checker(void *s1, void *s2, int (*f)(void *, void *))
@@ -55,7 +55,7 @@ int			main(void)
 	magenta(); printf(" ...\t...\t...\n"); reset();
 	red(); printf(" .. %s  ..\n", S_TEST); reset();
 	magenta(); printf(" ...\t...\t...\n\n"); reset();
-	
+
 	ft_cmp_s = (int (*)(void *, void *))strcmp;
 	yellow(); printf("\n ...GO FT_MEMSET...\n"); reset();	//FT_MEMSET
 	printf("memset() out:\n%s\n", memset(str1, 33, 4));
@@ -162,7 +162,7 @@ int			main(void)
 	printf("ft_strcat() ok out:\n%s\n", ft_strcat(str242, "ORLY!?"));
 	checker(str24, str242, ft_cmp_s);
 	strcpy(str24, "Almost empty..."); strcpy(str242, "Almost empty..."); //set args
-	// now no s2	
+	// now no s2
 	//printf("strcat() s2 = NULL out:\n%s\n", strcat(str24, NULL));
 	//printf("ft_strcat() s2 = NULL out:\n%s\n", ft_strcat(str242, NULL));
 
@@ -176,7 +176,7 @@ int			main(void)
 	printf("ft_strncat() n < len(s2) out:\n%s\n", ft_strncat(str242, "ORLY!?", 2));
 	checker(str24, str242, ft_cmp_s);
 	strcpy(str24, "Almost empty..."); strcpy(str242, "Almost empty..."); //set args
-	/*
+
 	yellow(); printf("\n ...GO FT_STRLCAT...\n"); reset();	//FT_STRLCAT
 	ft_cmp_s = (int (*)(void *, void *))intcmp; //set func
 	n1 = strlcat(str24, "!!!!", 20); n2 = ft_strlcat(str242, "!!!!", 20);
@@ -188,8 +188,6 @@ int			main(void)
 	checker((char *)&n1, (char *)&n2, ft_cmp_s);
 	strcpy(str1, S_TEST); strcpy(str2, S_TEST); //reset
 	ft_cmp_s = (int (*)(void *, void *))strcmp; //reset func
-*/
-
 
 	return (0);
 }
