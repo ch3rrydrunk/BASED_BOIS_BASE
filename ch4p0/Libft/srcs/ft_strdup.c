@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   strdup.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/08 19:19:56 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/09 17:11:09 by cormund          ###   ########.fr       */
+/*   Created: 2019/04/09 16:29:18 by cormund           #+#    #+#             */
+/*   Updated: 2019/04/09 18:40:57 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strdup(const char *s1)
 {
-	unsigned char *d;
-	unsigned char *s;
+	char *scp;
+	char *s2;
 
-	d = (unsigned char*)dst;
-	s = (unsigned char*)src;
-	if (s >= d)
-		ft_memcpy(d, s, len);
-	else
-		while (len--)
-			*(d + len) = *(s + len);
-	return (dst);
+	scp = (char*)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	if ((s2 = scp))
+	{
+		while (*(s1) != '\0')
+			*(s2++) = *(s1++);
+		*(s2) = '\0';
+	}
+	return (scp);
 }
