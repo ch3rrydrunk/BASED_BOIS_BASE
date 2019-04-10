@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/08 15:03:45 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/08 18:53:55 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/10 17:51:30 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,9 @@ char	*ft_strcpy(char *dst, const char *src)
 {
 	char	*buff;
 
-	if ((buff = dst) && src)
-	{
-		while (*src)
-			*(buff++) = *(src++);
-		*buff = '\0';
-	}
+	buff = dst;
+	while (*src)
+		*(buff++) = *(src++);
+	*buff = *src;
 	return (dst);
 }

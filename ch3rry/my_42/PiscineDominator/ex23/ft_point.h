@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 17:01:35 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/10 18:03:11 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/03 16:43:13 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/03 16:50:17 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_POINT_H
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+# define FT_POINT_H
+
+typedef struct	s_point
 {
-	char	*buff;
+	int			x;
+	int			y;
+}				t_point;
 
-	buff = s1;
-	while (*buff)
-		buff++;
-	while (n && *s2)
-	{
-		*(buff++) = *(s2++);
-		n--;
-	}
-	*buff = '\0';
-	return (s1);
-}
+#endif

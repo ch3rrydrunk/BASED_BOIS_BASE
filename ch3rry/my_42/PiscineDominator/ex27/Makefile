@@ -5,38 +5,31 @@
 #                                                     +:+ +:+         +:+      #
 #    By: caellis <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/08 14:04:08 by caellis           #+#    #+#              #
-#    Updated: 2019/04/10 13:43:47 by caellis          ###   ########.fr        #
+#    Created: 2019/03/11 15:28:03 by caellis           #+#    #+#              #
+#    Updated: 2019/04/04 10:42:38 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := libft.a
+NAME := ft_display_file
 
-TEST := test.out
+SOURCE := ./srcs/ft_error.c ./srcs/main.c ./srcs/ft_strlen.c
 
-SOURCE := ft_*.c
+HEADERS := includes
 
-#FLAGS := -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror
 
-OBJECTS := ft_*.o
+OBJECTS := ft_error.o main.o ft_strlen.o
 
 all : $(NAME)
 
-$(NAME) :
-	@gcc $(FLAGS) -c $(SOURCE)
-	@ar rc $(NAME) $(OBJECTS)
-
-test : re
-	@gcc -o $(TEST) test_func.c test_printer_color.c -L. -lft
-	@./$(TEST)
-#	@echo "HEIL CHERRY, here are your tests... Please enjoy!" > text; cat text | say; rm -rf text
-	@norminette ft_*.c
+$(NAME) : 
+	@gcc -I $(HEADERS) -c $(SOURCE)
+	@gcc $(FLAGS) -o $(NAME) $(OBJECTS)
 
 clean :
-	@rm -rf $(OBJECTS)
+	@rm -f $(OBJECTS)
 
 fclean : clean
-	@rm -rf $(NAME)
-	@rm -rf $(TEST) test_func.o
+	@rm -f $(NAME)
 
 re : fclean all

@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_is_negative.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 17:01:35 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/10 18:03:11 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/02 17:11:15 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/02 17:18:07 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+void	ft_putchar(char c);
+
+void	ft_is_negative(int n)
 {
-	char	*buff;
-
-	buff = s1;
-	while (*buff)
-		buff++;
-	while (n && *s2)
-	{
-		*(buff++) = *(s2++);
-		n--;
-	}
-	*buff = '\0';
-	return (s1);
+	if (n < 0)
+		ft_putchar('N');
+	else
+		ft_putchar('P');
 }

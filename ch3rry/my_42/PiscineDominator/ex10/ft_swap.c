@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 17:01:35 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/10 18:03:11 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/02 17:35:10 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/02 17:44:06 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+void	ft_swap(int *a, int *b)
 {
-	char	*buff;
+	int	buff;
 
-	buff = s1;
-	while (*buff)
-		buff++;
-	while (n && *s2)
-	{
-		*(buff++) = *(s2++);
-		n--;
-	}
-	*buff = '\0';
-	return (s1);
+	buff = *a;
+	*a = *b;
+	*b = buff;
 }

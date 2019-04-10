@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_count_if.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 17:01:35 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/10 18:03:11 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/03 17:15:20 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/09 10:45:42 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+int	ft_count_if(char **tab, int (*f)(char*))
 {
-	char	*buff;
+	int	i;
+	int n;
 
-	buff = s1;
-	while (*buff)
-		buff++;
-	while (n && *s2)
+	i = 0;
+	n = 0;
+	while (tab[i] != '\0')
 	{
-		*(buff++) = *(s2++);
-		n--;
+		if (f(tab[i]) == 1)
+			n++;
+		i++;
 	}
-	*buff = '\0';
-	return (s1);
+	return (n);
 }

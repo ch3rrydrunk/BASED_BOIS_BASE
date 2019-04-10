@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_abs.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 17:01:35 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/10 18:03:11 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/03 16:24:03 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/03 16:41:55 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef FT_ABS_H
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
-{
-	char	*buff;
+# define FT_ABS_H
+# define ABS(Value) Value < 0 ? Value * -1 : Value
 
-	buff = s1;
-	while (*buff)
-		buff++;
-	while (n && *s2)
-	{
-		*(buff++) = *(s2++);
-		n--;
-	}
-	*buff = '\0';
-	return (s1);
-}
+#endif

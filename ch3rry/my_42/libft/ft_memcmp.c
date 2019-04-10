@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 13:50:03 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/08 14:20:39 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/10 16:52:47 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 			return (0);
 		return (*st1 - *st2);
 	}
-	while (n-- && (*st1 == *st2))
+	while (--n && (*st1 == *st2))
 	{
 		st1++;
 		st2++;

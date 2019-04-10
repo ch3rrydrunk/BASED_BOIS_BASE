@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_print_numbers.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 17:01:35 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/10 18:03:11 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/02 15:30:04 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/02 21:14:26 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+void	ft_putchar(char c);
+
+void	ft_print_numbers(void)
 {
 	char	*buff;
 
-	buff = s1;
+	buff = "0123456789";
 	while (*buff)
-		buff++;
-	while (n && *s2)
 	{
-		*(buff++) = *(s2++);
-		n--;
+		ft_putchar(*buff);
+		buff++;
 	}
-	*buff = '\0';
-	return (s1);
 }

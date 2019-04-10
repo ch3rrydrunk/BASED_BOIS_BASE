@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:56:42 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/08 16:11:07 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/10 16:12:20 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,8 @@ void	*ft_memset(void *s, int c, size_t len)
 {
 	unsigned char	*buff;
 
-	if (len != 0 && s != NULL)
-	{
-		buff = (unsigned char *)s;
-		while (len--)
-			*(buff++) = (unsigned char)c;
-	}
+	buff = (unsigned char *)s;
+	while (len--)
+		*(buff++) = (unsigned char)c;
 	return (s);
 }

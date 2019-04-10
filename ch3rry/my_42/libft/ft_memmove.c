@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/06 10:15:11 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/09 17:21:48 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/10 16:28:20 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 
 	buff = (unsigned char *)dst;
 	cast = (unsigned char *)src;
-	if (len == 0 || dst == NULL || src == NULL)
-		return (dst);
 	if (dst - src < len)
 	{
 		cast += (len - 1);

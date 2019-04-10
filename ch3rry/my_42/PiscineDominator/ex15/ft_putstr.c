@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 17:01:35 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/10 18:03:11 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/02 19:42:51 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/02 19:50:45 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+void	ft_putchar(char c);
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+void	ft_putstr(char *str)
 {
-	char	*buff;
+	char	*p_str;
 
-	buff = s1;
-	while (*buff)
-		buff++;
-	while (n && *s2)
+	p_str = str;
+	while (*p_str)
 	{
-		*(buff++) = *(s2++);
-		n--;
+		ft_putchar(*p_str);
+		p_str++;
 	}
-	*buff = '\0';
-	return (s1);
 }

@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 17:01:35 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/10 18:03:11 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/02 15:17:14 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/02 15:25:48 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
 
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+void	ft_putchar(char c);
+
+void	ft_print_alphabet(void)
 {
-	char	*buff;
+	int	letter;
 
-	buff = s1;
-	while (*buff)
-		buff++;
-	while (n && *s2)
+	letter = 97;
+	while (letter < 123)
 	{
-		*(buff++) = *(s2++);
-		n--;
+		ft_putchar(letter);
+		letter++;
 	}
-	*buff = '\0';
-	return (s1);
 }

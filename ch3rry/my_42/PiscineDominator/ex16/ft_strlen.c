@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 17:01:35 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/10 18:03:11 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/02 19:56:56 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/02 20:00:27 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+int	ft_strlen(char *str)
 {
-	char	*buff;
+	int		i;
+	char	*p_str;
 
-	buff = s1;
-	while (*buff)
-		buff++;
-	while (n && *s2)
+	i = 0;
+	p_str = str;
+	while (*p_str)
 	{
-		*(buff++) = *(s2++);
-		n--;
+		p_str++;
+		i++;
 	}
-	*buff = '\0';
-	return (s1);
+	return (i);
 }

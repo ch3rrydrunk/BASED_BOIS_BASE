@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 17:01:35 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/10 18:03:11 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/03 17:05:50 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/03 17:13:32 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strncat(char *s1, const char *s2, size_t n)
+void	ft_foreach(int *tab, int length, void (*f)(int))
 {
-	char	*buff;
+	int i;
 
-	buff = s1;
-	while (*buff)
-		buff++;
-	while (n && *s2)
+	i = 0;
+	while (i < length)
 	{
-		*(buff++) = *(s2++);
-		n--;
+		f(tab[i]);
+		i++;
 	}
-	*buff = '\0';
-	return (s1);
 }

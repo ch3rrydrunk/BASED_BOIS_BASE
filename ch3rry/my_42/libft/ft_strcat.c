@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 16:00:24 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/09 17:21:27 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/10 17:57:38 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,11 @@ char	*ft_strcat(char *s1, const char *s2)
 {
 	char	*buff;
 
-	if (s1 && s2)
-	{
-		buff = s1;
-		while (*buff)
-			buff++;
-		while (*s2)
-			*(buff++) = *(s2++);
-		*buff = '\0';
-	}
+	buff = s1;
+	while (*buff)
+		buff++;
+	while (*s2)
+		*(buff++) = *(s2++);
+	*buff = '\0';
 	return (s1);
 }
