@@ -6,7 +6,7 @@
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 11:31:36 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/10 18:47:00 by cormund          ###   ########.fr       */
+/*   Updated: 2019/04/11 21:06:54 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,8 +171,8 @@ int		main()
 	//___strlen___
 
 
-	//printf("strlen (\"privet, mir!\") out:\n%d\n", strlen("privet, mir!"));
-	//printf("ft_strlen (\"privet, mir!\") out:\n%d\n", ft_strlen("privet, mir!"));
+//	printf("strlen (\"privet, mir!\") out:\n%d\n", strlen("privet, mir!"));
+//	printf("ft_strlen (\"privet, mir!\") out:\n%d\n", ft_strlen("privet, mir!"));
 	
 	//___
 /*	printf("\n...FT_STRCOPY...\n"); reset();
@@ -200,16 +200,16 @@ int		main()
 	checker_str(n1);*/
 
 
-/*	printf("\n...FT_STRLCAT...\n"); reset();
+//	printf("\n...FT_STRLCAT...\n"); reset();
 
-//	n1 = memcmp(strlcat(buf_lb, str_lb, 3), ft_strlcat(buf_ft, str_lb, 3), strlen(buf_lb) + strlen(buf_lb) + 10);
-	printf("strlcat(buf_lb,str_lb, 30) out:\n%lu\n\n", strlcat(buf_lb, str_lb, 20));
-	printf("buf_lb = %s\n\n", buf_lb);
-	printf("ft_strlcat(buf_ft,str_lb, 30) out:\n%lu\n\n", ft_strlcat(buf_ft, str_lb, 20));
-	printf("buf_ft = %s\n\n", buf_ft);
-	n1 = memcmp(buf_lb, buf_ft, 30);
-	printf("memcmp(strlcat(dst_lb,str_lb, len)), ft_strlcat(dst_ft, str_ft, len), len):\n%d\n", n1);
-	checker_str(n1);*/
+	//n1 = memcmp(strlcat(buf_lb, str_lb, 3), ft_strlcat(buf_ft, str_lb, 3), strlen(buf_lb) + strlen(buf_lb) + 10);
+//	printf("strlcat(buf_lb,str_lb, 0) out:\n%lu\n\n", strlcat(buf_lb, str_lb, 0));
+	//printf("buf_lb = %s\n\n", buf_lb);
+	//printf("ft_strlcat(buf_ft,str_lb, 30) out:\n%lu\n\n", ft_strlcat(buf_ft, str_lb, 20));
+	//printf("buf_ft = %s\n\n", buf_ft);
+	//n1 = memcmp(buf_lb, buf_ft, 30);
+	//printf("memcmp(strlcat(dst_lb,str_lb, len)), ft_strlcat(dst_ft, str_ft, len), len):\n%d\n", n1);
+	//checker_str(n1);
 
 	/*printf("\n...FT_STRCHR...\n");
 	
@@ -227,13 +227,27 @@ int		main()
 	printf("memcmp(memcmp(strrchr(buf_lb, '\\0'), ft_strrchr(buf_lb, '\\0'), len):\n%i\n", n1);
 	checker_str(n1);*/
 
-	printf("\n...FT_STRSTR...\n");
+	/*printf("\n...FT_STRSTR...\n");
 
-	n1 = memcmp(strstr(buf_lb, "vit"), ft_strstr(buf_lb, "vit"), 20);
-	printf("strstr(buf_lb, \"priv\") out:\n%s\n\n", strstr(buf_lb, "vit"));
-	printf("ft_strstr(buf_lb, \"priv\") out:\n%s\n\n", ft_strstr(buf_lb, "vit"));
-	printf("memcmp(memcmp(strrchr(buf_lb, '\\0'), ft_strrchr(buf_lb, '\\0'), len):\n%i\n", n1);
-	checker_str(n1);
+	n1 = memcmp(strstr(buf_lb, "privet privet"), ft_strstr(buf_lb, "privet privet"), 20);
+	printf("strstr(buf_lb, \"priv\") out:\n%s\n\n", strstr(buf_lb, "privet privet"));
+	printf("ft_strstr(buf_lb, \"priv\") out:\n%s\n\n", ft_strstr(buf_lb, "privet privet"));
+	printf("memcmp(memcmp(strstr(buf_lb, '\\0'), ft_strstr(buf_lb, '\\0'), len):\n%i\n", n1);
+	checker_str(n1);*/
+
+	/*printf("\n...FT_STRNSTR...\n");
+
+	//n1 = memcmp(strnstr(buf_lb, "vet", 3), ft_strnstr(buf_lb, "vet", 3), 20);
+	printf("strnstr(buf_lb, \"priv\") out:\n%s\n\n", strnstr(buf_lb, "pri", 2));
+	printf("ft_strnstr(buf_lb, \"priv\") out:\n%s\n\n", ft_strnstr(buf_lb, "pri", 2));
+	printf("memcmp(memcmp(strnstr(buf_lb, '\\0'), ft_strnstr(buf_lb, '\\0'), len):\n%i\n", n1);
+	checker_str(n1);*/
+
+	printf("\n...ISALPHA...\n");
+
+	printf("ft_isalpha(%s) = %d\n", "5", ft_isalpha('5'));
+
+
 
 	return (0);
 }
