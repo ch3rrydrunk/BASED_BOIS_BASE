@@ -6,7 +6,7 @@
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/05 11:31:36 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/09 21:38:46 by cormund          ###   ########.fr       */
+/*   Updated: 2019/04/10 18:47:00 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ static void	checker_str(int s1)
 int		main()
 {
 	char *str_lb;
-	str_lb = "hello, world";
+	str_lb = "hello, world!";
 	char *str_ft;
-	str_ft = "hello, world";
+	str_ft = "hello, world!";
 	char dst_lb[13] = "privet, mir!";
 	char dst_ft[13] = "privet, mir!";
 	
 	//big buf
-	char buf_lb[50];
-	char buf_ft[50];
+	char buf_lb[50] = "privet privet";
+	char buf_ft[50] = "privet privet";
 	char *str_zero;
 	str_zero = "";;
 
@@ -176,19 +176,64 @@ int		main()
 	
 	//___
 /*	printf("\n...FT_STRCOPY...\n"); reset();
+ *
 	n1 = memcmp(strcpy(dst_lb, str_lb), ft_strcpy(dst_ft, str_ft), len);
 	printf("strcpy(dst_lb,str_lb) out:\n%s\n\n", strcpy(dst_lb,str_lb));
 	printf("ft_strcpy(dst_ft, str_ft) out:\n%s\n\n", ft_strcpy(dst_ft, str_ft));
 	printf("memcmp(strcpy(dst_lb,str_lb)), ft_strcpy(dst_ft, str_ft), len):\n%i\n", n1);
 	checker_str(n1);*/
 
-	printf("\n...FT_STRNCOPY...\n"); reset();
-	n1 = memcmp(strncpy(dst_lb, "hel", 12), ft_strncpy(dst_ft, "hel", len), 12);
+	/*printf("\n...FT_STRNCOPY...\n"); reset();
+	 *
+	n1 = memcmp(strncpy(dst_lb, "hel", 11), ft_strncpy(dst_ft, "hel", len), 11);
 	printf("strncpy(dst_lb,str_lb, len) out:\n%s\n\n", strncpy(dst_lb, "hel", len));
 	printf("ft_strcpy(dst_ft, str_ft, len) out:\n%s\n\n", ft_strncpy(dst_ft, "hel", len));
 	printf("memcmp(strncpy(dst_lb,str_lb, len)), ft_strncpy(dst_ft, str_ft, len), len):\n%i\n", n1);
+	checker_str(n1);*/
+
+	/*printf("\n...FT_STRCAT...\n"); reset();
+
+	n1 = memcmp(strcat(buf_lb, str_lb), ft_strcat(buf_ft, str_lb), strlen(buf_lb) + strlen(buf_lb));
+	printf("strcat(buf_lb,str_lb) out:\n%s\n\n", strcat(buf_lb, str_lb));
+	printf("ft_strcat(buf_ft,str_lb) out:\n%s\n\n", ft_strcat(buf_ft, str_ft));
+	printf("memcmp(strncpy(dst_lb,str_lb, len)), ft_strncpy(dst_ft, str_ft, len), len):\n%i\n", n1);
+	checker_str(n1);*/
+
+
+/*	printf("\n...FT_STRLCAT...\n"); reset();
+
+//	n1 = memcmp(strlcat(buf_lb, str_lb, 3), ft_strlcat(buf_ft, str_lb, 3), strlen(buf_lb) + strlen(buf_lb) + 10);
+	printf("strlcat(buf_lb,str_lb, 30) out:\n%lu\n\n", strlcat(buf_lb, str_lb, 20));
+	printf("buf_lb = %s\n\n", buf_lb);
+	printf("ft_strlcat(buf_ft,str_lb, 30) out:\n%lu\n\n", ft_strlcat(buf_ft, str_lb, 20));
+	printf("buf_ft = %s\n\n", buf_ft);
+	n1 = memcmp(buf_lb, buf_ft, 30);
+	printf("memcmp(strlcat(dst_lb,str_lb, len)), ft_strlcat(dst_ft, str_ft, len), len):\n%d\n", n1);
+	checker_str(n1);*/
+
+	/*printf("\n...FT_STRCHR...\n");
+	
+	n1 = memcmp(strchr(buf_lb, 'i'), ft_strchr(buf_lb, 'i'), 11);
+	printf("strchr(buf_lb, '\\0') out:\n%s\n\n", strchr(buf_lb, 'i'));
+	printf("ft_strchr(buf_lb, '\\0') out:\n%s\n\n", ft_strchr(buf_lb, 'i'));
+	printf("memcmp(memcmp(strchr(buf_lb, '\\0'), ft_strchr(buf_lb, '\\0'), len):\n%i\n", n1);
+	checker_str(n1);*/
+
+	/*printf("\n...FT_STRRCHR...\n");
+
+	n1 = memcmp(strrchr(buf_lb, 't'), ft_strrchr(buf_lb, 't'), 11);
+	printf("strrchr(buf_lb, '\\0') out:\n%s\n\n", strrchr(buf_lb, 'z'));
+	printf("ft_strrchr(buf_lb, '\\0') out:\n%s\n\n", ft_strrchr(buf_lb, 'z'));
+	printf("memcmp(memcmp(strrchr(buf_lb, '\\0'), ft_strrchr(buf_lb, '\\0'), len):\n%i\n", n1);
+	checker_str(n1);*/
+
+	printf("\n...FT_STRSTR...\n");
+
+	n1 = memcmp(strstr(buf_lb, "vit"), ft_strstr(buf_lb, "vit"), 20);
+	printf("strstr(buf_lb, \"priv\") out:\n%s\n\n", strstr(buf_lb, "vit"));
+	printf("ft_strstr(buf_lb, \"priv\") out:\n%s\n\n", ft_strstr(buf_lb, "vit"));
+	printf("memcmp(memcmp(strrchr(buf_lb, '\\0'), ft_strrchr(buf_lb, '\\0'), len):\n%i\n", n1);
 	checker_str(n1);
 
-	
 	return (0);
 }
