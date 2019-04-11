@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:58:40 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/10 17:48:54 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/11 11:03:16 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 */
 char	*ft_makestr(int size);
+void	ft_putstr(char *str);
 
 #endif

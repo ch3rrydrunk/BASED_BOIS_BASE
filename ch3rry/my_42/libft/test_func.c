@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:26:59 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/10 22:34:10 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/11 13:24:01 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int			main(void)
 {
 	char	str1[LEN_1] = S_TEST;
 	char	str2[LEN_1] = S_TEST;
-	char	str24[LEN_2] = {"Almost empty..."};
-	char	str242[LEN_2] = {"Almost empty..."};
+	char	*str24;
+	char	*str242;
 	int		n1;
 	int		n2;
 	char	*buff;
@@ -56,7 +56,10 @@ int			main(void)
 	red(); printf(" .. %s  ..\n", S_TEST); reset();
 	magenta(); printf(" ...\t...\t...\n\n"); reset();
 
-	ft_cmp_s = (int (*)(void *, void *))strcmp;
+	str24 = ft_strcpy(ft_makestr(LEN_2), "Almost empty..."); //set args for future
+	str242 = ft_strcpy(ft_makestr(LEN_2), "Almost empty..."); //set args for future
+	ft_cmp_s = (int (*)(void *, void *))strcmp;				 //set function
+
 	yellow(); printf("\n ...GO FT_MEMSET...\n"); reset();	//FT_MEMSET
 	printf("memset() out:\n%s\n", memset(str1, 33, 4));
 	printf("ft_memset() out:\n%s\n", ft_memset(str2, 33, 4));
@@ -167,20 +170,25 @@ int			main(void)
 	//printf("ft_strcat() s2 = NULL out:\n%s\n", ft_strcat(str242, NULL));
 
 	yellow() ; printf("\n ...GO FT_STRNCAT...\n"); reset();	//FT_STRNCAT
-	printf("strncat() ok out:\n%s\n", strncat(str24, "ORLY!?", 6));
-	printf("ft_strncat() ok out:\n%s\n", ft_strncat(str242, "ORLY!?", 6));
+	printf("strncat() ok out:\n%s\n", strncat(str24, "ORLY!?", 7));
+	printf("ft_strncat() ok out:\n%s\n", ft_strncat(str242, "ORLY!?", 7));
 	checker(str24, str242, ft_cmp_s);
-	strcpy(str24, "1234567890123"); strcpy(str242, str24); //set args
+	/*
+	ft_bzero(str24, 23);
+	ft_strcpy(str24, "Cat Me That -"); //set str24 actual len 13+1
+	ft_strcpy(str242, str24); //set str242 actual len 13+1
 	// now n < len (s2)
 	printf("strncat() n < len(s2) out:\n%s\n", strncat(str24, "ORLY!?", 2));
 	printf("ft_strncat() n < len(s2) out:\n%s\n", ft_strncat(str242, "ORLY!?", 2));
-	checker(str24, str242, ft_cmp_s);
-	strcpy(str24, "1234567890123"); strcpy(str242, str24); //set args
+	checker(str24, str242, ft_cmp_s);*/
+	str24 = ft_strcpy(ft_makestr(LEN_2), "Almost empty..5"); //reset args
+	str242 = ft_strcpy(ft_makestr(LEN_2), "Almost empty..5"); //reset args
+	printf("\n%s and %s\n", str24, str242);
 
 	yellow(); printf("\n ...GO FT_STRLCAT...\n"); reset();	//FT_STRLCAT
-	printf("%s", str24);
-	n1 = strlcat(str24, "!!!!", 0); n2 = ft_strlcat(str242, "!!!!", 0);
-	printf("strlcat() out:\n%i\n", n1); printf("ft_strlcat() out:\n%s\n", str242);
+	n1 = strlcat(str24, "!!!!", 0);
+	n2 = ft_strlcat(str242, "!!!!", 0);
+	printf("strlcat() out:\n%s\n", str24); printf("ft_strlcat() out:\n%s\n", str242);
 	checker(&n1, &n2, ft_cmp_s);
 	strncpy(str24, "Almost empty...", LEN_2); strncpy(str242, "Almost empty...", LEN_2); //set args
 	// now let's go size < len(final_dst)
