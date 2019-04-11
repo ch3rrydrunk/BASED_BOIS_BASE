@@ -22,6 +22,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	if (size < l_dst + 1 || size == 0)
 		return (l_dst + size);
 	else if (*src)
-		ft_strncat(dst + l_dst, src, size - l_dst - 1);
-	return (l_dst + l_src);	
+		ft_strncat(dst + l_dst - 1, src, size - l_dst - 1);
+	return (l_dst + l_src);
+	
+	
 }
