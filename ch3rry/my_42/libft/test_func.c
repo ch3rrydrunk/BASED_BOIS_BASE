@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/04 14:26:59 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/11 13:24:01 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/11 19:45:53 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,8 @@ int			main(void)
 	n2 = ft_strlcat(str242, "!!!!", 0);
 	printf("strlcat() out:\n%s\n", str24); printf("ft_strlcat() out:\n%s\n", str242);
 	checker(&n1, &n2, ft_cmp_s);
-	strncpy(str24, "Almost empty...", LEN_2); strncpy(str242, "Almost empty...", LEN_2); //set args
+	str24 = ft_strcpy(ft_makestr(LEN_2), "Almost empty..5"); //reset args
+	str242 = ft_strcpy(ft_makestr(LEN_2), "Almost empty..5"); //reset args
 	// now let's go size < len(final_dst)
 	strlcat(str24, "!!!!", 20); ft_strlcat(str242, "!!!!", 20);
 	printf("strlcat() size < len(final_dst) out:\n%s\n", str24); printf("ft_strlcat() size < len(final_dst) out:\n%s\n", str242);
