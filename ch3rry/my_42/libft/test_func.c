@@ -18,7 +18,7 @@
 # define S_TEST "H3IL CH3RRY"
 # define S_TEST2 "H3IL BADBOI"
 # define LEN_1 12
-# define LEN_2 24
+# define LEN_2 0xF00
 # define OK "_____GOOD__BOI_____\n"
 # define NOK "XXX__BAD_DOGE__XXX\n"
 
@@ -181,19 +181,19 @@ int			main(void)
 	printf("strncat() n < len(s2) out:\n%s\n", strncat(str24, "ORLY!?", 2));
 	printf("ft_strncat() n < len(s2) out:\n%s\n", ft_strncat(str242, "ORLY!?", 2));
 	checker(str24, str242, ft_cmp_s);*/
-	str24 = ft_strcpy(ft_makestr(LEN_2), "Almost empty..5"); //reset args
-	str242 = ft_strcpy(ft_makestr(LEN_2), "Almost empty..5"); //reset args
+	str24 = ft_strcpy(ft_makestr(LEN_2), "there is no stars in the sky"); //reset args 28+1 len
+	str242 = ft_strcpy(ft_makestr(LEN_2), "there is no stars in the sky"); //reset args
 	printf("\n%s and %s\n", str24, str242);
 
 	yellow(); printf("\n ...GO FT_STRLCAT...\n"); reset();	//FT_STRLCAT
-	n1 = strlcat(str24, "!!!!", 0);
-	n2 = ft_strlcat(str242, "!!!!", 0);
-	printf("strlcat() out:\n%s\n", str24); printf("ft_strlcat() out:\n%s\n", str242);
-	checker(&n1, &n2, ft_cmp_s);
+	n1 = strlcat(str24, "the cake is a lie !\0I'm hidden lol\r\n", strlen("the cake is a lie !\0I'm hidden lol\r\n") + 4); // len 19, size 23
+	n2 = ft_strlcat(str242, "the cake is a lie !\0I'm hidden lol\r\n", strlen("the cake is a lie !\0I'm hidden lol\r\n") + 4);
+	printf("strlcat() out:\n%i\n", n1); printf("ft_strlcat() out:\n%i\n", n2);
+	checker(&n1, &n2, (int (*)(void *, void *))intcmp);
 	str24 = ft_strcpy(ft_makestr(LEN_2), "Almost empty..5"); //reset args
 	str242 = ft_strcpy(ft_makestr(LEN_2), "Almost empty..5"); //reset args
 	// now let's go size < len(final_dst)
-	strlcat(str24, "!!!!", 20); ft_strlcat(str242, "!!!!", 20);
+	strlcat(str24, "!!!!", 30); ft_strlcat(str242, "!!!!", 30);
 	printf("strlcat() size < len(final_dst) out:\n%s\n", str24); printf("ft_strlcat() size < len(final_dst) out:\n%s\n", str242);
 	checker((char *)str24, (char *)str242, (int (*)(void *, void *))intcmp);
 	strncpy(str24, "Almost empty...", LEN_2); strncpy(str242, "Almost empty...", LEN_2); //set args

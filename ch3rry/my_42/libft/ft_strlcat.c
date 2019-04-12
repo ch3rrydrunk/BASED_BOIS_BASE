@@ -14,16 +14,18 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t		l_dst;
-	size_t		l_src;
+	size_t		l_dst;  //28
+	size_t		l_src;  //19
 
 	l_dst = ft_strlen(dst);
 	l_src = ft_strlen(src);
-	if (size < l_dst + 1 || size == 0)
-		return (l_dst + size);
-	else if (*src)
-		ft_strncat(dst + l_dst - 1, src, size - l_dst - 1);
+	if (size < (l_dst + 1) || size == 0) // 23 < 29
+	{
+		if (size)
+			ft_strncat(dst, src, 0);
+		return (l_src + size);
+	}
+	else
+		ft_strncat(dst, src, size - l_dst - 1);
 	return (l_dst + l_src);
-	
-	
 }
