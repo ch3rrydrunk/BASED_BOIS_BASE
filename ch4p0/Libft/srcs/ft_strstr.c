@@ -6,7 +6,7 @@
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/10 17:16:56 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/10 18:46:51 by cormund          ###   ########.fr       */
+/*   Updated: 2019/04/11 19:06:47 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,19 @@
 
 char		*ft_strstr(const char *haystack, const char *needle)
 {
-	char	*a;
-	char	*b;
-	size_t	len;
-	size_t	l;
+	size_t	len_hay;
+	size_t	len_nee;
 
 	if (!*(needle))
 		return ((char*)haystack);
-	l = 0;
-	len = ft_strlen(needle);
-	b = (char *)needle;
-	while (*(haystack) != '\0')
+	len_hay = ft_strlen(haystack);
+	len_nee = ft_strlen(needle);
+	while (*haystack && len_nee <= len_hay)
 	{
-		if (*(haystack) == *(needle))
-		{
-			a = (char *)haystack;
-			while (*(a++) == *(b++))
-				l++;
-			if (l == len)
-				return ((char*)haystack);
-			l = 0;
-			b = (char*)needle;
-		}
+		if (*haystack == *needle && ft_memcmp(haystack, needle, len_nee) == 0)
+			return ((char*)haystack);
 		haystack++;
+		len_hay--;
 	}
 	return ((void*)0);
 }
