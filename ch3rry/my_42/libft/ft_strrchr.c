@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 14:04:25 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/18 13:55:37 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/18 12:53:09 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/18 13:57:35 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
 	char	*waldo;
+	size_t	len;
 
-	if ((waldo = ft_memchr(s, c, ft_strlen(s))))
-		return (waldo);
+	len = ft_strlen(s);
+	while (len--)
+	{
+		if (waldo[len - 1] == (unsigned char)c)
+			return (&waldo[len - 1]);
+	}
 	return (NULL);
 }
