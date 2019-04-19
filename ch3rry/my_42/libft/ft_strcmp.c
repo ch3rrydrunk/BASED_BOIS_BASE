@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/18 12:53:09 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/18 15:15:27 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/18 16:13:58 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/18 16:59:31 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+int		ft_strcmp(const char *s1, const char *s2)
 {
-	int		len;
-
-	len = ft_strlen(s);
-	while (len >= 0)
+	while ((unsigned char)*s1 == (unsigned char)*s2 && *s1 && *s2)
 	{
-		if (s[len] == (char)c)
-			return ((char *)&s[len]);
-		len--;
+		s1++;
+		s2++;
 	}
-	return (NULL);
+	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
