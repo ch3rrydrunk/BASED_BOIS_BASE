@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/18 12:53:09 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/18 15:15:27 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/18 19:48:43 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/19 12:29:54 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	int		len;
+	const char	*gotcha;
+	const char	*reset;
+	int			i;
 
-	len = ft_strlen(s);
-	while (len >= 0)
+	reset = needle;
+	if (!*needle || needle == haystack)
+		return ((char *)haystack);
+	while (*haystack && len--)
 	{
-		if (s[len] == (char)c)
-			return ((char *)&s[len]);
-		len--;
+		gotcha = haystack;
+		i = len;
+		while (*haystack == *needle && *needle && i--)
+		{
+			haystack++;
+			needle++;
+		}
+		if (!*needle)
+			return ((char *)gotcha);
+		needle = reset;
+		haystack = gotcha + 1;
 	}
 	return (NULL);
 }
