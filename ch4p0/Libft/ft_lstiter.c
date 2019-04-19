@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 18:05:20 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/19 10:24:29 by cormund          ###   ########.fr       */
+/*   Created: 2019/04/18 15:57:25 by cormund           #+#    #+#             */
+/*   Updated: 2019/04/18 16:04:47 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
 {
-	char *buf;
-
-	buf = dst;
-	while (*src)
-		*buf++ = *src++;
-	*buf = '\0';
-	return (dst);
+	if (lst && f)
+	{
+		while (lst)
+		{
+			f(lst);
+			lst = lst->next;
+		}
+	}
 }

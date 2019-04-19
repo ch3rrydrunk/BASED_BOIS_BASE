@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_isupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 18:05:20 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/19 10:24:29 by cormund          ###   ########.fr       */
+/*   Created: 2019/04/19 13:32:19 by cormund           #+#    #+#             */
+/*   Updated: 2019/04/19 13:41:29 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+int		ft_isupper(int c)
 {
-	char *buf;
-
-	buf = dst;
-	while (*src)
-		*buf++ = *src++;
-	*buf = '\0';
-	return (dst);
+	return (c >= 65 && c <= 90);
 }

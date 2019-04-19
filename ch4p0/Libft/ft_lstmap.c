@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 18:05:20 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/19 10:24:29 by cormund          ###   ########.fr       */
+/*   Created: 2019/04/18 16:06:15 by cormund           #+#    #+#             */
+/*   Updated: 2019/04/19 12:07:35 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char *buf;
+	t_list	*fresh;
 
-	buf = dst;
-	while (*src)
-		*buf++ = *src++;
-	*buf = '\0';
-	return (dst);
+	fresh = NULL;
+	if (lst && f)
+	{
+		fresh = f(lst);
+		fresh->next = ft_lstmap(lst->next, f);
+		if (!fresh->next && lst->next)
+		{
+			free(fresh->content);
+			ft_memdel((void **)fresh);
+			return (NULL);
+		}
+	}
+	return (fresh);
 }

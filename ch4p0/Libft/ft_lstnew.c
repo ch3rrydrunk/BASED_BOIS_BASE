@@ -1,55 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/17 12:41:30 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/18 17:17:21 by cormund          ###   ########.fr       */
+/*   Created: 2019/04/17 17:36:28 by cormund           #+#    #+#             */
+/*   Updated: 2019/04/19 10:16:59 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_len(int n)
+t_list		*ft_lstnew(void const *content, size_t content_size)
 {
-	int		l;
+	t_list	*fresh;
 
-	l = 0;
-	if (n <= 0)
-		l++;
-	while (n)
-	{
-		l++;
-		n /= 10;
-	}
-	return (l);
-}
-
-char		*ft_itoa(int n)
-{
-	char	*fresh;
-	int		l;
-	int		minus;
-
-	minus = 1;
-	l = ft_len(n);
-	fresh = ft_strnew(l);
+	fresh = (t_list *)ft_memalloc(sizeof(t_list));
 	if (fresh)
 	{
-		if (n < 0)
+		if (!content)
 		{
-			*fresh = '-';
-			minus = -1;
+			fresh->content = NULL;
+			fresh->content_size = 0;
 		}
-		if (n == 0)
-			*fresh = '0';
-		while (n)
+		else
 		{
-			fresh[--l] = n % 10 * minus + '0';
-			n /= 10;
+			fresh->content_size = content_size;
+			if ((fresh->content = (void *)ft_memalloc(content_size)))
+				ft_memcpy(fresh->content, content, content_size);
+			else
+				ft_memdel((void **)fresh);
 		}
+		if (fresh)
+			fresh->next = NULL;
 	}
 	return (fresh);
 }

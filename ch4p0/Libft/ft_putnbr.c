@@ -6,31 +6,32 @@
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 14:44:43 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/17 16:10:01 by cormund          ###   ########.fr       */
+/*   Updated: 2019/04/18 19:38:23 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr(int n)
+void		ft_putnbr(int n)
 {
-	int minus;
-	int len;
-	int res;
+	char	tab[10];
+	int		len;
+	int		minus;
 
 	minus = 1;
-	len = 10;
+	len = 0;
 	if (n < 0)
 	{
 		minus = -1;
-		write(1, "-", 1);
+		ft_putchar('-');
 	}
-	while (n / len)
-		len *= 10;
-	while (len)
+	if (n == 0)
+		ft_putchar('0');
+	while (n)
 	{
-		len /= 10;
-		res = n / len % 10 + '0';
-		write (1, &res, 1);
+		tab[len++] = n % 10 * minus + '0';
+		n /= 10;
 	}
+	while (len)
+		ft_putchar(tab[--len]);
 }
