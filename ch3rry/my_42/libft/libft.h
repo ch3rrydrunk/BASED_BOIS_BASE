@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:58:40 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/19 19:06:24 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/22 17:24:15 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <string.h>
 # include <errno.h>
 
+/* PART 1 */
 void	*ft_memset(void *s, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -47,10 +48,22 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
-char	*ft_makestr(int size);
+
+/* PART 1 - Bonus*/
+//char	*ft_makestr(int size);
 void	ft_putstr(char *str);
 int		ft_islower(int c);
 int		ft_isupper(int c);
 int		ft_isspace(int c);
+
+/* PART 2 */
+void	*ft_memalloc(size_t size);
+void	ft_memdel(void **ap);
+char	*ft_strnew(size_t size);
+void	ft_strdel(char **as);
+void	ft_strclr(char *s);
+void	ft_striter(char *s, void (*f)(char *));
+void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+char	*ft_strmap(char const *s, char (*f)(char));
 
 #endif
