@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_isblank.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 18:05:20 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/19 10:24:29 by cormund          ###   ########.fr       */
+/*   Created: 2019/04/19 13:07:21 by cormund           #+#    #+#             */
+/*   Updated: 2019/04/19 13:15:29 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+int		ft_isblank(int c)
 {
-	char *buf;
-
-	buf = dst;
-	while (*src)
-		*buf++ = *src++;
-	*buf = '\0';
-	return (dst);
+	return (c == 32 || c == 9);
 }

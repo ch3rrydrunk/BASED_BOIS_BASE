@@ -6,7 +6,7 @@
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/17 16:11:47 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/17 16:29:31 by cormund          ###   ########.fr       */
+/*   Updated: 2019/04/17 16:51:01 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_putstr_fd(char const *s, int fd)
 {
-	while (*s)
-		ft_putchar_fd(*s++, fd);
+	if (s)
+		while (*s)
+			ft_putchar_fd(*s++, fd);
 }

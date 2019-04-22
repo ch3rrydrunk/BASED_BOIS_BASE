@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/09 18:05:20 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/19 10:24:29 by cormund          ###   ########.fr       */
+/*   Created: 2019/04/19 13:18:30 by cormund           #+#    #+#             */
+/*   Updated: 2019/04/19 13:30:34 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+char		*ft_strndup(const char *s1, size_t n)
 {
-	char *buf;
+	char	*str;
+	char	*s2;
+	size_t	len;
 
-	buf = dst;
-	while (*src)
-		*buf++ = *src++;
-	*buf = '\0';
-	return (dst);
+	len = ft_strlen(s1);
+	len = (len > n ? n : len);
+	str = (char*)malloc(sizeof(char) * (len + 1));
+	if ((s2 = str))
+	{
+		while (len--)
+			*s2++ = *s1++;
+		*s2 = '\0';
+	}
+	return (str);
 }
