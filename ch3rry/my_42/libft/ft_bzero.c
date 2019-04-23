@@ -17,9 +17,8 @@ void	ft_bzero(void *s, size_t n)
 	unsigned char	*buff;
 
 	buff = (unsigned char *)s;
-	while (n)
+	while (n--)
 	{
 		*(buff++) = (unsigned char)0;
-		n--;
 	}
 }
