@@ -14,5 +14,13 @@
 
 char	*ft_strmap(char const *s, char (*f)(char))
 {
+	char	*map;
 
+	map = ft_strnew(ft_strlen(s));
+	if (s && f)
+	{
+		while (*s)
+			*map++ = (*f)(*s++);
+	}
+	return (map);
 }
