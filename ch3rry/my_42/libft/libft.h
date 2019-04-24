@@ -50,7 +50,6 @@ int		ft_toupper(int c);
 int		ft_tolower(int c);
 
 /* PART 1 - Bonus*/
-//char	*ft_makestr(int size);
 void	ft_putstr(char *str);
 int		ft_islower(int c);
 int		ft_isupper(int c);

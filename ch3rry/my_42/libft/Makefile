@@ -10,29 +10,24 @@
 #                                                                              #
 # **************************************************************************** #
 
+CC := gcc
+
 NAME := libft.a
 
 TEST := test.out
 
-SOURCE := ft_*.c
+HEADER := libft.h
 
-#FLAGS := -Wall -Wextra -Werror
+#FLAGS := "-Wall -Wextra -Werror"
 
-OBJECTS := OBJECTS := ft_atoi.o ft_islower.o ft_memccpy.o ft_putstr.o ft_strlcat.o \
-ft_strrchr.o ft_bzero.o ft_isprint.o ft_memchr.o ft_strcat.o ft_strlen.o \
-ft_strstr.o ft_isalnum.o ft_isspace.o ft_memcmp.o ft_strchr.o ft_strncat.o \
-ft_tolower.o ft_isalpha.o ft_isupper.o ft_memcpy.o ft_strcmp.o ft_strncmp.o \
-ft_toupper.o ft_isascii.o ft_makestr.o ft_memmove.o ft_strcpy.o ft_strncpy.o \
-ft_isdigit.o ft_memalloc.o ft_memset.o ft_strdup.o ft_strnstr.o
-
-ft_%.o : ft_%.c
-        $(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+OBJECTS := $(patsubst %.c,%.o,$(wildcard ft_*.c))
 
 all : $(NAME)
 
-$(NAME) :
-	@gcc $(FLAGS) -c $(SOURCE)
-	@ar rc $(NAME) $(OBJECTS)
+$(NAME) : $(OBJECTS)
+	ar rc .
+$(OBJECTS) : $(wildcard *.c)
+	$(CC) -o $@ $?
 
 test : re
 	@gcc -o $(TEST) test_func.c test_printer_color.c -L. -lft
@@ -48,3 +43,7 @@ fclean : clean
 	@rm -rf $(TEST) test_func.o
 
 re : fclean all
+
+print: *.c
+	lpr -p $?
+	touch print
