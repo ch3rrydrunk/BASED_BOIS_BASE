@@ -16,18 +16,18 @@ NAME := libft.a
 
 TEST := test.out
 
-HEADER := libft.h
+SOURCE := ft_*.c
 
-#FLAGS := "-Wall -Wextra -Werror"
+#FLAGS := -Wall -Wextra -Werror
 
-OBJECTS := $(patsubst %.c,%.o,$(wildcard ft_*.c))
+SOURCE := $(wildcard ft_*.c)
 
 all : $(NAME)
 
-$(NAME) : $(OBJECTS)
-	ar rc .
-$(OBJECTS) : $(wildcard *.c)
-	$(CC) -o $@ $?
+$(NAME) : $(SOURCE)
+	@gcc $(FLAGS) -c $(SOURCE)
+	@ar rc $(NAME) $(patsubst %.o,%.c,$(SOURCE))
+	@rm -rf ft_\*.c
 
 test : re
 	@gcc -o $(TEST) test_func.c test_printer_color.c -L. -lft
@@ -43,7 +43,3 @@ fclean : clean
 	@rm -rf $(TEST) test_func.o
 
 re : fclean all
-
-print: *.c
-	lpr -p $?
-	touch print

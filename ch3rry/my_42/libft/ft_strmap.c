@@ -21,6 +21,7 @@ char	*ft_strmap(char const *s, char (*f)(char))
 		map = ft_strcpy(ft_strnew(ft_strlen(s)), s);
 		while (*s)
 			*map++ = (*f)(*map);
+		ft_strlen(map);
 	}
 	return (map);
 }
