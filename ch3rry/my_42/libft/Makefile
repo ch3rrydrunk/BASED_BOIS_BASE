@@ -6,7 +6,7 @@
 #    By: caellis <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/08 14:04:08 by caellis           #+#    #+#              #
-#    Updated: 2019/04/10 13:43:47 by caellis          ###   ########.fr        #
+#    Updated: 2019/04/25 15:07:49 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,18 +16,23 @@ NAME := libft.a
 
 TEST := test.out
 
-SOURCE := ft_*.c
+#FLAGS := -g -Wall -Wextra -Werror
 
-#FLAGS := -Wall -Wextra -Werror
+NAME := libft.a
 
-SOURCE := $(wildcard ft_*.c)
+INCLUDE := .
 
-all : $(NAME)
+SOURCE = $(wildcard ft_*.c)
 
-$(NAME) : $(SOURCE)
-	@gcc $(FLAGS) -c $(SOURCE)
-	@ar rc $(NAME) $(patsubst %.o,%.c,$(SOURCE))
-	@rm -rf ft_\*.c
+OBJECTS = $(patsubst %.c,%.o,$(SOURCE))
+
+all: $(NAME)
+
+$(NAME): $(OBJECTS)
+	ar rc $(NAME) $(OBJECTS)
+
+%.o : %.c libft.h
+	$(CC) -c $(FLAGS) $(SOURCE) -I$(INCLUDE)
 
 test : re
 	@gcc -o $(TEST) test_func.c test_printer_color.c -L. -lft
