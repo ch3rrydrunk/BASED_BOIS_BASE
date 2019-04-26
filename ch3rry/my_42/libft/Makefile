@@ -41,7 +41,7 @@ test : re
 	@norminette ft_*.c
 
 clean :
-	@rm -rf $(OBJECTS)
+	@rm -rf $(wildcard ft_*.o)
 
 fclean : clean
 	@rm -rf $(NAME)
