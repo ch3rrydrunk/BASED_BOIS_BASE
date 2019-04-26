@@ -1,3 +1,6 @@
 *.c.swp
 .DS_Store
 *.[oa]
+*.bin
+*.ipch*
+*.json
