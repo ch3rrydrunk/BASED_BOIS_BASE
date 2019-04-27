@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncpy.c                                       :+:      :+:    :+:   */
+/*   ft_strsub.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/08 17:47:34 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/27 16:17:13 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/27 15:26:44 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/27 16:30:04 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strncpy(char *dst, const char *src, size_t len)
+char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*buff;
+	char	*sub;
+	int		maxl;
 
-	buff = dst;
-	if (len)
+	sub = NULL;
+	if (s && len)
 	{
-		while (len && *src)
-		{
-			*(buff++) = *(src++);
-			len--;
-		}
-		if (len)
-			ft_bzero(buff, len);
+		maxl = ft_strlen(s);
+		if ((sub = ft_strnew(len)) && maxl && maxl >= start + maxl - len)
+			sub = ft_strncpy(sub, &s[start], len);
 	}
-	return (dst);
+	return (sub);
 }
