@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 03:16:06 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/28 04:18:32 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/28 04:20:56 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,16 +30,4 @@ char	*ft_strtrim(char const *s)
 			ft_strncpy(trim, s, cue);
 	}
 	return (trim);
-}
-
-int main()
-{
-	char *s1 = "  \t \t \n   \n\n\n\t";
-	char *s2 = "";
-	char *ret = ft_strtrim(s1);
-	int result = 0;
-
-	if (!strcmp(ret, s2))
-		result = 1;
-	return (0);
 }
