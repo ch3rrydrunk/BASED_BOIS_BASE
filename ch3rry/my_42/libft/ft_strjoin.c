@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/22 15:23:22 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/28 04:17:04 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/28 02:58:26 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/28 03:12:26 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str;
+	char	*joint;
 
-	str = NULL;
-	if ((str = (char *)malloc(sizeof(char) * (size + 1))))
-		ft_bzero(str, size + 1);
-	return (str);
+	joint = NULL;
+	if (s1 && s2)
+	{
+		if ((joint = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
+				ft_strcat(ft_strcat(joint, s1), s2);
+	}
+	return (joint);
 }
