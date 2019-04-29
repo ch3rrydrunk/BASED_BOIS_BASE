@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/27 15:26:44 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/27 16:30:04 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/29 15:53:00 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,12 @@
 char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
-	int		maxl;
 
 	sub = NULL;
-	if (s && len)
+	if (s)
 	{
-		maxl = ft_strlen(s);
-		if ((sub = ft_strnew(len)) && maxl && maxl >= start + maxl - len)
-			sub = ft_strncpy(sub, &s[start], len);
+		if ((sub = ft_strnew(len)))
+			ft_strncpy(sub, s + start, len);
 	}
 	return (sub);
 }

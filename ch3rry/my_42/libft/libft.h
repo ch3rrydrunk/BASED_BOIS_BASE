@@ -6,7 +6,11 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/03 19:58:40 by caellis           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/04/28 14:37:38 by caellis          ###   ########.fr       */
+=======
+/*   Updated: 2019/04/29 15:41:44 by caellis          ###   ########.fr       */
+>>>>>>> ac620fd3c3ac5f549a8b8887112b48b359247dec
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +73,11 @@ int		ft_strequ(char const *s1, char const *s2);
 int		ft_strnequ(char const *s1, char const *s2, size_t n);
 char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strjoin(char const *s1, char const *s2);
+<<<<<<< HEAD
 char	**ft_strsplit(char const *s, char c);
+=======
+char	*ft_strtrim(char const *s);
+char	**ft_strsplit(char const *s, char c);
+
+>>>>>>> ac620fd3c3ac5f549a8b8887112b48b359247dec
 #endif
