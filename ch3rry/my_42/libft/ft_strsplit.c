@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 14:37:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/29 16:22:34 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/29 16:31:15 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_count_words(const char *s, char c)
 	int		w_c;
 	int		cue;
 	
-	cue = 0;
+	cue = -1;
 	w_c = 0;
 	while (*s)
 	{
@@ -39,7 +39,7 @@ char	**ft_strsplit(char const *s, char c)
 	int		w_l;
 
 	split = NULL;
-	cue = 0;
+	cue = -1;
 	w_c = 0;
 	if (s && c)
 	{
@@ -50,9 +50,10 @@ char	**ft_strsplit(char const *s, char c)
 				w_l = 0;
 				while (ft_memcmp(s, &c, 1))
 				{
-					if (cue == *s++)
+					if (cue == c)
 						w_c++;
 					w_l++;
+					s++;
 				}
 				if (w_l && w_c)
 				{
