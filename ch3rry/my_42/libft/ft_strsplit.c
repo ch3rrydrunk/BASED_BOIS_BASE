@@ -6,62 +6,75 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 14:37:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/29 16:31:15 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/30 16:54:05 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_count_words(const char *s, char c)
+static size_t	ft_wordlen(char const *s, char c)
 {
-	int		w_c;
-	int		cue;
-	
-	cue = -1;
-	w_c = 0;
-	while (*s)
+	size_t len;
+
+	len = 0;
+	while (*s == c)
+		s++;
+	while (*s != c && *s)
 	{
-		if (ft_memcmp(s, &c, 1))
-		{
-			if (cue == c)
-				w_c++;
-		}
-		cue = *s++;
+		len++;
+		s++;
 	}
-	return (w_c);
+	return (len);
+}
+
+static size_t ft_populate(char ***arr, const char *s, char c, size_t pos)
+{
+	size_t	rb;
+	size_t	w_l;
+
+	rb = 0;
+	while (*s == c && *s)
+	{
+		rb++;
+		s++;
+	}
+	w_l = ft_wordlen(s, c);
+	if (((*arr)[pos] = ft_strnew(w_l)))
+		ft_strncpy((*arr)[pos], s, w_l);
+	else
+		{
+			ft_freearray(arr);
+			return (-1);
+		}
+	return (rb + w_l);
 }
 
 char	**ft_strsplit(char const *s, char c)
 {
 	char	**split;
-	int		cue;
-	int		w_c;
-	int		w_l;
+	size_t		w_c;
+	size_t		rb;
+	size_t		i;
 
 	split = NULL;
-	cue = -1;
-	w_c = 0;
 	if (s && c)
 	{
-		if ((split = (char **)malloc(sizeof(s) * (ft_count_words(s, c) + 1))))
+		w_c = ft_countwords(s, c);
+		if ((split = (char **)malloc(sizeof(char*) * (w_c + 1))))
 		{
-			while (*s)
+			if ((split[w_c] = ft_strnew(0)))
 			{
-				w_l = 0;
-				while (ft_memcmp(s, &c, 1))
+				i = 0;
+				while (i < w_c)
 				{
-					if (cue == c)
-						w_c++;
-					w_l++;
-					s++;
+					if ((rb = ft_populate(&split, s, c, i)) < 0)
+						break;
+					s += rb;
+					i++;
 				}
-				if (w_l && w_c)
-				{
-					split[w_c - 1] = ft_strncpy(ft_strnew(w_l), (s - w_l), w_l);
-					w_l = 0;				
-				}
-				cue = *s++;
 			}
+			else
+				ft_freearray(&split);
 		}
 	}
 	return (split);

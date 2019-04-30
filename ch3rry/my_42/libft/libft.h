@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:25:46 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/29 16:25:53 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/30 16:27:51 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ void	ft_putstr(char *str);
 int		ft_islower(int c);
 int		ft_isupper(int c);
 int		ft_isspace(int c);
+size_t	ft_countwords(char const *str, char c);
+void	ft_freearray(char ***arr);
 
 /* PART 2 */
 void	*ft_memalloc(size_t size);
