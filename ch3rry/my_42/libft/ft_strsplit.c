@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/28 14:37:51 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/30 16:54:05 by caellis          ###   ########.fr       */
+/*   Updated: 2019/04/30 21:03:31 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static size_t	ft_wordlen(char const *s, char c)
 	return (len);
 }
 
-static size_t ft_populate(char ***arr, const char *s, char c, size_t pos)
+static int		ft_populate(char ***arr, const char *s,
+							char c, size_t pos, int max)
 {
 	size_t	rb;
 	size_t	w_l;
@@ -43,13 +44,13 @@ static size_t ft_populate(char ***arr, const char *s, char c, size_t pos)
 		ft_strncpy((*arr)[pos], s, w_l);
 	else
 		{
-			ft_freearray(arr);
+			ft_freearray(arr, max);
 			return (-1);
 		}
 	return (rb + w_l);
 }
 
-char	**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
 	char	**split;
 	size_t		w_c;
@@ -62,19 +63,15 @@ char	**ft_strsplit(char const *s, char c)
 		w_c = ft_countwords(s, c);
 		if ((split = (char **)malloc(sizeof(char*) * (w_c + 1))))
 		{
-			if ((split[w_c] = ft_strnew(0)))
+			i = 0;
+			while (i < w_c)
 			{
-				i = 0;
-				while (i < w_c)
-				{
-					if ((rb = ft_populate(&split, s, c, i)) < 0)
-						break;
-					s += rb;
-					i++;
-				}
+				if ((rb = ft_populate(&split, s, c, i, w_c)) < 0)
+					break;
+				s += rb;
+				i++;
 			}
-			else
-				ft_freearray(&split);
+			split[w_c] = NULL;
 		}
 	}
 	return (split);
