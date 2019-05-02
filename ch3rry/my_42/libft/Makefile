@@ -29,16 +29,10 @@ OBJECTS = $(patsubst %.c,%.o,$(SOURCE))
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	ar rc $(NAME) $(OBJECTS)
+	@ar rc $(NAME) $(OBJECTS)
 
 %.o : %.c libft.h
-	$(CC) -c $(FLAGS) $(SOURCE) -I$(INCLUDE)
-
-test : re
-	@gcc -o $(TEST) test_func.c test_printer_color.c -L. -lft
-	@./$(TEST)
-#	@echo "HEIL CHERRY, here are your tests... Please enjoy!" > text; cat text | say; rm -rf text
-	@norminette ft_*.c
+	@$(CC) -c $(FLAGS) $(SOURCE) -I$(INCLUDE)
 
 clean :
 	@rm -rf $(wildcard ft_*.o)
