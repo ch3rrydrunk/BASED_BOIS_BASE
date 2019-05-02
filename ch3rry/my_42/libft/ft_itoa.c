@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 13:53:39 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/02 19:03:29 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/03 02:05:14 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,4 @@ char	*ft_itoa(int n)
 		ft_strrev(num);
 	}
 	return (num);	
-}
-
-int	main()
-{
-	char *i1 = ft_itoa(-623);
-	char *i2 = ft_itoa(156);
-	char *i3 = ft_itoa(-0);
-
-	if (strcmp(i1, "-623"))
-	{
-		exit(1);
-	}
-	if (strcmp(i2, "156"))
-	{
-		exit(1);
-	}
-	if (strcmp("0", i3))
-	{
-		exit(1);
-	}
-	exit(0);
-	printf("%s", ft_itoa(-2147483648));
 }
