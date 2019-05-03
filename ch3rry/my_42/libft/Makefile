@@ -6,7 +6,7 @@
 #    By: caellis <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/08 14:04:08 by caellis           #+#    #+#              #
-#    Updated: 2019/04/25 15:07:49 by caellis          ###   ########.fr        #
+#    Updated: 2019/05/03 19:56:36 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,7 @@ CC := gcc
 
 NAME := libft.a
 
-TEST := test.out
-
-#FLAGS := -g -Wall -Wextra -Werror
+FLAGS := -Wall -Wextra -Werror
 
 NAME := libft.a
 

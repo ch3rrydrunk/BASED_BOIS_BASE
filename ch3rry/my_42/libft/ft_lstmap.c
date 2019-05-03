@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/06 10:15:11 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/03 20:01:53 by caellis          ###   ########.fr       */
+/*   Created: 2019/05/03 17:14:08 by caellis           #+#    #+#             */
+/*   Updated: 2019/05/03 19:53:38 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	unsigned char	*buff;
-	unsigned char	*cast;
+	t_list	*new;
 
-	buff = (unsigned char *)dst;
-	cast = (unsigned char *)src;
-	if ((size_t)(dst - src) < len)
+	new = NULL;
+	if (lst && f)
 	{
-		cast += (len - 1);
-		buff += (len - 1);
-		while (len--)
-			*(buff--) = *(cast--);
+		new = (*f)(lst);
+		new->next = ft_lstmap(lst->next, f);
+		if (lst->next && (!new->next))
+		{
+			free(new->content);
+			ft_memdel((void**)&new);
+			return (NULL);
+		}
 	}
-	else
-		ft_memcpy(dst, src, len);
-	return (dst);
+	return (new);
 }
