@@ -6,16 +6,16 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 14:09:04 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/02 15:51:29 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/04 16:52:29 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    ft_swap(char *a, char *b)
+void	ft_swap(char *a, char *b)
 {
-    char	buff;
-    
+	char	buff;
+
 	buff = *a;
 	*a = *b;
 	*b = buff;

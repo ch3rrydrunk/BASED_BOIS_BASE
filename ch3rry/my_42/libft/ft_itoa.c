@@ -6,14 +6,14 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 13:53:39 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/03 02:05:14 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/04 16:37:38 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
 
-static size_t countdigits(int n)
+static size_t	countdigits(int n)
 {
 	size_t	i;
 
@@ -23,7 +23,7 @@ static size_t countdigits(int n)
 	return (i);
 }
 
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	char	*num;
 	int		sign;
@@ -32,7 +32,7 @@ char	*ft_itoa(int n)
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
 	if (n == 0)
-		return(ft_strdup("0"));
+		return (ft_strdup("0"));
 	sign = (n >= 0) ? 1 : -1;
 	if ((num = ft_strnew(countdigits(n))))
 	{
@@ -47,5 +47,5 @@ char	*ft_itoa(int n)
 			num[i++] = '-';
 		ft_strrev(num);
 	}
-	return (num);	
+	return (num);
 }

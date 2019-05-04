@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 15:27:45 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/02 17:05:50 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/04 17:13:34 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,6 @@ void	ft_strrev(char *str)
 		i = 0;
 		len = ft_strlen(str) - 1;
 		while (i <= len)
-				ft_swap(&str[i++], &str[len--]);
+			ft_swap(&str[i++], &str[len--]);
 	}
 }
