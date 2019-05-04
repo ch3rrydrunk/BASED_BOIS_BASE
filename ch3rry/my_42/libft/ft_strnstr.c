@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 19:48:43 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/04 17:36:49 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/04 18:37:12 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	while (*haystack && len--)
 	{
 		gotcha = haystack;
-		i = len;
+		i = len + 1;
 		while (*haystack == *needle && *needle && i--)
 		{
 			haystack++;
