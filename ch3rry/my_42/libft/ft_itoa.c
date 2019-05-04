@@ -6,12 +6,35 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 13:53:39 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/04 16:37:38 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/04 21:10:34 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdio.h>
+
+static void		ft_swap(char *a, char *b)
+{
+	char	buff;
+
+	buff = *a;
+	*a = *b;
+	*b = buff;
+}
+
+static void		ft_strrev(char *str)
+{
+	size_t	len;
+	size_t	i;
+
+	if (str)
+	{
+		i = 0;
+		len = ft_strlen(str) - 1;
+		while (i <= len)
+			ft_swap(&str[i++], &str[len--]);
+	}
+}
 
 static size_t	countdigits(int n)
 {

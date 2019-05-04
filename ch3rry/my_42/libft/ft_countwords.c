@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 14:02:24 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/04 16:33:30 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/04 21:13:59 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t		ft_countwords(char const *str, char c)
 	size_t count;
 
 	count = 0;
-	while (*str)
+	while (str && *str)
 	{
 		while (*str == c)
 			str++;
