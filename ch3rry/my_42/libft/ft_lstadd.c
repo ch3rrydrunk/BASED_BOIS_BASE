@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/03 16:27:02 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/04 16:34:08 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/04 21:22:43 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@ void	ft_lstadd(t_list **alst, t_list *new)
 {
 	t_list	*buff;
 
+	if (!alst)
+		return ;
 	if ((!*alst) && new)
 		*alst = new;
-	else if (alst && *alst && new)
+	else if (new)
 	{
 		buff = *alst;
 		*alst = new;
