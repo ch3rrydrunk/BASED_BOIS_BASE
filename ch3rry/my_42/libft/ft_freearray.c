@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/30 14:44:34 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/04 21:15:25 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/05 21:34:03 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_freearray(char ***arr, int max)
 {
-	if (arr && *arr)
+	if (arr && *arr && max > 0)
 	{
 		while (max--)
 		{
