@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 11:00:49 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/04 17:18:51 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/06 17:21:47 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr(char *str)
+void	ft_putstr(char const *s)
 {
-	if (str)
+	if (s)
 	{
-		while (*str)
-			write(1, str++, 1);
+		while (*s)
+			write(1, s++, 1);
 	}
 }

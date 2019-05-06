@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 16:00:20 by caellis           #+#    #+#             */
-/*   Updated: 2019/04/22 16:45:43 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/06 16:08:15 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_strdel(char **as)
 {
 	if (as)
-		ft_memdel((void *)as);
+		ft_memdel((void **)as);
 }
