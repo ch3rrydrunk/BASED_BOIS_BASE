@@ -5,4 +5,6 @@
 *.ipch*
 *.json
 *.plist
-ch3rry/my_42/libft/test*
+test*
+*.dSYM
+ch3rry/my_42.code-workspace
