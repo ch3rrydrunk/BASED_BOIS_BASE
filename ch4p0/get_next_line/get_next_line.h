@@ -6,16 +6,23 @@
 /*   By: cormund <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/20 13:56:17 by cormund           #+#    #+#             */
-/*   Updated: 2019/04/24 12:20:31 by cormund          ###   ########.fr       */
+/*   Updated: 2019/05/07 10:45:18 by cormund          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# define BUFF_SIZE 32
+# define BUFF_SIZE 1
 
 # include "libft/libft.h"
+
+typedef struct		s_lst
+{
+	int				fd;
+	char			*str_line;
+	struct s_lst	*next;
+}					t_lst;
 
 int		get_next_line(const int fd, char **line);
 
