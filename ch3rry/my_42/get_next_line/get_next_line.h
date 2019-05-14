@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:29 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/07 17:37:31 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/14 03:04:54 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,7 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 
-# define BUFF_SIZE 65536
-
-enum e_modes
-{
-	READF_L,
-	READF_I
-};
+# define BUFF_SIZE 2040
 
 /*
 typedef struct		s_file
