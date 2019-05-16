@@ -3,51 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:25 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/16 12:06:52 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/16 16:27:24 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>	//DELETE_ME
 
-static int	read_line(t_list	**files, char **line, size_t fd)
+static int	read_line(t_list **files, char **line, size_t fd)
 {
-	char	*temp[BUFF_SIZE + 1];
-	ssize_t	rb;
-	char	*cue;
-	char	*dst;
-	char	READ_PLUS;
+	return (0);
+}
+
+static int	read_static_line(t_list **files, char **line, size_t fd)
+{
+	char			temp[BUFF_SIZE + 1];
+	ssize_t			rb;
+	char			*cue;
+	char			*dst;
+	enum e_flags	flag;
 
 	cue = (char *)(*files)->content;
-	READ_PLUS = 0;
-	if (cue && *cue)
+	dst = *line;
+	flag = NONE_READ;
+	while (*cue)
 	{
-		while (*cue)
+		flag = SOME_READ;
+		if (*cue == '\n')
 		{
-
+			*dst = '\0';
+			cue = ft_strdup(++cue);
+			free((*files)->content);
+			(*files)->content = cue;
+			return (1);
 		}
-		if (READ_PLUS)
+		*dst++ = *cue++;
 	}
-		// если есть, то ищем там \n или \0
-		// копируем все до \n
-		// если дошли до \0 и не встретили \0 continue (можно поднять флажок (READ_CONTINUE))
-	// если в files->content пусто (или мы дошли до конца files->content и не нашли \n)
-	// читаем из файла в files->content И line
-		// в конце каждого цикла считывания проверяем, не считали ли мы \n
-		// в этом случае копируем все до \n из а
-
+	if (flag == SOME_READ && !*cue)
+		flag = MORE_READ;
 	while ((rb = read(fd, temp, BUFF_SIZE)))
 	{
 		if (!((*files)->content = ft_strjoin((*files)->content, (char*)temp)) \
 									|| rb < 0)
 			return (-1);
+		if (ft_strchr(temp, (int)'\n'))
+		{
+			while (cue)
+			{
+
+			}
+		}	
 	}
-	// считать из files->content в line
 	return (0);	
 }
+	// если в files->content пусто (или мы дошли до конца files->content и не нашли \n)
+	// читаем из файла в files->content И line
+		// в конце каждого цикла считывания проверяем, не считали ли мы \n
+		// в этом случае копируем все до \n из а
+
 
 int			get_next_line(const int fd, char **line)
 {
@@ -74,7 +90,7 @@ int			get_next_line(const int fd, char **line)
 	}
 	if (!(retard = ft_lstnew(newstr, nice_fd)))
 		return (-1);
-	ft_lstadd(&files,  retard);
+	ft_lstadd(&files, retard);
 	return (read_line(&files, line, nice_fd));
 }
 
