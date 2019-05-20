@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:25 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/20 09:55:47 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/20 12:12:46 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,25 @@ static size_t	ft_count_char(void **s, int c, size_t *t_rb)
 
 static t_list	*get_thefile(t_list **files, int fd)
 {
+	t_list	*buff;
+	char	*newstr;
+	size_t	st_fd;
 
+	buff = *files;
+	st_fd = (size_t)fd;
+	while (buff)
+	{
+		if (buff->content_size == st_fd)
+			return (buff);
+		buff = buff->next;
+	}
+	if ((newstr = ft_strdup("")))
+	{
+		buff = ft_lstnew(newstr, st_fd);
+		ft_lstadd(files, buff);
+		buff = *files;
+		return (buff);
+	}
 	return (NULL);
 }
 
@@ -49,8 +67,7 @@ int				get_next_line(const int fd, char **line)
 	size_t			rb;
 	size_t			t_rb;
 
-	if (!line || fd < 0 || BUFF_SIZE < 1 \
-				||read(fd, buff, 0) < 0 || (cue = get_thefile(&files, fd)))
+	if (!line || fd < 0 || BUFF_SIZE < 1 ||read(fd, buff, 0) < 0 || (cue = get_thefile(&files, fd)))
 		return (-1);
 	while ((rb = read(fd, buff, BUFF_SIZE)))
 	{
