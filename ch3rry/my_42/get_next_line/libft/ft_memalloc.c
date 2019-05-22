@@ -1,37 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/05 21:45:29 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/23 02:47:34 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/22 11:15:02 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/22 13:57:25 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GNL_H
-# define GNL_H
+#include "libft.h"
 
-#ifndef LIBFT_H
-#include "../libft/libft.h"
-#endif
-
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <stdio.h>
-
-# define BUFF_SIZE 2040
-
-typedef struct		s_file
+void	*ft_memalloc(size_t size)
 {
-	char			*content;
-	size_t			size;
-	int				fd;
-	struct s_file	*next;
-}					t_file;
+	void	*mem;
 
-
-int					get_next_line(const int fd, char **line);
-#endif
+	mem = NULL;
+	if (size && (mem = malloc(size)))
+		ft_bzero(mem, size);
+	return (mem);
+}

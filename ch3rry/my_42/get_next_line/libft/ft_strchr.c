@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/05 21:45:29 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/23 02:47:34 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/11 14:04:25 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/18 15:34:03 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GNL_H
-# define GNL_H
+#include "libft.h"
 
-#ifndef LIBFT_H
-#include "../libft/libft.h"
-#endif
-
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <stdio.h>
-
-# define BUFF_SIZE 2040
-
-typedef struct		s_file
+char	*ft_strchr(const char *s, int c)
 {
-	char			*content;
-	size_t			size;
-	int				fd;
-	struct s_file	*next;
-}					t_file;
+	char	*waldo;
 
-
-int					get_next_line(const int fd, char **line);
-#endif
+	if ((waldo = ft_memchr(s, c, ft_strlen(s) + 1)))
+		return (waldo);
+	return (NULL);
+}

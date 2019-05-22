@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/05 21:45:29 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/23 02:47:34 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/06 10:14:47 by caellis           #+#    #+#             */
+/*   Updated: 2019/04/10 16:44:37 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GNL_H
-# define GNL_H
+#include "libft.h"
 
-#ifndef LIBFT_H
-#include "../libft/libft.h"
-#endif
-
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <stdio.h>
-
-# define BUFF_SIZE 2040
-
-typedef struct		s_file
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char			*content;
-	size_t			size;
-	int				fd;
-	struct s_file	*next;
-}					t_file;
+	unsigned char	*buff;
+	unsigned char	waldo;
 
-
-int					get_next_line(const int fd, char **line);
-#endif
+	buff = (unsigned char *)s;
+	waldo = (unsigned char)c;
+	while (n--)
+	{
+		if (*buff == waldo)
+			return (buff);
+		buff++;
+	}
+	return (NULL);
+}

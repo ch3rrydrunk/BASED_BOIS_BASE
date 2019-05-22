@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/05 21:45:29 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/23 02:47:34 by caellis          ###   ########.fr       */
+/*   Created: 2019/05/03 17:14:08 by caellis           #+#    #+#             */
+/*   Updated: 2019/05/04 16:35:01 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GNL_H
-# define GNL_H
+#include "libft.h"
 
-#ifndef LIBFT_H
-#include "../libft/libft.h"
-#endif
-
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <stdio.h>
-
-# define BUFF_SIZE 2040
-
-typedef struct		s_file
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char			*content;
-	size_t			size;
-	int				fd;
-	struct s_file	*next;
-}					t_file;
+	t_list	*new;
 
-
-int					get_next_line(const int fd, char **line);
-#endif
+	new = NULL;
+	if (lst && f)
+	{
+		new = (*f)(lst);
+		new->next = ft_lstmap(lst->next, f);
+		if (lst->next && (!new->next))
+		{
+			free(new->content);
+			ft_memdel((void**)&new);
+			return (NULL);
+		}
+	}
+	return (new);
+}

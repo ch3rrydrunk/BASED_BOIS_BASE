@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/05 21:45:29 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/23 02:47:34 by caellis          ###   ########.fr       */
+/*   Created: 2019/04/29 16:21:40 by caellis           #+#    #+#             */
+/*   Updated: 2019/05/04 17:12:47 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GNL_H
-# define GNL_H
+#include "libft.h"
 
-#ifndef LIBFT_H
-#include "../libft/libft.h"
-#endif
-
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <stdio.h>
-
-# define BUFF_SIZE 2040
-
-typedef struct		s_file
+char	*ft_strtrim(char const *s)
 {
-	char			*content;
-	size_t			size;
-	int				fd;
-	struct s_file	*next;
-}					t_file;
+	char	*trim;
+	int		cue;
 
-
-int					get_next_line(const int fd, char **line);
-#endif
+	trim = NULL;
+	if (s)
+	{
+		while (ft_isspace(*s))
+			s++;
+		cue = ft_strlen(s) - 1;
+		while (cue > -1 && ft_isspace(s[cue]))
+			cue--;
+		cue++;
+		if ((trim = ft_strnew(cue)))
+			ft_strncpy(trim, s, cue);
+	}
+	return (trim);
+}
