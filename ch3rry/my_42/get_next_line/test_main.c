@@ -1,20 +1,40 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct		s_file
+#include "get_next_line.h"
+
+int				main(void)
 {
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
+	char		*line;
+	int			fd;
+	int			ret;
 
-int	main(void)
-{
-	t_list	*buff;
+	ret = -100;
+	fd = open("get_next_line.c", O_RDONLY);
+	while((ret = get_next_line(fd, &line)))
+	{
+		if (ret == -1)
+		{
+			printf(":(\n");
+			exit (-1);
+		}
+		printf("%s\n", line);
+	}
+	printf("\n\n\n\n\nThat's it?\n\n\n\n\n");
 
-	buff = (t_list*)malloc(sizeof(t_list));
-	printf("Lol, Im contents of newly created t_list or whatever\n");
-	printf("buff->content is '%s'\nbuff.content_size is '%ul'buff->next is '%ul'\n", buff->content, buff->content_size, buff->next);
+	fd = open("author", O_RDONLY);
+	while((ret = get_next_line(fd, &line)))
+	{
+		if (ret == -1)
+		{
+			printf(":(\n");
+			exit (-1);
+		}
+		printf("%s\n", line);
+	}
+	printf("\n\n\n\n\nThat's it?\n\n\n\n\n");
 
+	ret = get_next_line(fd, &line);
+	printf("This is bytes read from finished file: %i\n", ret);
 	return (0);
 }

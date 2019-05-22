@@ -6,12 +6,11 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:25 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/23 02:34:24 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/23 02:42:16 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <stdio.h>	//DELETE_ME
 
 static t_file	*ft_new_file(const char *content, const int fd)
 {
@@ -123,6 +122,7 @@ int				get_next_line(const int fd, char **line)
 	return (1);
 }
 
+/*
 int				main(void)
 {
 	char		*line;
@@ -158,23 +158,4 @@ int				main(void)
 	printf("This is bytes read from finished file: %i\n", ret);
 	return (0);
 }
-
-/*
-WIP : get_next_line after error_check
-	if ((t_rb = ft_readc_to_lst(&cue, fd, (int)'\n')) < 0)
-		return (-1);
-	if (!t_rb && !cue->content)
-	{
-		ft_strclr(cue->content);
-		return (0);
-	}
-	buff = ft_memccpy(*line, cue->content, (int)'\n', t_rb);
-	if (buff)
-	{
-		ft_memdel(&(cue->content));
-		cue->content = ft_strdup(buff);
-	}
-	else
-		ft_strdel(cue->content);
-	return (1);
-	*/
+*/
