@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:25 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/22 17:38:47 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/22 17:48:28 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,37 +71,22 @@ static t_file	*ft_get_file(t_file **files, int fd)
 
 }
 
-
-
 int				get_next_line(const int fd, char **line)
 {
 	static t_file	*files;
 	t_file			*cue;
-	long			t_rb;
+	size_t			t_rb;
+	size_t			rb;
 	char			*buff;
 
-	if (!line || fd < 0 || BUFF_SIZE < 1 \
-			|| !(cue = ft_get_file(&files, fd)) || !(*line = ft_strnew(BUFF_SIZE)))
+	if (!line || fd < 0 || BUFF_SIZE < 1 || !(cue = ft_get_file(&files, fd)) \
+				|| read(fd, buff, 0) < 0 || !(buff = ft_strnew(BUFF_SIZE + 1)))
 		return (-1);
-	/*
-	if ((t_rb = ft_readc_to_lst(&cue, fd, (int)'\n')) < 0)
-		return (-1);
-	if (!t_rb && !cue->content)
+	t_rb = 0;
+	while ((rb = read(fd, buff, BUFF_SIZE)))
 	{
-		ft_strclr(cue->content);
-		return (0);
-	}
-	buff = ft_memccpy(*line, cue->content, (int)'\n', t_rb);
-	if (buff)
-	{
-		ft_memdel(&(cue->content));
-		cue->content = ft_strdup(buff);
-	}
-	else
-		ft_strdel(cue->content);
-	return (1);
-	*/
 
+	}
 }
 
 int				main(void)
@@ -122,3 +107,23 @@ int				main(void)
 	printf("%s\n", line);
 	return (0);
 }
+
+/*
+WIP : get_next_line after error_check
+	if ((t_rb = ft_readc_to_lst(&cue, fd, (int)'\n')) < 0)
+		return (-1);
+	if (!t_rb && !cue->content)
+	{
+		ft_strclr(cue->content);
+		return (0);
+	}
+	buff = ft_memccpy(*line, cue->content, (int)'\n', t_rb);
+	if (buff)
+	{
+		ft_memdel(&(cue->content));
+		cue->content = ft_strdup(buff);
+	}
+	else
+		ft_strdel(cue->content);
+	return (1);
+	*/
