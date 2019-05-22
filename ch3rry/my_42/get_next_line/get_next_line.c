@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:25 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/22 19:21:43 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/22 19:29:16 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 static t_file	*ft_new_file(const char *content, const int fd)
 {
 	t_file	*file;
-	size_t	len;
+	size_t	size;
 
 	if (content)
-		len = ft_strlen(content) + 1;
+		size = ft_strlen(content);
 	if ((file = (t_file *)malloc(sizeof(t_file))))
 	{
 		if (!content)
 		{
 			file->content = NULL;
-			file->len = -1;
+			file->size = -1;
 		}
-		else if ((file->content = (void *)malloc(len)))
+		else if ((file->content = ft_strnew(size)))
 		{
-			ft_memcpy(file->content, content, len);
-			file->len = len;
+			ft_memcpy(file->content, content, size);
+			file->size = size + 1;
 		}
 		else
 			return (NULL);
