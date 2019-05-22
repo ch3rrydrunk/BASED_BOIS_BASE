@@ -3,78 +3,88 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:25 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/22 15:42:26 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/22 17:38:47 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>	//DELETE_ME
 
-static long	readc_to_lst(t_list **files, int fd, int c)
+static t_file	*ft_new_file(const char *content, const int fd)
 {
-	t_list		*cue;
-	char		*buff;
-	long		rb;
-	long		t_rb;
+	t_file	*file;
+	size_t	len;
 
-	if (!files)
-		return (-1);
-	cue = *files;
-	t_rb = 0;
-	while ((rb = (long)read(fd, buff, BUFF_SIZE)))
+	if (content)
+		len = ft_strlen(content) + 1;
+	if ((file = (t_file *)malloc(sizeof(t_file))))
 	{
-		buff[rb] = '\0';
-		if (!(cue->content = ft_strjoin(cue->content, buff)))
-			return (-1);
-		if ((buff = ft_strchr(cue->content, c)))
-			break ;
-		t_rb += rb;
-	}	
-	while (*(char *)(cue->content) && *(char *)(cue->content) != (char)c)
-	{
-		(cue->content)++;
-		t_rb++;
+		if (!content)
+		{
+			file->content = NULL;
+			file->len = -1;
+		}
+		else if ((file->content = (void *)malloc(len)))
+		{
+			ft_memcpy(file->content, content, len);
+			file->len = len;
+		}
+		else
+			return (NULL);
+		file->fd = fd;
+		file->next = NULL;
 	}
-	return (t_rb);
+	return (file);
 }
 
-static t_list	*get_file(t_list **files, int fd)
+static void		ft_add_file(t_file **files, t_file *new)
 {
-	t_list	*buff;
-	char	*newstr;
-	size_t	st_fd;
+	t_file	*buff;
+
+	if (files && (!*files) && new)
+		*files = new;
+	else if (files && *files && new)
+	{
+		buff = *files;
+		*files = new;
+		(*files)->next = buff;
+	}
+}
+
+static t_file	*ft_get_file(t_file **files, int fd)
+{
+	t_file	*buff;
 
 	buff = *files;
-	st_fd = (size_t)fd;
 	while (buff)
 	{
-		if (buff->content_size == st_fd)
+		if (buff->fd == fd)
 			return (buff);
 		buff = buff->next;
 	}
-	if ((newstr = ft_strdup("")))
-	{
-		buff = ft_lstnew(newstr, st_fd);
-		ft_lstadd(files, buff);
-		return (*files);
-	}
-	return (NULL);
+	buff = ft_new_file(NULL, fd);
+	ft_add_file(files, buff);
+	return (*files);
+
 }
+
+
 
 int				get_next_line(const int fd, char **line)
 {
-	static t_list	*files;
-	t_list			*cue;
+	static t_file	*files;
+	t_file			*cue;
 	long			t_rb;
 	char			*buff;
 
 	if (!line || fd < 0 || BUFF_SIZE < 1 \
-			|| !(cue = get_file(&files, fd)) || !(*line = ft_strnew(BUFF_SIZE)))
+			|| !(cue = ft_get_file(&files, fd)) || !(*line = ft_strnew(BUFF_SIZE)))
 		return (-1);
-	if ((t_rb = readc_to_lst(&cue, fd, (int)'\n')) < 0)
+	/*
+	if ((t_rb = ft_readc_to_lst(&cue, fd, (int)'\n')) < 0)
 		return (-1);
 	if (!t_rb && !cue->content)
 	{
@@ -82,7 +92,6 @@ int				get_next_line(const int fd, char **line)
 		return (0);
 	}
 	buff = ft_memccpy(*line, cue->content, (int)'\n', t_rb);
-	printf("%s\n\n\n%s\n", *line, (char *)cue->content);
 	if (buff)
 	{
 		ft_memdel(&(cue->content));
@@ -91,6 +100,8 @@ int				get_next_line(const int fd, char **line)
 	else
 		ft_strdel(cue->content);
 	return (1);
+	*/
+
 }
 
 int				main(void)
@@ -100,7 +111,7 @@ int				main(void)
 	int			ret;
 
 	ret = -100;
-	fd = open("test_main.c", O_RDONLY);
+	fd = open("line_less_than_buff.test", O_RDONLY);
 	while((ret = get_next_line(fd, &line)))
 	{
 		printf("%s\n", line);
