@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:29 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/22 17:21:30 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/22 19:14:03 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct		s_file
 	char			*content;
 	size_t			len;
 	int				fd;
-	struct s_list	*next;
+	struct s_file	*next;
 }					t_file;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:25 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/22 17:48:28 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/22 19:21:43 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static t_file	*ft_get_file(t_file **files, int fd)
 			return (buff);
 		buff = buff->next;
 	}
-	buff = ft_new_file(NULL, fd);
+	buff = ft_new_file("", fd);
 	ft_add_file(files, buff);
 	return (*files);
 
@@ -75,18 +75,25 @@ int				get_next_line(const int fd, char **line)
 {
 	static t_file	*files;
 	t_file			*cue;
-	size_t			t_rb;
-	size_t			rb;
 	char			*buff;
+	char			*temp;
+	size_t			rb;
 
 	if (!line || fd < 0 || BUFF_SIZE < 1 || !(cue = ft_get_file(&files, fd)) \
 				|| read(fd, buff, 0) < 0 || !(buff = ft_strnew(BUFF_SIZE + 1)))
 		return (-1);
-	t_rb = 0;
 	while ((rb = read(fd, buff, BUFF_SIZE)))
 	{
-
+		if (!(temp = ft_strjoin(cue->content, buff)))
+		{
+			ft_strdel(&cue->content);
+			return (-1);
+		}
+		if (ft_strchr(cue->content, (int)'\n'))
+			break;
 	}
+
+	return (1);
 }
 
 int				main(void)
