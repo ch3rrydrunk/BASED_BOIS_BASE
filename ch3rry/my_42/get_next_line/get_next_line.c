@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:25 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/23 18:35:44 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/24 16:06:15 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,13 @@ static long	ft_file2line_copy(char **line, t_file **cue)
 	if (!(buff = ft_strdup(file)) || !(*line = ft_strnew(rb)))
 		return (-1);
 	*line = (char *)ft_memcpy(*line, (*cue)->content, rb);
-	ft_strdel(&(*cue)->content);
-	(*cue)->content = buff;
+	if ((size_t)rb != ft_strlen((*cue)->content))
+	{
+		ft_strdel(&(*cue)->content);
+		(*cue)->content = buff;
+	}
+	else
+		ft_strdel(&(*cue)->content);
 	return (rb);
 }
 
@@ -121,41 +126,3 @@ int				get_next_line(const int fd, char **line)
 		return (-1);
 	return (1);
 }
-
-/*
-int				main(void)
-{
-	char		*line;
-	int			fd;
-	int			ret;
-
-	ret = -100;
-	fd = open("get_next_line.c", O_RDONLY);
-	while((ret = get_next_line(fd, &line)))
-	{
-		if (ret == -1)
-		{
-			printf(":(\n");
-			exit (-1);
-		}
-		printf("%s\n", line);
-	}
-	printf("\n\n\n\n\nThat's it?\n\n\n\n\n");
-
-	fd = open("author", O_RDONLY);
-	while((ret = get_next_line(fd, &line)))
-	{
-		if (ret == -1)
-		{
-			printf(":(\n");
-			exit (-1);
-		}
-		printf("%s\n", line);
-	}
-	printf("\n\n\n\n\nThat's it?\n\n\n\n\n");
-
-	ret = get_next_line(fd, &line);
-	printf("This is bytes read from finished file: %i\n", ret);
-	return (0);
-}
-*/

@@ -10,7 +10,7 @@ int				main(void)
 	int			ret;
 
 	ret = -100;
-	fd = open("get_next_line.c", O_RDONLY);
+	fd = open("get_next_line.h", O_RDONLY);
 	while((ret = get_next_line(fd, &line)))
 	{
 		if (ret == -1)
@@ -22,7 +22,8 @@ int				main(void)
 	}
 	printf("\n\n\n\n\nThat's it?\n\n\n\n\n");
 
-	fd = open("author", O_RDONLY);
+	fd = open("get_next_line.c", O_RDONLY);
+	ret = get_next_line(fd, &line);
 	while((ret = get_next_line(fd, &line)))
 	{
 		if (ret == -1)
@@ -35,6 +36,5 @@ int				main(void)
 	printf("\n\n\n\n\nThat's it?\n\n\n\n\n");
 
 	ret = get_next_line(fd, &line);
-	printf("This is bytes read from finished file: %i\n", ret);
-	return (0);
+	printf("This is bytes read from finished file: %i\n\n", ret);
 }

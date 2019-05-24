@@ -6,7 +6,7 @@
 /*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:29 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/23 02:47:34 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/23 23:41:15 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GNL_H
 
 #ifndef LIBFT_H
-#include "../libft/libft.h"
+#include "libft.h"
 #endif
 
 # include <fcntl.h>
