@@ -37,4 +37,5 @@ int				main(void)
 
 	ret = get_next_line(fd, &line);
 	printf("This is bytes read from finished file: %i\n\n", ret);
+	sleep(15);
 }
