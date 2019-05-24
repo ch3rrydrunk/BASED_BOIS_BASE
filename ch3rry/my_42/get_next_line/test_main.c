@@ -3,6 +3,15 @@
 
 #include "get_next_line.h"
 
+# include <string.h>
+# include <strings.h>
+# include <ctype.h>
+# include <math.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <regex.h>
+# include <assert.h>
+
 int				main(void)
 {
 	char		*line;
@@ -37,5 +46,4 @@ int				main(void)
 
 	ret = get_next_line(fd, &line);
 	printf("This is bytes read from finished file: %i\n\n", ret);
-	sleep(15);
 }
