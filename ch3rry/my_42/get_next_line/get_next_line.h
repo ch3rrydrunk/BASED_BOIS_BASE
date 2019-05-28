@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:29 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/23 23:41:15 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/28 14:56:52 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,11 @@ typedef struct		s_file
 	struct s_file	*next;
 }					t_file;
 
+enum				e_modes
+{
+	ADD,
+	DELETE
+}					;
 
 int					get_next_line(const int fd, char **line);
 #endif

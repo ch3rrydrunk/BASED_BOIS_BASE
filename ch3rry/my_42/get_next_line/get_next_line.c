@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:25 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/24 16:06:15 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/28 14:56:29 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,26 @@ static t_file	*ft_new_file(const char *content, const int fd)
 	return (file);
 }
 
-static void		ft_add_file(t_file **files, t_file *new)
+static void		ft_move_file(t_file **files, t_file *new, int mode)
 {
 	t_file	*buff;
 
-	if (files && (!*files) && new)
-		*files = new;
-	else if (files && *files && new)
+	if (mode == ADD)
 	{
-		buff = *files;
-		*files = new;
-		(*files)->next = buff;
+		if (files && (!*files) && new)
+			*files = new;
+		else if (files && *files && new)
+		{
+			buff = *files;
+			*files = new;
+			(*files)->next = buff;
+		}
+	}
+	else if (files && *files)
+	{
+		ft_strdel(&((*files)->content));
+		free(*files);
+		*files = NULL;
 	}
 }
 
@@ -65,7 +74,7 @@ static t_file	*ft_get_file(t_file **files, int fd)
 		buff = buff->next;
 	}
 	buff = ft_new_file("", fd);
-	ft_add_file(files, buff);
+	ft_move_file(files, buff, ADD);
 	return (*files);
 }
 
@@ -92,8 +101,11 @@ static long	ft_file2line_copy(char **line, t_file **cue)
 		(*cue)->content = buff;
 	}
 	else
+	{
+		ft_strdel(&buff);
 		ft_strdel(&(*cue)->content);
-	return (rb);
+	}
+return (rb);
 }
 
 int				get_next_line(const int fd, char **line)
@@ -104,12 +116,12 @@ int				get_next_line(const int fd, char **line)
 	char			*temp;
 	long			rb;
 
-	ft_bzero((void *)buff, BUFF_SIZE + 1);
 	if (!line || fd < 0 || BUFF_SIZE < 1 || !(cue = ft_get_file(&files, fd)) \
 				|| read(fd, buff, 0) < 0)
 		return (-1);
 	while ((rb = read(fd, buff, BUFF_SIZE)))
 	{
+		buff[rb] = '\0';
 		if (!(temp = ft_strjoin(cue->content, buff)))
 			return (-1);
 		ft_strdel(&cue->content);
@@ -119,7 +131,7 @@ int				get_next_line(const int fd, char **line)
 	}
 	if (!(cue->content) || !*(cue->content))
 	{
-		ft_strdel(&cue->content);
+		ft_move_file(&files, NULL, DELETE);
 		return (0);
 	}
 	if ((rb = ft_file2line_copy(line, &cue)) < 0)

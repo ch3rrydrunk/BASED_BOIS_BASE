@@ -19,7 +19,7 @@ int				main(void)
 	int			ret;
 
 	ret = -100;
-	fd = open("get_next_line.h", O_RDONLY);
+	fd = open("/Users/caellis/BASE/ch3rry/my_42/get_next_line/sandbox/large_file.txt", O_RDONLY);
 	while((ret = get_next_line(fd, &line)))
 	{
 		if (ret == -1)

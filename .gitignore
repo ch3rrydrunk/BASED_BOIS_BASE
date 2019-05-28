@@ -8,3 +8,5 @@
 test*
 *.dSYM
 ch3rry/my_42.code-workspace
+*vscode
+ch3rry/my_42/get_next_line/test_main.c
