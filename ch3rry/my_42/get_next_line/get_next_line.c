@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:25 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/28 14:56:29 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/28 15:39:29 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static t_file	*ft_get_file(t_file **files, int fd)
 	return (*files);
 }
 
-static long	ft_file2line_copy(char **line, t_file **cue)
+static long		ft_file2line_copy(char **line, t_file **cue)
 {
 	char	*file;
 	char	*buff;
@@ -92,7 +92,7 @@ static long	ft_file2line_copy(char **line, t_file **cue)
 			break ;
 		rb++;
 	}
-	if (!(buff = ft_strdup(file)) || !(*line = ft_strnew(rb)))
+	if ((!(buff = ft_strdup(file))) || (!(*line = ft_strnew(rb))))
 		return (-1);
 	*line = (char *)ft_memcpy(*line, (*cue)->content, rb);
 	if ((size_t)rb != ft_strlen((*cue)->content))
@@ -105,7 +105,7 @@ static long	ft_file2line_copy(char **line, t_file **cue)
 		ft_strdel(&buff);
 		ft_strdel(&(*cue)->content);
 	}
-return (rb);
+	return (rb);
 }
 
 int				get_next_line(const int fd, char **line)
@@ -127,7 +127,7 @@ int				get_next_line(const int fd, char **line)
 		ft_strdel(&cue->content);
 		cue->content = temp;
 		if (ft_strchr(cue->content, (int)'\n'))
-			break;
+			break ;
 	}
 	if (!(cue->content) || !*(cue->content))
 	{
