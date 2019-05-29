@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:25 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/28 15:39:29 by caellis          ###   ########.fr       */
+/*   Updated: 2019/05/29 15:19:22 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static long		ft_file2line_copy(char **line, t_file **cue)
 	char	*file;
 	char	*buff;
 	long	rb;
+	long	c_rb;
 
 	file = (*cue)->content;
 	rb = 0;
@@ -92,19 +93,15 @@ static long		ft_file2line_copy(char **line, t_file **cue)
 			break ;
 		rb++;
 	}
-	if ((!(buff = ft_strdup(file))) || (!(*line = ft_strnew(rb))))
-		return (-1);
+	ERR_CHECK((!(buff = ft_strdup(file))));
+	ERR_CHECK((!(*line = ft_strnew(rb))));
 	*line = (char *)ft_memcpy(*line, (*cue)->content, rb);
-	if ((size_t)rb != ft_strlen((*cue)->content))
-	{
-		ft_strdel(&(*cue)->content);
+	c_rb = (long)ft_strlen((*cue)->content);
+	ft_strdel(&(*cue)->content);
+	if (c_rb != rb)
 		(*cue)->content = buff;
-	}
 	else
-	{
 		ft_strdel(&buff);
-		ft_strdel(&(*cue)->content);
-	}
 	return (rb);
 }
 
@@ -116,14 +113,12 @@ int				get_next_line(const int fd, char **line)
 	char			*temp;
 	long			rb;
 
-	if (!line || fd < 0 || BUFF_SIZE < 1 || !(cue = ft_get_file(&files, fd)) \
-				|| read(fd, buff, 0) < 0)
-		return (-1);
+	ERR_CHECK(!line || fd < 0 || BUFF_SIZE < 1 \
+				|| !(cue = ft_get_file(&files, fd)) || read(fd, buff, 0) < 0);
 	while ((rb = read(fd, buff, BUFF_SIZE)))
 	{
 		buff[rb] = '\0';
-		if (!(temp = ft_strjoin(cue->content, buff)))
-			return (-1);
+		ERR_CHECK(!(temp = ft_strjoin(cue->content, buff)));
 		ft_strdel(&cue->content);
 		cue->content = temp;
 		if (ft_strchr(cue->content, (int)'\n'))
@@ -134,7 +129,6 @@ int				get_next_line(const int fd, char **line)
 		ft_move_file(&files, NULL, DELETE);
 		return (0);
 	}
-	if ((rb = ft_file2line_copy(line, &cue)) < 0)
-		return (-1);
+	ERR_CHECK((rb = ft_file2line_copy(line, &cue)) < 0);
 	return (1);
 }
