@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+# List all the network devices
+ifconfig -l

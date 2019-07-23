@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+# Show my MAC (network/wifi card for the laptop case)
+ifconfig en0 | grep ether | awk '{print $2}'
