@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+# Identify the network devices between u and the domain
+traceroute slash.16

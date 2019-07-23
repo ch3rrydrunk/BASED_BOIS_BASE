@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+# Query the domain via an external DNS server (not system, 8's is google's)
+nslookup slash16.org 8.8.8.8 
