@@ -7,7 +7,7 @@
 *.plist
 *test*
 *.dSYM
-my_42.code-workspace
+*code-workspace
 *vscode
 fillit/libft/ft_*.c
 
