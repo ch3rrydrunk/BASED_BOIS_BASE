@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+# Get the PID of SSH (a.k.a /usr/sbin/sshd)
+ps aux | grep -e sshd | grep -v grep | tr -s " " | cut -d " " -f2
+# OR 
+service ssh status | grep PID | cut -d " " -f4

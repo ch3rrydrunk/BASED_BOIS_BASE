@@ -1,2 +1,2 @@
 # Reverse DNS query to find the name of your host
-nslookup $(ifconfig en0 | grep "broadcast" | awk '{print $2}') | grep name | awk '{print $4}'
+nslookup $(ifconfig en0 | awk '/broadcast/ {print $2}') | awk '/name/ {print $4}'

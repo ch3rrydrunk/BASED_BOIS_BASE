@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+# Show the status of SSH service (if not > sudo apt-get openssh-server ; systemctl enable ssh ; systemctl start ssh)
+systemctl is-active ssh
+# OR even better
+# service ssh status

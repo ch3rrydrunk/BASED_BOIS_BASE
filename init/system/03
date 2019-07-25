@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+# Modify hostname & hosts to make change the name permanently
+old=$(hostname) 
+echo $1 > /etc/hostname
+sed "s/$old/$1/g" /etc/hosts > temp
+cat temp > /etc/hosts ; rm -rf temp

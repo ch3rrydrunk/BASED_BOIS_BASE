@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+# Temporarily change hostname
+hostname $1

@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+# See last boot time.
+who 
+# Also (and much better) 
+# > last boot
