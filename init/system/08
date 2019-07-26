@@ -1,2 +1,3 @@
-#!/usr/bin/sh
-# 
+# SSH keys-storage location
+/etc/ssh
+# And other known keys are usually stored in /etc/ss/known_hosts

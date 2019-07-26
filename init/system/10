@@ -1,2 +1,8 @@
 #!/usr/bin/sh
-# 
+# List disk partitions
+# lsblk - list block devices (reads )
+lsblk
+# OR
+# fdisk -l # shows info on filesystem 
+# OR
+# cfdisk # to interactively look for partitions

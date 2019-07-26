@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+# Show the available space left and used on the system in an ez way
+df -h

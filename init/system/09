@@ -1,1 +1,4 @@
-# 
+#!/usr/bin/sh
+# Show who is coonected to the System (h - no header, s - short form)
+w -hs
+# OR who OR users
