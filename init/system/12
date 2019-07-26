@@ -1,3 +1,4 @@
 #!/usr/bin/sh
 # Figure out the exact size of each folder of /var in a humanly understandable way
-# followed by the path of it.
+# followed by the path of it. (h = human-readable, s = summarize)
+sudo du -sh /var/*

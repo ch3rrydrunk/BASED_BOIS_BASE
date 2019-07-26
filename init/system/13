@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+# List all curently run processes
+ps aux

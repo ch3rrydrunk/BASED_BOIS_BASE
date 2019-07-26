@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+# Kill a process in a background ($! -> most recent process)
+kill $!
+# OR 
+# $jobs -> to get all the processes in the fg
+# kill %X -> where the X is the process number 

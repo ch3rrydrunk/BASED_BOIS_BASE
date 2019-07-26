@@ -1,0 +1,4 @@
+# The service to schedule tasks
+/etc/init.d/cron
+# crontab -l => will show the current crontab tasks for current user
+# crontab -e => will open up an editor to edit your crontab (located /var/spool/cron/crontabs)
