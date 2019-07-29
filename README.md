@@ -1,5 +1,6 @@
 # My_42 Projects
 This is the repo containing my projects done while @ School 21.
+To run anything, please have a pleasure of **making** it yourself:)
 
 **-=Current Status=-**
 ```
