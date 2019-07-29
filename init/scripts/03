@@ -1,0 +1,14 @@
+#!/usr/bin/sh
+# Just say no to Corporate Greed and Power Abuse of the Capital
+# Do not understand why you should pay MTS, Megaphone or anyone else
+# an extra fucking money for being able to SHARE YOUR OWN DAMN TRAFIC?
+# Just run the script and CONNECT TO TO THAT HOTSPOT RIGHT AWAY :)
+sudo sysctl net.inet.ip.ttl = 64
+# Yes, it is easy as that!
+
+# Debian option
+#	$ sudo sysctl net.ipv4.ip_default_ttl=129
+
+# Persistent TTL change to...
+# NEVER LET THEM FUCK YOU UP AGAIN!
+#	$ sudo echo "net.ipv4.ip_default_ttl=64" >> /etc/sysctl.conf:

@@ -1,0 +1,4 @@
+#/usr/bin/sh
+# SSH login session 1 - is username, 2 - is a hostname or IP, enter password if prompted
+ssh $1@$2
+# To login grapbically turn on the machine, enter credentials, PROFIT!!!

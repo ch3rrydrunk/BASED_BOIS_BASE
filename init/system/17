@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+# Connect to remote host via SSH 1 - user name 2 - hostname
+# to connect to VM -> it should be Bridge connected and has separate IP in your local network
+ssh "$1@$2"

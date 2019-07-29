@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+# Kill SSH service
+service ssh stop
+# OR systemctl stop ssh (system dependent)

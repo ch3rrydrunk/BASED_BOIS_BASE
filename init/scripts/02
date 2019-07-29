@@ -1,0 +1,6 @@
+#!/usr/bin/sh
+# Delete ACTIVE user (assuming root access)
+USER=$(who am i | cut -d" " -f1)
+pgrep -u $USER
+su -u root
+(killall -u $USER ; userdel -r $USER)

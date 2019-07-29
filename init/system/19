@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+# list all services run from startup (dead and alive)
+systemctl list-units --type service all 
+# OR only active
+# systemctl list-units --type service

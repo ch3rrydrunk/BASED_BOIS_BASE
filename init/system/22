@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+# Create new local user (setting shell, creating home folder (m) and setting its location (d))
+useradd -m -s /bin/zsh -d /path/to/home
+# OR JUST
+# adduser <user_name>

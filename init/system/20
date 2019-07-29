@@ -1,0 +1,3 @@
+#!/usr/bin/sh
+# List all users (real and system)
+awk -F: '{print $1}' /etc/passwd

@@ -1,0 +1,6 @@
+#/usr/bin/sh
+# Show all installed packs
+apt list --installed
+# and this will show only manually installed packs (+ on installation)
+# apt-mark can also mark packs as man/auto selected
+# $ apt-mark showmanual 
