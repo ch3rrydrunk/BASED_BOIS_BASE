@@ -1,3 +1,6 @@
 #!/usr/bin/sh
 # Show Linux-kernel version
 (cat /etc/*-release ; cat /proc/version ; cat /etc/debian_version) 2>/dev/null | grep -o -E 'VERSION.*=.*'
+# ALSO
+# funny thing fith $ file <path_to_any_command>
+# will also show you info on the Linux Kernel 
