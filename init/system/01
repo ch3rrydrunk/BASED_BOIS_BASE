@@ -1,5 +1,5 @@
 #!/usr/bin/sh
-# Show Linux-kernel version
+# Show Linux-kernel version (also shows Linux version not kernel for non ubuntu distributives)
 (cat /etc/*-release ; cat /proc/version ; cat /etc/debian_version) 2>/dev/null | grep -o -E 'VERSION.*=.*'
 # ALSO
 # funny thing fith $ file <path_to_any_command>
