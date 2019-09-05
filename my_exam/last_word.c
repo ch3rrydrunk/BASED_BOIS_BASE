@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   last_word.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: exam <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/22 12:04:24 by exam              #+#    #+#             */
-/*   Updated: 2019/08/22 13:09:42 by exam             ###   ########.fr       */
+/*   Updated: 2019/09/05 13:16:02 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	*ft_strrev(char *str, int len)
 	while (i < len / 2)
 	{
 		a = str[i];
-		str[i] = str[len - 1 - i];
-		str[len - 1 - i] = a;
+		str[i] = str[len - i];
+		str[len - i] = a;
 		i++;
 	}
 	return (str);
@@ -47,8 +47,8 @@ int		main(int ac, char** av)
 
 	if (ac == 2)
 	{
-		i = ft_strlen(av[1]) - 1;
-		while (i >= 0)
+		i = ft_strlen(av[1]);
+		while (i > 0)
 		{
 			if (av[1][i] == ' ' || av[1][i] == '\t' || av[1][i] == '\v')
 				i--;
@@ -63,6 +63,5 @@ int		main(int ac, char** av)
 			}
 		}
 	}
-	write(0, "\n", 1);
-	return (0);
+	write(1, "\n", 1);
 }
