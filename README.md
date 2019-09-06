@@ -8,7 +8,7 @@ To run anything, please have a pleasure of **making** it yourself:)
 - Get_Next_Line - Chained list based multi-fd line reader.
 - Fillit - Backtraking based Tetrimino-puzzle solver.
 - Init - Collection of handy networking and system administration scripts.
-- (Work in Progress)ft_Printf - My own formatted printing.
+- ft_Printf - My own version of printf formatted output function.
 ```
 
 To be continued...
