@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sort_list.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/03 18:50:29 by caellis           #+#    #+#             */
-/*   Updated: 2019/09/05 13:19:03 by caellis          ###   ########.fr       */
+/*   Updated: 2019/09/06 11:27:27 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,44 +22,43 @@ typedef	struct		s_list
 }			t_list;
 */
 
-int ascending(int a, int b)
+int	ascending(int a, int b)
 {
 	return (a <= b);
 }
 
-int descending(int a, int b)
+int	descending(int a, int b)
 {
 	return (a >= b);
 }
 
-void	ft_swap(t_list *a, t_list *b)
+void	ft_swap(int *a, int *b)
 {
-	t_list	*c;
+	int		c;
 
-	c = a;
-	a = b;
-	b = c;
+	c = *a;
+	*a = *b;
+	*b = c;
 }
 
 t_list	*sort_list(t_list *lst, int (*cmp)(int, int))
 {
 	t_list	*cue = lst;
 	t_list	*buff;
-	
+
 	if (lst)
 	{
 		while (cue)
 		{
-			buff = lst->next;
+			buff = cue->next;
 			while (buff)
 			{
 				if (!cmp(cue->data, buff->data))
-					ft_swap(cue, buff);
+					ft_swap(&(cue->data), &(buff->data));
 				buff = buff->next;
 			}
 			cue = cue->next;
 		}
-		
 	}
 	return (lst);
 }
@@ -85,6 +84,8 @@ int	main(void)
 		tmp = tmp->next;
 		cue = cue->next;
 	}
+	test = sort_list(test, descending);
+	test = sort_list(test, ascending);
 	test = sort_list(test, descending);
 	while (test)
 	{
