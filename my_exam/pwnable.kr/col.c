@@ -20,7 +20,7 @@ char	*cracker(char *res)
         ip = (int *)res;
         while ((unsigned long)(a + b + c + d + e) != hashcode)
         {
-            a = 808464432, b = 808464432, c = 808464432, d = 808464432, e = rand();
+            a = 808464432, b = 808464432, c = 808464432, d = rand(), e = rand();
             printf("%lu\n", (unsigned long)(a + b + c + d + e));
         }
         ip[0] = a, ip[1] = b, ip[2] = c, ip[3] = d, ip[4] = e;
