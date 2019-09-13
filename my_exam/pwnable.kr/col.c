@@ -11,7 +11,7 @@ char	*cracker(char *res)
 	int	        	*ip = (int *)res;
     char            *cue = res;
 	int		        i = 0;
-    unsigned int             a, b, c, d, e;
+    unsigned int    a, b, c, d, e;
     unsigned long   checksum = 0;
     char            gotcha = 0;
 
