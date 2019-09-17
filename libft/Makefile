@@ -6,7 +6,7 @@
 #    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/08 14:04:08 by caellis           #+#    #+#              #
-#    Updated: 2019/09/17 14:25:04 by caellis          ###   ########.fr        #
+#    Updated: 2019/09/17 14:38:20 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ $(NAME): $(OBJECTS)
 	@$(CC) -c $(FLAGS) $(SOURCE) -I$(INCLUDE)
 
 clean :
-	@rm -rf $(wildcard ft_*.o)
+	@rm -rf $(wildcard ft_*.o) $(wildcard pf_*.o)
 
 fclean : clean
 	@rm -rf $(NAME)
