@@ -6,7 +6,7 @@
 #    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/08 14:04:08 by caellis           #+#    #+#              #
-#    Updated: 2019/06/24 14:43:39 by caellis          ###   ########.fr        #
+#    Updated: 2019/09/17 14:25:04 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ FLAGS := -Wall -Wextra -Werror
 
 INCLUDE := .
 
-SOURCE = $(wildcard ft_*.c)
+SOURCE = $(wildcard ft_*.c) $(wildcard pf_*.c)
 
 OBJECTS = $(patsubst %.c,%.o,$(SOURCE))
 
