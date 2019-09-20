@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/17 16:01:15 by caellis           #+#    #+#             */
-/*   Updated: 2019/09/17 16:35:18 by caellis          ###   ########.fr       */
+/*   Created: 2019/09/20 12:37:23 by caellis           #+#    #+#             */
+/*   Updated: 2019/09/20 15:44:37 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,29 @@
 #include <sys/uio.h>
 #include <unistd.h>
 #include <stdio.h>
-#include "mlx.h"
+#include <mlx.h>
+#include "libft.h"
+#include "ft_get_next_line.h"
+#include "ft_printf.h"
 
-int8_t			output_fdf(int32_t fd)
+# define NULL_IF_ERROR(x) if (!(x)) {perror("fdf"); return (NULL);}
+# define ZERO_IF_ERROR(x) if (!(x)) {perror("fdf"); return (0);}
+
+typedef struct		s_pixel
 {
-	return (0);
-}
+	u_int32_t		x;
+	u_int32_t		y;
+	u_int32_t		z;
+	struct s_pixel	*next;
+	
+}					t_pixel;
 
-int32_t			main(int32_t ac, char **av)
+typedef struct		s_map
 {
-	int32_t		map_fd;
-
-	if (ac == 2)
-	{
-		// init X11 server
-		if ((map_fd = open(av[1], O_RDONLY)) && output_fdf(map_fd))
-			perror("fdf");
-		close(map_fd);
-	}
-	return (0);
-}
+	int				fd;
+	int				width;
+	int				height;
+	int				col_1;
+	int				col_2;
+    char			*image;
+}					t_image;
