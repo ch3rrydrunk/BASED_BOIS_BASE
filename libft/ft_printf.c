@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnesoi <bnesoi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:45:24 by bnesoi            #+#    #+#             */
-/*   Updated: 2019/07/28 18:46:42 by bnesoi           ###   ########.fr       */
+/*   Updated: 2019/09/20 16:40:18 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static int		internal_printf(t_pf_format *f)
 {

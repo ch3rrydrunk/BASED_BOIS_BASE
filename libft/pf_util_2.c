@@ -6,11 +6,11 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:56:52 by bnesoi            #+#    #+#             */
-/*   Updated: 2019/09/05 12:31:28 by caellis          ###   ########.fr       */
+/*   Updated: 2019/09/20 16:34:58 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int16_t			pf_u_exp_power(int16_t nb, int p)
 {

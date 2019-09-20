@@ -6,11 +6,11 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:56:52 by bnesoi            #+#    #+#             */
-/*   Updated: 2019/08/20 10:52:34 by caellis          ###   ########.fr       */
+/*   Updated: 2019/09/20 16:35:04 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 uintmax_t		pf_u_power(uintmax_t nb, int p)
 {

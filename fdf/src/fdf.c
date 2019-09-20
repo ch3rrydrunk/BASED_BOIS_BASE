@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 16:01:15 by caellis           #+#    #+#             */
-/*   Updated: 2019/09/20 15:44:59 by caellis          ###   ########.fr       */
+/*   Updated: 2019/09/20 16:38:02 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,17 @@
 char			*read_map(t_image *map)
 {
 	char	*line;
-	
+	char	**split;
+
 	while (get_next_line(map->fd, &line))
 	{
-		
+		split = ft_strsplit(line, " ");
+		while (*split)
+		{
+			
+			map->width += 1 
+			split++;
+		}
 	}
 	return(NULL);
 }

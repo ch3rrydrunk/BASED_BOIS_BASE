@@ -6,11 +6,11 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:48:48 by bnesoi            #+#    #+#             */
-/*   Updated: 2019/08/07 13:21:32 by caellis          ###   ########.fr       */
+/*   Updated: 2019/09/20 16:34:15 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static void			put_int(intmax_t n, t_pf_format *f, int base)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pf_strreverse.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnesoi <bnesoi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 13:51:16 by bnesoi            #+#    #+#             */
-/*   Updated: 2019/04/13 13:51:18 by bnesoi           ###   ########.fr       */
+/*   Updated: 2019/09/20 16:34:53 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 void	pf_strreverse(char *str)
 {

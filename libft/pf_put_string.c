@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   pf_put_string.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bnesoi <bnesoi@student.42.fr>              +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:55:52 by bnesoi            #+#    #+#             */
-/*   Updated: 2019/07/28 18:56:12 by bnesoi           ###   ########.fr       */
+/*   Updated: 2019/09/20 16:34:42 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static void		put_padding(size_t len, t_pf_format *f)
 {

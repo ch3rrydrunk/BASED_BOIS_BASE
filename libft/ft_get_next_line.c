@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:25 by caellis           #+#    #+#             */
-/*   Updated: 2019/09/17 14:27:09 by caellis          ###   ########.fr       */
+/*   Updated: 2019/09/20 16:40:29 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_get_next_line.h"
+#include "libft.h"
 
 static t_file	*ft_new_file(const char *content, const int fd)
 {

@@ -6,11 +6,11 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/28 18:50:17 by bnesoi            #+#    #+#             */
-/*   Updated: 2019/09/05 12:31:10 by caellis          ###   ########.fr       */
+/*   Updated: 2019/09/20 16:34:18 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static uint16_t		get_long_string(t_real r, char *res, int prec, \
 									unsigned int flg)

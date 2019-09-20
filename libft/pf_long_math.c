@@ -6,11 +6,11 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/19 12:26:12 by caellis           #+#    #+#             */
-/*   Updated: 2019/09/05 12:19:25 by caellis          ###   ########.fr       */
+/*   Updated: 2019/09/20 16:34:29 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static void		pf_lm_shift_right(uint16_t long_n[], uint16_t shift)
 {
