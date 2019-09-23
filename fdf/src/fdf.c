@@ -19,11 +19,11 @@ char			*read_map(t_image *map)
 
 	while (get_next_line(map->fd, &line))
 	{
-		split = ft_strsplit(line, " ");
+		split = ft_strsplit(line, ' ');
 		while (*split)
 		{
 			
-			map->width += 1 
+			map->width += 1;
 			split++;
 		}
 	}
@@ -40,6 +40,7 @@ int32_t			main(int32_t ac, char **av)
 	t_image		map;
 	void		*x11;
 	void		*mlx_pt;
+	char		*test;
 
 	// if (ac == 2)
 	// {
@@ -49,7 +50,9 @@ int32_t			main(int32_t ac, char **av)
 	// 	ZERO_IF_ERROR(output_fdf(map.fd, x11))
 	// 	close(map.fd);
 	// }
+	test = ft_strdup("derp");
 	x11 = mlx_init();
-	mlx_pt = mlx_new_window(x11, 100, 100, "derp");
+	mlx_pt = mlx_new_window(x11, 1280, 720, "derp");
+	mlx_loop(mlx_pt);
 	return (0);
 }
