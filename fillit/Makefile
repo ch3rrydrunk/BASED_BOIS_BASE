@@ -14,7 +14,7 @@ CC := gcc
 
 NAME := fillit
 
-FLAGS := -Wall -Wextra -Werror -g
+FLAGS := -Wall -Wextra -Werror
 
 LIB := ./libft/libft.a
 
