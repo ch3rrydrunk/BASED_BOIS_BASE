@@ -18,6 +18,13 @@
 # include <stdlib.h>
 # include <string.h>
 # include <errno.h>
+# include <stdarg.h>
+# include <stdint.h>
+# include <float.h>
+# include <fcntl.h>
+# include <sys/types.h>
+# include <sys/uio.h>
+# include <stdio.h>
 
 # define BUFF_SIZE 2040
 
@@ -27,10 +34,6 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-
-/*
-** PART 1
-*/
 
 void				*ft_memset(void *s, int c, size_t len);
 void				ft_bzero(void *s, size_t n);
@@ -62,19 +65,11 @@ int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 
-/*
-** PART 1 - Bonus
-*/
-
 int					ft_islower(int c);
 int					ft_isupper(int c);
 int					ft_isspace(int c);
 size_t				ft_countwords(char const *str, char c);
 void				ft_freearray(char ***arr, int max);
-
-/*
-** PART 2
-*/
 
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
@@ -101,10 +96,6 @@ void				ft_putstr_fd(char const *s, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 
-/*
-** PART 3
-*/
-
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
@@ -116,11 +107,6 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <stdio.h>
 
 # define ERR_CHECK(x) if (x) return (-1)
 
@@ -144,9 +130,6 @@ int					get_next_line(const int fd, char **line);
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-# include <stdarg.h>
-# include <stdint.h>
-# include <float.h>
 
 # define PF_LM_MAXLEN 12000
 
