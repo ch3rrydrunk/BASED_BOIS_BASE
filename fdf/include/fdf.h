@@ -16,10 +16,8 @@
 #include <sys/uio.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <mlx.h>
+#include "mlx.h"
 #include "libft.h"
-#include "ft_get_next_line.h"
-#include "ft_printf.h"
 
 # define NULL_IF_ERROR(x) if (!(x)) {perror("fdf"); return (NULL);}
 # define ZERO_IF_ERROR(x) if (!(x)) {perror("fdf"); return (0);}
