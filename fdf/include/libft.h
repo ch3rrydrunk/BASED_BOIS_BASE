@@ -6,12 +6,11 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:25:46 by caellis           #+#    #+#             */
-/*   Updated: 2019/09/20 16:43:28 by caellis          ###   ########.fr       */
+/*   Updated: 2019/09/30 15:16:58 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-
 # define LIBFT_H
 
 # include <unistd.h>
