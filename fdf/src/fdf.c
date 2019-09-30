@@ -3,40 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 16:01:15 by caellis           #+#    #+#             */
-/*   Updated: 2019/09/24 16:14:42 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2019/09/30 13:38:26 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-char			*read_map(t_image *map)
+int8_t			*read_map(t_image *map)
 {
 	char	*line;
 	char	**split;
-	int		width;
+	int		wid;
 
-	map->image->next = NULL;
+	map->img->next = NULL;
 	while (get_next_line(map->fd, &line))
 	{
 		split = ft_strsplit(line, ' ');
 		while (*split)
 		{
-			//add vectors to image here
-			width++;
+			add_vec(&(map->img), new_vec(wid, map->height, ft_atoi(*split)));
+			if (map->img == NULL)
+				return (clean_vec(&(map->img)));
+			wid++;
 			split++;
-			if (width >= map->width)
-				map->width = width;
+			if (wid >= map->width)
+				map->width = wid;
 		}
+		wid = 0;
 		map->height += 1;
 	}
-	return(NULL);
+	if (!map->img->next)
+		return (NULL);
+	return(map->img);
 }
 
-int8_t			output_fdf(int32_t fd, void *x11)
+int8_t			output_fdf(t_image *map, void *x11)
 {
+	// Scale map->img
+	// Draw lines
+	// 
 	return (0);
 }
 
@@ -50,10 +58,11 @@ int32_t			main(int32_t ac, char **av)
 	{
 		ZERO_IF_ERROR((mlx_ptr = mlx_init()))
 		ZERO_IF_ERROR((map.fd = open(av[1], O_RDONLY)))
-		ZERO_IF_ERROR(map.image = read_map(&map))
-		//ZERO_IF_ERROR(output_fdf(map.fd, mlx_ptr))
+		ZERO_IF_ERROR(map.img = read_map(&map))
+		ZERO_IF_ERROR(output_fdf(&map, mlx_ptr))
 		mlx_loop(mlx_ptr);
 		close(map.fd);
+		// free(map and stuff in map)
 	}
 	return (0);
 }
