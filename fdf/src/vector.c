@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/23 20:45:20 by ch3rryhq          #+#    #+#             */
-/*   Updated: 2019/09/30 13:39:11 by caellis          ###   ########.fr       */
+/*   Updated: 2019/09/30 15:57:11 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void        add_vec(t_vec **img, t_vec *pnt)
 	}
 }
 
-int8_t		*clean_vec(t_vec **img)
+void		*clean_vec(t_vec **img)
 {
 	t_vec	*buff;
 
@@ -51,4 +51,18 @@ int8_t		*clean_vec(t_vec **img)
 		*img = NULL; 
 	}
 	return (NULL);
+}
+
+t_vec		*smul_vec(t_vec *img, int scalar)
+{
+	if (img)
+	{
+		while (img->next)
+		{
+			img->x *= scalar;
+			img->y *= scalar;
+			img->z *= scalar;
+			img = img->next;
+		}
+	}
 }
