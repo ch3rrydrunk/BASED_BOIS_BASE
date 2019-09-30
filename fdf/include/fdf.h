@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/20 12:37:23 by caellis           #+#    #+#             */
-/*   Updated: 2019/09/24 16:15:04 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2019/09/30 13:35:27 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@
 
 # define NULL_IF_ERROR(x) if (!(x)) {perror("fdf"); return (NULL);}
 # define ZERO_IF_ERROR(x) if (!(x)) {perror("fdf"); return (0);}
+# define WIN_W 1920
+# define WIN_H 1080
 
 typedef struct		s_vec
 {
@@ -40,10 +42,10 @@ typedef struct		s_map
 	int				height;
 	int				col_1;
 	int				col_2;
-    t_vec			*image;
+    t_vec			*img;
 }					t_image;
 
-t_vec		*new_vector(int	x, int y, int z);
-void		add_vector(t_vec *img,)
+t_vec		*new_vec(int	x, int y, int z);
+void		add_vec(t_vec **img, t_vec *pnt);
 
 #endif
