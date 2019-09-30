@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+         #
+#    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/23 16:40:19 by ch3rryhq          #+#    #+#              #
-#    Updated: 2019/09/23 16:40:28 by ch3rryhq         ###   ########.fr        #
+#    Updated: 2019/09/30 17:53:47 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,11 @@ MLX_DIR=./minilibx_macos
 
 CC=gcc
 CC_FLAGS= -g
-MLX_CC_FLAGS=-framework OpenGL -framework AppKit
+MLX_CC_FLAGS=-lmlx -framework OpenGL -framework AppKit
 
 SRC_FILES=\
-	fdf.c
+	fdf.c\
+	vector.c
 
 HDR_FILES=\
 	fdf.h\
@@ -54,7 +55,7 @@ $(LIB):
 	@make -C $(LIB_DIR)
 
 $(OBJ): $(SRC) $(OBJ_DIR) $(HDR)
-	@$(CC) $(CC_FLAGS) -I$(HDR_DIR) -o $@ -c $<
+	@$(CC) $(CC_FLAGS) -I$(HDR_DIR) -c $< -o $@ 
 
 $(NAME): $(OBJ) $(LIB) $(MLX)
 	@$(CC) $(CC_FLAGS) $(MLX_CC_FLAGS) $(OBJ) $(MLX) $(LIB) -o $@ 
