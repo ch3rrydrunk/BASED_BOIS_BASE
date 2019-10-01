@@ -6,7 +6,7 @@
 #    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/23 16:40:19 by ch3rryhq          #+#    #+#              #
-#    Updated: 2019/09/30 17:53:47 by caellis          ###   ########.fr        #
+#    Updated: 2019/10/01 13:17:06 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ SRC_FILES=\
 HDR_FILES=\
 	fdf.h\
 	mlx.h\
-	libft.h
+	libft.h\
+	keys.h
 
 LIB_FILE=\
 	libft.a
@@ -43,7 +44,7 @@ OBJ=$(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 LIB=$(addprefix $(LIB_DIR)/, $(LIB_FILE))
 MLX=$(addprefix $(MLX_DIR)/, $(MLX_FILE))
 
-all: $(NAME)
+all: $(OBJ_DIR) $(NAME)
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
@@ -54,10 +55,10 @@ $(MLX):
 $(LIB):
 	@make -C $(LIB_DIR)
 
-$(OBJ): $(SRC) $(OBJ_DIR) $(HDR)
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HDR)
 	@$(CC) $(CC_FLAGS) -I$(HDR_DIR) -c $< -o $@ 
 
-$(NAME): $(OBJ) $(LIB) $(MLX)
+$(NAME): $(LIB) $(MLX) $(OBJ)
 	@$(CC) $(CC_FLAGS) $(MLX_CC_FLAGS) $(OBJ) $(MLX) $(LIB) -o $@ 
 
 clean :
