@@ -1,3 +1,0 @@
-#!/usr/bin/sh
-# Show the IP address of the DNS ...e.g slash16.org
-nslookup slash16.org | awk '/Server:/ {print $2}'
