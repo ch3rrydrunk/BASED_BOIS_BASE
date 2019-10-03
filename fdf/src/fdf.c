@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/17 16:01:15 by caellis           #+#    #+#             */
-/*   Updated: 2019/09/30 17:32:53 by caellis          ###   ########.fr       */
+/*   Updated: 2019/10/01 15:37:40 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_vec			*read_map(t_image *map)
 	char	**split;
 	int		wid;
 
-	map->img->next = NULL;
+	wid = 0;
 	while (get_next_line(map->fd, &line))
 	{
 		split = ft_strsplit(line, ' ');
@@ -60,6 +60,7 @@ int32_t			main(int32_t ac, char **av)
 {
 	t_image		map;
 	void		*mlx_ptr;
+	void		*win_ptr;
 
 	ft_bzero((void *)&map, sizeof(t_image));
 	if (ac == 2)
@@ -68,9 +69,10 @@ int32_t			main(int32_t ac, char **av)
 		ZERO_IF_ERROR((map.fd = open(av[1], O_RDONLY)))
 		ZERO_IF_ERROR(map.img = read_map(&map))
 		//ZERO_IF_ERROR(output_fdf(&map, mlx_ptr))
+		win_ptr = mlx_new_window(mlx_ptr, WIN_W, WIN_H, "derp");
 		while (map.img->next)
 		{
-			mlx_pixel_put(mlx_ptr, mlx_new_window(mlx_ptr, WIN_W, WIN_H, "derp"), map.img->x, map.img->y, 0x14278d);
+			mlx_pixel_put(mlx_ptr, win_ptr, map.img->x, map.img->y, 0xff3333);
 			map.img = map.img->next;
 		}
 		mlx_loop(mlx_ptr);
