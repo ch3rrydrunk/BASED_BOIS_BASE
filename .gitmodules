@@ -1,3 +1,3 @@
 [submodule "ft_ls"]
 	path = ft_ls
-	url = https://github.com/MikhailPasechnik/ft_ls
+	url = ./ft_ls
