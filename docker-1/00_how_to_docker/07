@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+# 7. Get the internal IP address of the overlord container 
+# without starting its shell and
+docker inspect -f '{{ .NetworkSettings.IPAddress }}' overlord

@@ -1,0 +1,4 @@
+#!/usr/bin/sh
+# 3. Define the env variables needed by your virtual machine Char.
+# Fix all four environment variables with one command.
+eval $(docker-machine env Char)
