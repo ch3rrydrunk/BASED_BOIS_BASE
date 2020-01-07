@@ -1,0 +1,5 @@
+#!/usr/bin/sh
+# 21. Create another virtual machine with docker-machine using the virtualbox driver,
+# and name it Aiur.
+docker-machine create --driver virtualbox Aiur
+# To  validate, run -> docker node ls
