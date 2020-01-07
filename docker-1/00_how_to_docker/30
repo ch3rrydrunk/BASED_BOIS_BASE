@@ -2,4 +2,4 @@
 # 30. Increase the number of copies of the marines service up to twenty, because there’s
 # never enough Marines to eliminate Zergs. 
 docker service scale -d marines=20
-# To  validate, run -> docker service logs -f marines
+# To validate, run -> docker service logs -f marines
