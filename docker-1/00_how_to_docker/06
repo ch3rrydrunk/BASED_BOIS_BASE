@@ -4,4 +4,4 @@
 # attached to the 5000 port of Char. You can check that your container functions
 # properly by visiting
 # http://<ip-de-char>:5000 on your web browser.
-docker run --name overlord -d -p 5000:80 nginx
+docker run --restart always --name overlord -d -p 5000:80 nginx
