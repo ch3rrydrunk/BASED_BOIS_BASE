@@ -4,5 +4,5 @@ FROM alpine:latest
 RUN apk update && apk add vim
 ENTRYPOINT vim
 
-# To build: docker build .
-# To run: docker build .
+# To build: docker build -t lil_vim .
+# To run: docker run lil_vim

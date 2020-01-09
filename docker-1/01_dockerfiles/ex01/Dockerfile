@@ -12,3 +12,6 @@ RUN apt-get update -y && apt-get upgrade -y && \
 		tar -xvf *.tar
 
 CMD ["sh", "teamspeak3-server_linux_amd64/ts3server_minimal_runscript.sh"]
+
+# To build: docker build -t team_chat .
+# To run: docker run -p=9987:9987/udp -p=10011:10011 -p=30033:30033 team_chat

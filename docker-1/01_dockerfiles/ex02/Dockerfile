@@ -28,3 +28,6 @@ ONBUILD RUN rake db:migrate
 ONBUILD RUN rake db:seed
 
 ONBUILD COPY . /opt/app/
+
+# To build: docker build -t ruby_app .
+# To run: docker run ruby_app
