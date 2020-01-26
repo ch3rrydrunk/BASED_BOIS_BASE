@@ -18,7 +18,7 @@ VOLUME ["/etc/gitlab", "/var/opt/gitlab", "/var/log/gitlab"]
 
 # Gitlab CE package
 RUN curl -sS https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | bash
-RUN EXTERNAL_URL="127.0.0.1:80" apt-get install gitlab-ce
+RUN EXTERNAL_URL="127.0.0.1:80" apt-get install -yq gitlab-ce
 
 ENTRYPOINT 'sudo gitlab-ctl reconfigure'
 
