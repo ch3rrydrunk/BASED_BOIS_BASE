@@ -9,6 +9,8 @@ To run anything, please have a pleasure of **making** it yourself:)
 - Fillit - Backtraking based Tetrimino-puzzle solver.
 - Init - Collection of handy networking and system administration scripts.
 - ft_Printf - My own version of printf formatted output function.
+- Docker-1 - Basic Docker commands and some usefuls Dockerfiles
+- Camagru (WIP) - A minimal fullstack web Instagram app
 ```
 
 To be continued...

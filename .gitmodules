@@ -1,3 +1,6 @@
 [submodule "ft_ls"]
 	path = ft_ls
 	url = https://github.com/MikhailPasechnik/ft_ls
+[submodule "camagru"]
+	path = camagru
+	url = https://github.com/ch3rrydrunk/camagru
