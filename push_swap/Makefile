@@ -6,11 +6,11 @@
 #    By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/27 15:47:32 by ch3rryhq          #+#    #+#              #
-#    Updated: 2020/01/27 15:49:32 by ch3rryhq         ###   ########.fr        #
+#    Updated: 2020/01/27 16:17:22 by ch3rryhq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=checker
+NAME=push_swap
 
 OS			=	$(shell uname -s)
 CC			=	gcc

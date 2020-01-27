@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:24:35 by ch3rryhq          #+#    #+#             */
-/*   Updated: 2020/01/27 16:00:20 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/01/27 16:16:47 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,15 @@ int     st_push(int stack[], int val)
 
 int     main(int ac, char **av)
 {
-    int stack[STACK_SIZE]; // stack[0] => stack pointer
+    int stackA[STACK_SIZE]; // stack[0] => stack pointer
+    int stackB[STACK_SIZE]; // stack[0] => stack pointer
     
     ft_memset((void *)stack, '\0', STACK_SIZE);
     if (ac == 1)
         return(1);
     while (ac-- > 1)
-        st_push(stack, ft_atoi(av[ac]));
-    while (stack[0])
-        ft_printf("%d\n", *st_pop(stack));
+        st_push(stackA, ft_atoi(av[ac]));
+    while (stackA[0])
+        ft_printf("%d\n", *st_pop(stackA));
     return(0);
 }
