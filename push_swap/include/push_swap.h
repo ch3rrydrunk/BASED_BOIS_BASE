@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:31:50 by ch3rryhq          #+#    #+#             */
-/*   Updated: 2020/03/08 17:09:05 by caellis          ###   ########.fr       */
+/*   Updated: 2020/03/08 18:46:47 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,10 @@ int     st_push(int stack[], int val);
 int     *st_pop(int stack[]);
 
 
-void     com_swap(int stack[]);
-void     com_push(int from[], int to[]);
-void     com_rotate(int stack[], int order);
+void    com_swap(int stack[]);
+void    com_push(int from[], int to[]);
+void    com_rotate(int stack[], int order);
+
+void    print_stack(int stack[]);
 
 #endif
