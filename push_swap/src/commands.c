@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 15:49:03 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/08 18:26:48 by caellis          ###   ########.fr       */
+/*   Updated: 2020/03/08 19:51:30 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,17 @@ void       com_push(int from[], int to[])
 // {
 //     int     buff;
 //     int     i;
-//     int     j;
 
-//     i = BOTTOM;
-//     j = stack[SIZE];
-    
+//     i = stack[BOTTOM];
+//     if (stack[SIZE] > 1)
+//     {
+//         if (order)
+//         {
+            
+//         }
+//         else
+//         {
+            
+//         }
+//     }
 // }

@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 14:56:14 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/08 18:26:21 by caellis          ###   ########.fr       */
+/*   Updated: 2020/03/08 19:52:16 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int     main(int ac, char **av)
     int     stackB[STACK_SIZE]; // stack[0] => stack pointer
     char    commands[MAX_LINE];
     int     rb;
+    int     fd;
 
     ft_memset((void *)stackA, '\0', STACK_SIZE);
     ft_memset((void *)stackB, '\0', STACK_SIZE);
@@ -52,7 +53,8 @@ int     main(int ac, char **av)
         return(1);
     while (ac-- > 1)
         st_push(stackA, ft_atoi(av[ac]));     // ATTENTION NO CHECK FOR BAD INPUT!
-    while ((rb = read(STDIN_FILENO, commands, MAX_LINE)) > 1)
+    fd = open("test_input.txt", O_RDONLY);
+    while ((rb = read(fd, commands, 4)) > 1)
     {
         if (rb > 4)
         {
@@ -61,7 +63,9 @@ int     main(int ac, char **av)
         }
         commands[rb - 1] = '\0';
     }
-    
+    // com_rotate(stackA, ROTATE);
+    // com_rotate(stackA, REVROTATE);
+    print_stack(stackA);
     ft_printf("OK\n");
     return(0);
 }
