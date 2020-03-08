@@ -3,24 +3,25 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+         #
+#    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/27 15:47:32 by ch3rryhq          #+#    #+#              #
-#    Updated: 2020/01/27 16:17:22 by ch3rryhq         ###   ########.fr        #
+#    Updated: 2020/03/08 18:25:48 by caellis          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=push_swap
+CHECKER=checker
 
 OS			=	$(shell uname -s)
 CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror
+CFLAGS		=	-Wall -Wextra -Werror -g
 
 SRC_FILES	=			\
-	checker.c
+	checker.c			\
+	commands.c
 
 HDR_FILES	=			\
-	checker.h
+	push_swap.h
 
 DIR_SRC		=	./src
 DIR_INC		=	./include
@@ -41,14 +42,13 @@ LIBS		:=	./libft/libft.a ./ft_printf/libftprintf.a
 
 LIBS	:= $(LIBS)
 
-all: $(NAME)
+all: $(CHECKER)
 
 $(DIR_OBJ):
 	@mkdir $(DIR_OBJ)
-	@mkdir $(DIR_OBJ)/ocl
 
-$(NAME): $(DIR_OBJ) $(OBJ) $(LIBFT) $(FT_PRINTF)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $(NAME) $(SDL_LINK)
+$(CHECKER): $(DIR_OBJ) $(OBJ) $(LIBFT) $(FT_PRINTF)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBS) -o $(CHECKER) $(SDL_LINK)
 
 $(DIR_OBJ)/%.o:$(DIR_SRC)/%.c $(HDR)
 	$(CC) $(CFLAGS) -c $(INCLUDES) $< -o $@
@@ -65,7 +65,7 @@ clean :
 	@$(MAKE) -C $(FT_PRINTF_DIR) clean
 
 fclean : clean
-	@/bin/rm -f $(NAME) $(addprefix tests/test_,$(FILE_NAMES))
+	@/bin/rm -f $(CHECKER) $(addprefix tests/test_,$(FILE_NAMES))
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 	@$(MAKE) -C $(FT_PRINTF_DIR) fclean
 	@/bin/rm -f $(addprefix tests/,$(TEST_NAMES))
