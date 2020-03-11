@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 14:56:14 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/08 19:52:16 by caellis          ###   ########.fr       */
+/*   Updated: 2020/03/11 22:54:01 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	error(void)
+{
+	ft_printf("Error\n");
+	exit(-1);
+}
 
 /*
 * Pop int from stack, if stack is empty - return NULL
@@ -39,20 +45,27 @@ int     st_push(int stack[], int val)
     return(0);
 }
 
-int     main(int ac, char **av)
+static void     validate_input(char **args, int32_t **tab, int32_t size)
 {
-    int     stackA[STACK_SIZE]; // stack[0] => stack pointer
-    int     stackB[STACK_SIZE]; // stack[0] => stack pointer
-    char    commands[MAX_LINE];
-    int     rb;
-    int     fd;
+    ft_bzero(*tab, STACK_SIZE);
+    while (size--)
+    {
 
-    ft_memset((void *)stackA, '\0', STACK_SIZE);
-    ft_memset((void *)stackB, '\0', STACK_SIZE);
-    if (ac == 1)
-        return(1);
-    while (ac-- > 1)
-        st_push(stackA, ft_atoi(av[ac]));     // ATTENTION NO CHECK FOR BAD INPUT!
+    }
+}
+
+int             main(int ac, char **av)
+{
+    t_stack     stackA;
+    t_stack     stackB;
+    int32_t     tab[STACK_SIZE];
+    int8_t      commands[MAX_LINE];
+    int32_t     rb;
+    int32_t     fd;
+
+    if (ac < 2)
+        error();
+    validate_input(av, &tab, ac);
     fd = open("test_input.txt", O_RDONLY);
     while ((rb = read(fd, commands, 4)) > 1)
     {
@@ -65,7 +78,7 @@ int     main(int ac, char **av)
     }
     // com_rotate(stackA, ROTATE);
     // com_rotate(stackA, REVROTATE);
-    print_stack(stackA);
+    stack_util(&stackA, tab, size, PSM_PRINT);
     ft_printf("OK\n");
     return(0);
 }
