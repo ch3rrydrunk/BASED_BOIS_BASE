@@ -6,7 +6,7 @@
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 14:56:14 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/11 22:54:01 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/12 10:34:59 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,33 +16,6 @@ void	error(void)
 {
 	ft_printf("Error\n");
 	exit(-1);
-}
-
-/*
-* Pop int from stack, if stack is empty - return NULL
-*/
-int     *st_pop(int stack[])
-{
-    if (stack[SIZE])
-    {
-        stack[SIZE] -= 1;
-        return(&stack[stack[SIZE] + 1]);
-    }
-    return(NULL);
-}
-
-/*
-* Push int on stack, if stack is full - return 1
-*/
-int     st_push(int stack[], int val)
-{
-    if (stack[SIZE] + 1 < STACK_SIZE)
-    {
-        stack[SIZE] += 1;
-        stack[stack[SIZE]] = val;
-        return(1);
-    }
-    return(0);
 }
 
 static void     validate_input(char **args, int32_t **tab, int32_t size)
