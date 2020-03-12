@@ -6,13 +6,13 @@
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 15:49:03 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/12 10:33:54 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/12 23:51:18 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void        com_rotate(t_stack **stack, int32_t *tab, int32_t size, int8_t mode)
+void        com_rotate(t_stack **stack, int32_t *tab, int32_t size, char mode)
 {
     if (mode & PSM_ROT)
         *stack = (*stack)->next;
@@ -20,7 +20,7 @@ void        com_rotate(t_stack **stack, int32_t *tab, int32_t size, int8_t mode)
         *stack = (*stack)->prev;
 }
 
-void     com_swap(t_stack *stack, int32_t *tab, int32_t size, int8_t mode)
+void     com_swap(t_stack *stack, int32_t *tab, int32_t size, char mode)
 {
     
     // if (stack[SIZE] > 2 && stack[stack[SIZE]] != stack[BOTTOM])
@@ -31,7 +31,7 @@ void     com_swap(t_stack *stack, int32_t *tab, int32_t size, int8_t mode)
     // }
 }
 
-void       com_push(t_stack *from, t_stack *to, int32_t *tab, int32_t size, int8_t mode)
+void       com_push(t_stack *from, t_stack *to, int32_t *tab, int32_t size, char mode)
 {
     
     // int     *buff;
