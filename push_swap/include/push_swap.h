@@ -6,7 +6,7 @@
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:31:50 by ch3rryhq          #+#    #+#             */
-/*   Updated: 2020/03/11 22:06:58 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/12 10:32:41 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@
 # define SIZE 0
 # define BOTTOM 1
 # define REVROTATE 0
-# define ROTATE 1
 
 # define PSM_VERBOSE (1u << 0u)
 # define PSM_PRINT (1u << 1u)
 # define PSM_INDEX (1u << 2u)
+# define PSM_ROT (1u << 3u)
+# define PSM_REVROT (1u << 4u)
 
 # define ERR_OVERFLOW "Error: Stack overflow\n"
 # define ERR_BADCOMMAND "Error: Incorrect command received\n"
@@ -54,9 +55,9 @@ int     st_push(int stack[], int val);
 int     *st_pop(int stack[]);
 
 
-void    com_swap(int stack[]);
-void    com_push(int from[], int to[]);
-void    com_rotate(int stack[], int order);
+void    com_swap(t_stack *stack, int32_t *tab, int32_t size, int8_t mode);
+void    com_push(t_stack *from, t_stack *to, int32_t *tab, int32_t size, int8_t mode);
+void    com_rotate(t_stack **stack, int32_t *tab, int32_t size, int8_t mode);
 
 t_stack *make_stack(int *tab, int32_t size, int8_t tag);
 void    free_stack(t_stack *s, int32_t size);
