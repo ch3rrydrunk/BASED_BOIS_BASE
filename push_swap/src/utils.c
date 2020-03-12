@@ -5,80 +5,82 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/08 18:45:17 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/11 22:05:57 by ch3rryhq         ###   ########.fr       */
+/*   Created: 2020/03/12 23:03:34 by ch3rryhq          #+#    #+#             */
+/*   Updated: 2020/03/12 23:51:18 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static t_stack	*new_stack(int n)
+int				is_in(char c, const char *s)
 {
-	t_stack *s;
-
-	s = (t_stack *)malloc(sizeof(t_stack));
-	s->n = n;
-	s->index = 0;
-	s->next = NULL;
-	s->prev = NULL;
-	return (s);
-}
-
-void			free_stack(t_stack *s, int32_t size)
-{
-	while (size--)
+	while (*s)
 	{
-		s = s->next;
-		free(s->prev);
+		if (*s == c)
+			return (1);
+		s++;
 	}
-	free(s);
+	return (0);
 }
 
-t_stack			*make_stack(int *tab, int32_t size, int8_t tag)
+static size_t	ft_wordlen(char const *s, char c)
 {
-	t_stack *stack;
-	t_stack *top;
+	size_t len;
 
-	stack = new_stack(*tab++);
-	top = stack;
-	stack->tag = tag;
-	while (size--)
+	len = 0;
+	while (*s == c)
+		s++;
+	while (*s != c && *s)
 	{
-		stack->next = new_stack(*tab++);
-		stack->next->prev = stack;
-		stack->next->tag = tag;
-		stack = stack->next;
+		len++;
+		s++;
 	}
-	stack->next = top;
-	top->prev = stack;
-	return (top);
+	return (len);
 }
 
-void			stack_util(t_stack *stack, int32_t *tab, int32_t size, int8_t mode)
+static int		ft_populate(char ***arr, const char *s, char c, size_t pos)
 {
-	int32_t i;
+	long	rb;
+	long	w_l;
 
-	i = 1;
-    if (mode & PSM_INDEX)
-    {
-        if (mode & PSM_VERBOSE)
-            ft_printf("+++INITIATING INDEXATION+++\n");
-	    while (size--)
-	    {
-		    while (stack->n != *tab)
-			    stack = stack->next;
-            if ((mode & PSM_VERBOSE) && !(mode & PSM_PRINT))
-                ft_printf("stack num: {%d}; index: [%d];\n", *tab, i);
-		    stack->index = i++;
-		    tab++;
-	    }
-    }
-    if (mode & PSM_PRINT)
-    {
-        while (size--)
-        {
-            ft_printf("stack num: {%d}; index: [%d];\n", *stack->n, *stack->index);
-            stack = stack->next;
-        }
-    }
+	rb = 0;
+	while (*s == c && *s)
+	{
+		rb++;
+		s++;
+	}
+	w_l = ft_wordlen(s, c);
+	if (((*arr)[pos] = ft_strnew(w_l)))
+		ft_strncpy((*arr)[pos], s, w_l);
+	else
+		return (-1);
+	return (rb + w_l);
+}
+
+int32_t			split_input(char const *input, char ***out)
+{
+	size_t		w_c;
+	long		rb;
+	size_t		i;
+    
+	*out = NULL;
+	if (input)
+	{
+		w_c = ft_countwords((char *)input, SPACE);
+		if ((*out = (char **)ft_memalloc(sizeof(char*) * (w_c + 1))))
+		{
+			i = 0;
+			while (i < w_c)
+			{
+				if ((rb = ft_populate(out, input, SPACE, i)) < 0)
+				{
+					ft_freearray(out, w_c);
+					break ;
+				}
+				input += rb;
+				i++;
+			}
+		}
+	}
+	return (w_c);
 }

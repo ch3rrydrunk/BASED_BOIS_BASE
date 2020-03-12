@@ -3,69 +3,97 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 14:56:14 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/08 19:52:16 by caellis          ###   ########.fr       */
+/*   Updated: 2020/03/12 23:52:20 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*
-* Pop int from stack, if stack is empty - return NULL
-*/
-int     *st_pop(int stack[])
+void	error(const char *msg)
 {
-    if (stack[SIZE])
-    {
-        stack[SIZE] -= 1;
-        return(&stack[stack[SIZE] + 1]);
-    }
-    return(NULL);
+	ft_fprintf(STDERR_FILENO, "%s\n", msg);
+	exit(-1);
 }
 
-/*
-* Push int on stack, if stack is full - return 1
-*/
-int     st_push(int stack[], int val)
+// void    parse_options(int32_t *ac, char ***av, char *mode)
+// {
+// if (*argv == '-')
+//     {
+//         parse_options(*argv, mode) && ac--;
+//         if (mode & PSM_FROMFILE)
+//             fd = open(filename, O_RDONLY);
+//     }
+// }
+
+// static void     validate_commands(int32_t fd, t_stack *cmd, int32_t size)
+// {
+//     int32_t     rb;
+//     char      com_s[BUFF_SIZE];
+    
+//     while ((rb = get_next_line(fd, &com_s))
+//     {
+//         if (rb < 0 || rb > 4)
+//         {
+//             free_stack(cmd, size);
+//             error(ERR_BASIC);
+//         }
+//     }
+// }
+
+static int32_t     validate_input(int32_t ac, char **argv, int32_t *tab)
 {
-    if (stack[SIZE] + 1 < STACK_SIZE)
+    int32_t     *size;
+    char        **buff;
+    int32_t     n;
+
+    size = tab;        // tab[0] holds size lika a cool stack :)
+    tab++;              // Shift tab 1 up to keep size in tab[0]
+    while (ac--)
     {
-        stack[SIZE] += 1;
-        stack[stack[SIZE]] = val;
-        return(1);
+        if ((n = split_input(*argv++, &buff)) < 0)
+            error(ERR_BASIC);
+        else 
+        {
+            while (n--)
+            {
+                if (ft_strcmp(ft_itoa((*tab = ft_atoi(*buff))), *buff))
+                {
+                    free(*buff);
+                    error(ERR_BASIC);
+                }
+                else
+                    (*size)++;
+                tab++;
+            }
+        }
     }
     return(0);
 }
 
-int     main(int ac, char **av)
+int             main(int ac, char **av)
 {
-    int     stackA[STACK_SIZE]; // stack[0] => stack pointer
-    int     stackB[STACK_SIZE]; // stack[0] => stack pointer
-    char    commands[MAX_LINE];
-    int     rb;
-    int     fd;
+    t_stack     stackA;
+    t_stack     stackB;
+    t_stack     cmd;
+    int32_t     tab[STACK_SIZE + 1];
+    int32_t     filename;
+    char      mode;
+    int32_t     fd;
 
-    ft_memset((void *)stackA, '\0', STACK_SIZE);
-    ft_memset((void *)stackB, '\0', STACK_SIZE);
-    if (ac == 1)
-        return(1);
-    while (ac-- > 1)
-        st_push(stackA, ft_atoi(av[ac]));     // ATTENTION NO CHECK FOR BAD INPUT!
-    fd = open("test_input.txt", O_RDONLY);
-    while ((rb = read(fd, commands, 4)) > 1)
+    if (--ac > 0)
     {
-        if (rb > 4)
+        // parse_options(&ac, &av, &mode)
+        ft_bzero(tab, STACK_SIZE);
+        fd = validate_input(ac, ++av, tab);
+        while (tab[0]--)
         {
-            ft_fprintf(STDERR_FILENO, ERR_BADCOMMAND);
-            return(1);
+            ft_printf("%d\n", tab[++fd]);
         }
-        commands[rb - 1] = '\0';
+        exit(0);
+        // validate_commands(STDIN_FILENO, cmd, ac);
     }
-    // com_rotate(stackA, ROTATE);
-    // com_rotate(stackA, REVROTATE);
-    print_stack(stackA);
-    ft_printf("OK\n");
     return(0);
 }
