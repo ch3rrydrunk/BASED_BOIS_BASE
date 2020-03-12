@@ -6,7 +6,7 @@
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/02 13:53:39 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/12 23:57:05 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/13 00:14:45 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void		ft_strrev(char *str)
 	{
 		i = 0;
 		len = ft_strlen(str) - 1;
-		while (i <= len && (len > 1))
+		while (i < len)
 			ft_swap(&str[i++], &str[len--]);
 	}
 }
