@@ -6,7 +6,7 @@
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 14:56:14 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/12 23:52:20 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/14 12:47:16 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ static int32_t     validate_input(int32_t ac, char **argv, int32_t *tab)
 {
     int32_t     *size;
     char        **buff;
+    char        *tmp;
     int32_t     n;
+    int32_t     digits;
 
     size = tab;        // tab[0] holds size lika a cool stack :)
     tab++;              // Shift tab 1 up to keep size in tab[0]
@@ -59,7 +61,11 @@ static int32_t     validate_input(int32_t ac, char **argv, int32_t *tab)
         {
             while (n--)
             {
-                if (ft_strcmp(ft_itoa((*tab = ft_atoi(*buff))), *buff))
+                tmp = (*buff);
+                *tab = ft_atoi(*buff);
+                digits = count_digits(*tab);
+                buff += digits;
+                if (ft_strncmp(ft_itoa(*tab), tmp, digits))
                 {
                     free(*buff);
                     error(ERR_BASIC);

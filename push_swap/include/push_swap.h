@@ -6,7 +6,7 @@
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:31:50 by ch3rryhq          #+#    #+#             */
-/*   Updated: 2020/03/12 23:53:22 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/14 12:38:52 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,5 @@ void	stack_util(t_stack *stack, int32_t *tab, int32_t size, char mode);
 
 int32_t			split_input(char const *input, char ***out);
 int				is_in(char c, const char *s);
+int64_t	        count_digits(int n);
 #endif

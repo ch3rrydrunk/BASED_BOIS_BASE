@@ -6,7 +6,7 @@
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 23:03:34 by ch3rryhq          #+#    #+#             */
-/*   Updated: 2020/03/12 23:51:18 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/14 12:39:06 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,16 @@ int				is_in(char c, const char *s)
 		s++;
 	}
 	return (0);
+}
+
+int64_t	count_digits(int n)
+{
+	int64_t	i;
+
+	i = (n < 0) ? 2 : 1;
+	while ((n = n / 10))
+		i++;
+	return (i);
 }
 
 static size_t	ft_wordlen(char const *s, char c)
