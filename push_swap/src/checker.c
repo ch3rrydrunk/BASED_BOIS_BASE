@@ -6,7 +6,7 @@
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 14:56:14 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/14 12:47:16 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/14 12:59:08 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ static int32_t     validate_input(int32_t ac, char **argv, int32_t *tab)
         {
             while (n--)
             {
-                tmp = (*buff);
                 *tab = ft_atoi(*buff);
                 digits = count_digits(*tab);
                 buff += digits;
@@ -73,6 +72,7 @@ static int32_t     validate_input(int32_t ac, char **argv, int32_t *tab)
                 else
                     (*size)++;
                 tab++;
+                buff++
             }
         }
     }
