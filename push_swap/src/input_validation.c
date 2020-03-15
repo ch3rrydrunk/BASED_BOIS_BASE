@@ -6,20 +6,19 @@
 /*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 15:58:37 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/15 16:10:47 by caellis          ###   ########.fr       */
+/*   Updated: 2020/03/15 18:06:40 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// static int64_t	count_digits(int n)
+// void			load_input(t_stack *stack, int32_t *tab)
 // {
-// 	int64_t	i;
+// 	int32_t size;
 
-// 	i = (n < 0) ? 2 : 1;
-// 	while ((n = n / 10))
-// 		i++;
-// 	return (i);
+// 	stack = make_stack(tab + 1, *tab, STACK_A);
+// // 	size = *tab++;
+	
 // }
 
 static size_t	ft_wordlen(char const *s, char c)
@@ -88,7 +87,6 @@ int32_t     	validate_input(int32_t ac, char **argv, int32_t *tab)
 {
     int32_t     *size;
     char        **buff;
-    char        **onerr;
     int32_t     n;
 
     size = tab;
@@ -99,7 +97,6 @@ int32_t     	validate_input(int32_t ac, char **argv, int32_t *tab)
             error(ERR_BASIC);
         else 
         {
-            onerr = buff;
             while (n--)
             {
                 *tab = ft_atoi(*buff);
@@ -112,5 +109,5 @@ int32_t     	validate_input(int32_t ac, char **argv, int32_t *tab)
             }
         }
     }
-    return (0);
+    return (1);
 }
