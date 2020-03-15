@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:31:50 by ch3rryhq          #+#    #+#             */
-/*   Updated: 2020/03/12 23:53:22 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/15 16:11:40 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,18 @@
 # include <unistd.h>
 # include <stdint.h>
 # include <float.h>
+# include <time.h>
+# include <pwd.h>
+# include <grp.h>
+# include <dirent.h>
+# include <limits.h>
+# include <uuid/uuid.h>
+# include <sys/stat.h>
+# include <sys/types.h>
+# include <sys/acl.h>
+# include <sys/xattr.h>
+# include <sys/ioctl.h>
+# include <fcntl.h>
 
 # include "libft.h"
 # include "ft_printf.h"
@@ -30,20 +42,26 @@
 # define STACK_B 1
 # define SIZE 0
 # define BOTTOM 1
-# define REVROTATE 0
 # define SPACE ' '
+# define REVROTATE 0
+# define ROTATE 1
 
-# define PSM_VERBOSE (1u << 0u)
-# define PSM_PRINT (1u << 1u)
-# define PSM_INDEX (1u << 2u)
-# define PSM_ROT (1u << 3u)
-# define PSM_REVROT (1u << 4u)
-# define PSM_FROMFILE (1u << 5u)
+# define PS_STATUSOK 0
+# define PS_STATUSNOK -1
 
-# define ERR_BASIC (const char *)"Error\n"
-# define ERR_OVERFLOW "Error: Stack overflow\n"
-# define ERR_BADCOMMAND "Error: Incorrect command received\n"
-# define ERR_BADINPUT "Error: Incorrect input\n"
+# define PS_FLAGS   "fvpirR"
+# define PS_FILE    (1u << 0u)
+# define PS_VERBOSE (1u << 1u)
+# define PS_PRINT (1u << 2u)
+# define PS_INDEX (1u << 3u)
+# define PS_ROT (1u << 4u)
+# define PS_REVROT (1u << 5u)
+
+
+# define ERR_BASIC "Error"
+# define ERR_OVERFLOW "Error: Stack overflow"
+# define ERR_BADCOMMAND "Error: Incorrect command received"
+# define ERR_BADINPUT "Error: Incorrect input"
 
 typedef struct		s_stack
 {
@@ -55,15 +73,21 @@ typedef struct		s_stack
 	struct s_stack	*next;
 }					t_stack;
 
+void        parse_options(char *options, int32_t *flags);
+int32_t     validate_input(int32_t ac, char **argv, int32_t *tab);
+int         char_at(const char *s, char c);
+int			is_in(char c, const char *s);
 
-void    com_swap(t_stack *stack, int32_t *tab, int32_t size, char mode);
-void    com_push(t_stack *from, t_stack *to, int32_t *tab, int32_t size, char mode);
-void    com_rotate(t_stack **stack, int32_t *tab, int32_t size, char mode);
+void        com_swap(t_stack *stack, int32_t *tab, int32_t size, char mode);
+void        com_push(t_stack *from, t_stack *to, int32_t *tab, int32_t size, char mode);
+void        com_rotate(t_stack **stack, int32_t *tab, int32_t size, char mode);
 
-t_stack *make_stack(int *tab, int32_t size, char tag);
-void    free_stack(t_stack *s, int32_t size);
-void	stack_util(t_stack *stack, int32_t *tab, int32_t size, char mode);
+t_stack     *make_stack(int *tab, int32_t size, char tag);
+void        free_stack(t_stack *s, int32_t size);
+void	    stack_util(t_stack *stack, int32_t *tab, int32_t size, char mode);
 
-int32_t			split_input(char const *input, char ***out);
-int				is_in(char c, const char *s);
+void        error(const char *msg);
+int		    display_help(void);
+int		    unrecognized_option(char *option, size_t len);
+
 #endif

@@ -3,30 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 14:56:14 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/12 23:52:20 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/15 16:27:06 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(const char *msg)
-{
-	ft_fprintf(STDERR_FILENO, "%s\n", msg);
-	exit(-1);
-}
 
-// void    parse_options(int32_t *ac, char ***av, char *mode)
-// {
-// if (*argv == '-')
-//     {
-//         parse_options(*argv, mode) && ac--;
-//         if (mode & PSM_FROMFILE)
-//             fd = open(filename, O_RDONLY);
-//     }
-// }
+
 
 // static void     validate_commands(int32_t fd, t_stack *cmd, int32_t size)
 // {
@@ -43,57 +30,32 @@ void	error(const char *msg)
 //     }
 // }
 
-static int32_t     validate_input(int32_t ac, char **argv, int32_t *tab)
-{
-    int32_t     *size;
-    char        **buff;
-    int32_t     n;
-
-    size = tab;        // tab[0] holds size lika a cool stack :)
-    tab++;              // Shift tab 1 up to keep size in tab[0]
-    while (ac--)
-    {
-        if ((n = split_input(*argv++, &buff)) < 0)
-            error(ERR_BASIC);
-        else 
-        {
-            while (n--)
-            {
-                if (ft_strcmp(ft_itoa((*tab = ft_atoi(*buff))), *buff))
-                {
-                    free(*buff);
-                    error(ERR_BASIC);
-                }
-                else
-                    (*size)++;
-                tab++;
-            }
-        }
-    }
-    return(0);
-}
-
 int             main(int ac, char **av)
 {
     t_stack     stackA;
-    t_stack     stackB;
     t_stack     cmd;
     int32_t     tab[STACK_SIZE + 1];
-    int32_t     filename;
-    char      mode;
+    int32_t     flags;
     int32_t     fd;
+    int32_t     i;
 
+    i = 1;
     if (--ac > 0)
     {
-        // parse_options(&ac, &av, &mode)
         ft_bzero(tab, STACK_SIZE);
-        fd = validate_input(ac, ++av, tab);
-        while (tab[0]--)
-        {
-            ft_printf("%d\n", tab[++fd]);
+        fd = STDIN_FILENO;
+        while (i < ac && av[i][0] == '-')
+		{
+            parse_options(av[i++], &flags);
+            // if (flags & PS_FILE)
+            //     fd = open(av[i++], O_RDONLY);
         }
-        exit(0);
-        // validate_commands(STDIN_FILENO, cmd, ac);
+        ac -= (i - 1);
+        validate_input(ac, &av[i], tab);
+        while (tab[0]--)
+            ft_printf("%d\n", tab[++fd]);
+        // validate_commands(fd, cmd, ac);
+        // check_commands(stackA, tab);
     }
-    return(0);
+    return (0);
 }

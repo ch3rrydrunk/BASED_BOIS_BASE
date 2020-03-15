@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 15:49:03 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/12 23:51:18 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/15 15:44:32 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void        com_rotate(t_stack **stack, int32_t *tab, int32_t size, char mode)
 {
-    if (mode & PSM_ROT)
+    if (mode & PS_ROT)
         *stack = (*stack)->next;
-    else if (mode & PSM_REVROT)
+    else if (mode & PS_REVROT)
         *stack = (*stack)->prev;
 }
 
