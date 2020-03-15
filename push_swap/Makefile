@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: caellis <caellis@student.42.fr>            +#+  +:+       +#+         #
+#    By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/27 15:47:32 by ch3rryhq          #+#    #+#              #
-#    Updated: 2020/03/15 16:05:08 by caellis          ###   ########.fr        #
+#    Updated: 2020/03/15 21:24:31 by ch3rryhq         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC_FILES	=			\
 	input_validation.c	\
 	parse.c				\
 	utils.c				\
-	stack.c
+	stack.c				\
+	sort_tab.c
 
 HDR_FILES	=			\
 	push_swap.h

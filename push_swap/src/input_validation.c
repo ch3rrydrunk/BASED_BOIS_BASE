@@ -3,23 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   input_validation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 15:58:37 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/15 18:06:40 by caellis          ###   ########.fr       */
+/*   Updated: 2020/03/15 21:24:07 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// void			load_input(t_stack *stack, int32_t *tab)
-// {
-// 	int32_t size;
+void			load_input(t_stack *stack, int32_t *tab)
+{
+	int32_t size;
+    int32_t sorted[STACK_SIZE + 1];
 
-// 	stack = make_stack(tab + 1, *tab, STACK_A);
-// // 	size = *tab++;
-	
-// }
+    size = *tab;
+    ft_memcpy(sorted, tab, STACK_SIZE + 1);
+    sort_array(sorted + 1, sorted + size);
+	check_duplicates(sorted);
+    stack = make_stack(tab + 1, *tab, STACK_A);
+
+}
 
 static size_t	ft_wordlen(char const *s, char c)
 {

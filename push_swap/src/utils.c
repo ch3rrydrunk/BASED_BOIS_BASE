@@ -3,14 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 15:58:20 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/15 16:10:12 by caellis          ###   ########.fr       */
+/*   Updated: 2020/03/15 21:23:22 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void    check_duplicates(int32_t *tab)
+{
+    int32_t size;
+    int32_t check;
+
+    size = (*tab++) - 1;
+    check = *tab++;
+    while (size--)
+    {
+        if (check == *tab)
+            error(ERR_BASIC);
+        check = *tab++;
+    }
+}
 
 void	error(const char *msg)
 {
