@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:31:50 by ch3rryhq          #+#    #+#             */
-/*   Updated: 2020/03/15 16:11:40 by caellis          ###   ########.fr       */
+/*   Updated: 2020/03/15 21:23:54 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@
 # define STACK_SIZE 1024
 # define MAX_LINE 90
 
-# define STACK_A 0
-# define STACK_B 1
+# define STACK_A 'A'
+# define STACK_B 'B'
 # define SIZE 0
 # define BOTTOM 1
 # define SPACE ' '
@@ -77,6 +77,9 @@ void        parse_options(char *options, int32_t *flags);
 int32_t     validate_input(int32_t ac, char **argv, int32_t *tab);
 int         char_at(const char *s, char c);
 int			is_in(char c, const char *s);
+void		sort_array(int32_t *begin, int32_t *end);
+void        check_duplicates(int32_t *tab);
+
 
 void        com_swap(t_stack *stack, int32_t *tab, int32_t size, char mode);
 void        com_push(t_stack *from, t_stack *to, int32_t *tab, int32_t size, char mode);
