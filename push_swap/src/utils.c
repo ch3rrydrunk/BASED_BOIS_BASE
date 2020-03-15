@@ -3,94 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/12 23:03:34 by ch3rryhq          #+#    #+#             */
-/*   Updated: 2020/03/14 12:39:06 by ch3rryhq         ###   ########.fr       */
+/*   Created: 2020/03/15 15:58:20 by caellis           #+#    #+#             */
+/*   Updated: 2020/03/15 16:10:12 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int				is_in(char c, const char *s)
+void	error(const char *msg)
 {
-	while (*s)
-	{
-		if (*s == c)
-			return (1);
-		s++;
-	}
-	return (0);
+	ft_fprintf(STDERR_FILENO, "%s\n", msg);
+	exit(-1);
 }
 
-int64_t	count_digits(int n)
+int		display_help(void)
 {
-	int64_t	i;
-
-	i = (n < 0) ? 2 : 1;
-	while ((n = n / 10))
-		i++;
-	return (i);
+	ft_printf(
+	"Usage: ./checker [OPTION] ... [List of numbers] < [List of Commands]"
+	"Give a list of integers as arguments. Then feed commands on STDIN.\n"
+	"  -f *file_name*	read commands from file_name;\n"
+	"  -v				give verbose output;\n"
+	"+++ UNDOCUMENTED +++\n"
+	"+++ # define PS_PRINT (1u << 2u)\n"
+	"+++ # define PS_INDEX (1u << 3u)\n"
+	"+++ # define PS_ROT (1u << 4u)\n"
+	"+++ # define PS_REVROT (1u << 5u)\n");
+	exit(PS_STATUSOK);
 }
 
-static size_t	ft_wordlen(char const *s, char c)
+int		unrecognized_option(char *option, size_t len)
 {
-	size_t len;
-
-	len = 0;
-	while (*s == c)
-		s++;
-	while (*s != c && *s)
-	{
-		len++;
-		s++;
-	}
-	return (len);
-}
-
-static int		ft_populate(char ***arr, const char *s, char c, size_t pos)
-{
-	long	rb;
-	long	w_l;
-
-	rb = 0;
-	while (*s == c && *s)
-	{
-		rb++;
-		s++;
-	}
-	w_l = ft_wordlen(s, c);
-	if (((*arr)[pos] = ft_strnew(w_l)))
-		ft_strncpy((*arr)[pos], s, w_l);
-	else
-		return (-1);
-	return (rb + w_l);
-}
-
-int32_t			split_input(char const *input, char ***out)
-{
-	size_t		w_c;
-	long		rb;
-	size_t		i;
-    
-	*out = NULL;
-	if (input)
-	{
-		w_c = ft_countwords((char *)input, SPACE);
-		if ((*out = (char **)ft_memalloc(sizeof(char*) * (w_c + 1))))
-		{
-			i = 0;
-			while (i < w_c)
-			{
-				if ((rb = ft_populate(out, input, SPACE, i)) < 0)
-				{
-					ft_freearray(out, w_c);
-					break ;
-				}
-				input += rb;
-				i++;
-			}
-		}
-	}
-	return (w_c);
+	ft_fprintf(STDERR_FILENO,
+	"./checker: unrecognized option '%.*s'\n"
+	"Try './checker --help' for more information.\n",
+	len, option);
+	exit(PS_STATUSNOK);
 }

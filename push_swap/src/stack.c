@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
+/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/12 23:03:23 by ch3rryhq          #+#    #+#             */
-/*   Updated: 2020/03/12 23:51:18 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/15 16:05:39 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,21 +59,21 @@ void			stack_util(t_stack *stack, int32_t *tab, int32_t size, char mode)
 	int32_t i;
 
 	i = 1;
-    if (mode & PSM_INDEX)
+    if (mode & PS_INDEX)
     {
-        if (mode & PSM_VERBOSE)
+        if (mode & PS_VERBOSE)
             ft_printf("+++INITIATING INDEXATION+++\n");
 	    while (size--)
 	    {
 		    while (stack->n != *tab)
 			    stack = stack->next;
-            if ((mode & PSM_VERBOSE) && !(mode & PSM_PRINT))
+            if ((mode & PS_VERBOSE) && !(mode & PS_PRINT))
                 ft_printf("stack num: {%d}; index: [%d];\n", *tab, i);
 		    stack->index = i++;
 		    tab++;
 	    }
     }
-    if (mode & PSM_PRINT)
+    if (mode & PS_PRINT)
     {
         while (size--)
         {
