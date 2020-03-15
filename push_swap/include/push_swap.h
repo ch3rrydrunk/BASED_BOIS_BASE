@@ -6,7 +6,7 @@
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:31:50 by ch3rryhq          #+#    #+#             */
-/*   Updated: 2020/03/15 21:23:54 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/15 21:49:38 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 # define PS_STATUSNOK -1
 
 # define PS_FLAGS   "fvpirR"
-# define PS_FILE    (1u << 0u)
+# define PS_CMDFILE    (1u << 0u)
 # define PS_VERBOSE (1u << 1u)
 # define PS_PRINT (1u << 2u)
 # define PS_INDEX (1u << 3u)
@@ -75,6 +75,7 @@ typedef struct		s_stack
 
 void        parse_options(char *options, int32_t *flags);
 int32_t     validate_input(int32_t ac, char **argv, int32_t *tab);
+void		load_input(t_stack *stack, int32_t *tab);
 int         char_at(const char *s, char c);
 int			is_in(char c, const char *s);
 void		sort_array(int32_t *begin, int32_t *end);

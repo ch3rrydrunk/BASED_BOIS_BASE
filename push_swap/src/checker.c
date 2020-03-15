@@ -6,7 +6,7 @@
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 14:56:14 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/15 21:14:25 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/15 21:50:18 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int     parse(char **av, int32_t *flags, int32_t *tab, t_stack *stack)
     while (i < ac && av[i][0] == '-')
     {
         parse_options(av[i++], flags);
-        if (*flags & PS_FILE)
+        if (*flags & PS_CMDFILE)
             fd = open(av[i++], O_RDONLY);
     }
     ac -= (i - 1);
@@ -63,7 +63,7 @@ int             main(int ac, char **av)
     {
         *tab = ac;
         fd = parse(av, &flags, tab, stackA);
-        // validate_commands(fd, cmd, ac);
+        //validate_commands(fd, cmd, ac);
         // i=1;
         // while (tab[0])
         // {
