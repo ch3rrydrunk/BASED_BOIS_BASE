@@ -12,17 +12,21 @@
 
 #include "push_swap.h"
 
-void    check_duplicates(int32_t *tab)
+/* 
+* Increments tab's size and throws error on duplicates.
+*/
+void    update_tab(int32_t *tab)
 {
     int32_t size;
     int32_t check;
 
-    size = (*tab++) - 1;
-    check = *tab++;
+	(*tab)++;
+	size = *tab;
+    check = tab[size--];
     while (size--)
     {
         if (check == *tab)
-            error(ERR_BASIC);
+            error(ERROR);
         check = *tab++;
     }
 }

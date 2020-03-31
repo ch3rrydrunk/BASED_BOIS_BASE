@@ -22,7 +22,7 @@
 //         if (rb < 0 || rb > 4)
 //         {
 //             free_stack(cmd, size);
-//             error(ERR_BASIC);
+//             error(ERROR);
 //         }
 //     }
 // }

@@ -19,10 +19,8 @@ void			load_input(t_stack *stack, int32_t *tab)
 
     size = *tab;
     ft_memcpy(sorted, tab, STACK_SIZE + 1);
-    sort_array(sorted + 1, sorted + size);
-	check_duplicates(sorted);
     stack = make_stack(tab + 1, *tab, STACK_A);
-
+	return ;
 }
 
 static size_t	ft_wordlen(char const *s, char c)
@@ -98,16 +96,16 @@ int32_t     	validate_input(int32_t ac, char **argv, int32_t *tab)
     while (ac--)
     {
         if ((n = split_input(*argv++, &buff)) < 0)
-            error(ERR_BASIC);
+            error(ERROR);
         else 
         {
             while (n--)
             {
                 *tab = ft_atoi(*buff);
                 if (ft_strcmp(ft_itoa(*tab), *buff))
-                    error(ERR_BASIC);
+                    error(ERROR);
                 else
-                    (*size)++;
+                    update_tab(size);
                 tab++;
                 buff++;
             }
