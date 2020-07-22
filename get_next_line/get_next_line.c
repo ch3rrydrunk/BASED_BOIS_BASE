@@ -6,7 +6,7 @@
 /*   By: caellis <caellis@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 21:45:25 by caellis           #+#    #+#             */
-/*   Updated: 2020/07/22 17:56:27 by caellis          ###   ########.fr       */
+/*   Updated: 2020/07/22 19:32:57 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int		read_file(const int fd, char **buff)
 			ft_memdel((void**)buff);
 			return (0);
 		}
-		(*buff)[n] = '\0';
+		tmp[n] = '\0';
 		tofree = *buff;
 		*buff = ft_strjoin(*buff, tmp);
 		free(tofree);
@@ -62,15 +62,16 @@ int				gnl_worker(const int fd, char **line, t_file **files)
 {
 	char			*buff;
 	char			*eol;
+	size_t			rb;
 
 	ERR_CHECK(read(fd, (buff = NULL), 0) < 0);
 	if (!*files)
 		ERR_CHECK(!(*files = new_file(fd)));
 	if (fd != (*files)->fd)
-		return(gnl_worker(fd, line, &(*files)->next));
+		return (gnl_worker(fd, line, &(*files)->next));
 	buff = *(*files)->content ? ft_strdup((*files)->content) : ft_strnew(0);
 	ERR_CHECK(!(read_file(fd, &buff)));
-	if (ft_strlen(buff))
+	if ((rb = ft_strlen(buff)))
 	{
 		eol = ft_strchr(buff, '\n');
 		*line = (eol ? ft_strndup(buff, eol - buff) : ft_strdup(buff));
@@ -90,5 +91,5 @@ int				get_next_line(const int fd, char **line)
 	static t_file	*files;
 
 	ERR_CHECK(!line || fd < 0 || BUFF_SIZE < 1);
-	return(gnl_worker(fd, line, &files));
+	return (gnl_worker(fd, line, &files));
 }
