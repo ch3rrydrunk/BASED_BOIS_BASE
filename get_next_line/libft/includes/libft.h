@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: caellis <caellis@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/29 16:25:46 by caellis           #+#    #+#             */
-/*   Updated: 2019/05/06 17:27:02 by caellis          ###   ########.fr       */
+/*   Updated: 2020/07/22 17:22:15 by caellis          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int					ft_isupper(int c);
 int					ft_isspace(int c);
 size_t				ft_countwords(char const *str, char c);
 void				ft_freearray(char ***arr, int max);
-
+char				*ft_strndup(const char *s, size_t n);
 /*
 ** PART 2
 */
