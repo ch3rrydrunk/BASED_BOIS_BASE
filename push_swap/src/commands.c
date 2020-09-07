@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   commands.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: caellis <caellis@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/08 15:49:03 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/15 15:44:32 by caellis          ###   ########.fr       */
+/*   Updated: 2020/03/16 15:44:02 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void        com_rotate(t_stack **stack, int32_t *tab, int32_t size, char mode)
+void        com_rotate(t_stack **stack, int32_t *tab, int32_t flag)
 {
-    if (mode & PS_ROT)
+    if (flag & PS_ROT)
         *stack = (*stack)->next;
-    else if (mode & PS_REVROT)
+    else if (flag & PS_REVROT)
         *stack = (*stack)->prev;
 }
 
-void     com_swap(t_stack *stack, int32_t *tab, int32_t size, char mode)
+void     com_swap(t_stack *stack, int32_t *tab, int32_t flag)
 {
     
     // if (stack[SIZE] > 2 && stack[stack[SIZE]] != stack[BOTTOM])
@@ -31,7 +31,7 @@ void     com_swap(t_stack *stack, int32_t *tab, int32_t size, char mode)
     // }
 }
 
-void       com_push(t_stack *from, t_stack *to, int32_t *tab, int32_t size, char mode)
+void       com_push(t_stack *from, t_stack *to, int32_t *tab, int32_t flag)
 {
     
     // int     *buff;

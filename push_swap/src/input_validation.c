@@ -6,7 +6,7 @@
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/15 15:58:37 by caellis           #+#    #+#             */
-/*   Updated: 2020/03/15 21:24:07 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/20 18:05:02 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void			load_input(t_stack *stack, int32_t *tab)
     int32_t sorted[STACK_SIZE + 1];
 
     size = *tab;
-    ft_memcpy(sorted, tab, STACK_SIZE + 1);
+    ft_memcpy(sorted, tab, (size_t)((STACK_SIZE + 1) * sizeof(int32_t)));
     sort_array(sorted + 1, sorted + size);
 	check_duplicates(sorted);
     stack = make_stack(tab + 1, *tab, STACK_A);
@@ -104,11 +104,11 @@ int32_t     	validate_input(int32_t ac, char **argv, int32_t *tab)
             while (n--)
             {
                 *tab = ft_atoi(*buff);
-                if (ft_strcmp(ft_itoa(*tab), *buff))
+                if (ft_strcmp(ft_itoa(*tab), *buff) && is_unique(size))
                     error(ERR_BASIC);
                 else
                     (*size)++;
-                tab++;
+                tab++;    
                 buff++;
             }
         }

@@ -6,7 +6,7 @@
 /*   By: ch3rryhq <ch3rryhq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 18:31:50 by ch3rryhq          #+#    #+#             */
-/*   Updated: 2020/03/15 21:49:38 by ch3rryhq         ###   ########.fr       */
+/*   Updated: 2020/03/16 15:43:55 by ch3rryhq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,9 @@ void		sort_array(int32_t *begin, int32_t *end);
 void        check_duplicates(int32_t *tab);
 
 
-void        com_swap(t_stack *stack, int32_t *tab, int32_t size, char mode);
-void        com_push(t_stack *from, t_stack *to, int32_t *tab, int32_t size, char mode);
-void        com_rotate(t_stack **stack, int32_t *tab, int32_t size, char mode);
+void        com_swap(t_stack *stack, int32_t *tab, int32_t flag);
+void        com_push(t_stack *from, t_stack *to, int32_t *tab, int32_t flag);
+void        com_rotate(t_stack **stack, int32_t *tab, int32_t flag);
 
 t_stack     *make_stack(int *tab, int32_t size, char tag);
 void        free_stack(t_stack *s, int32_t size);
