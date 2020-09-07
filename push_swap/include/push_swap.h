@@ -58,7 +58,7 @@
 # define PS_REVROT (1u << 5u)
 
 
-# define ERR_BASIC "Error"
+# define ERROR "Error"
 # define ERR_OVERFLOW "Error: Stack overflow"
 # define ERR_BADCOMMAND "Error: Incorrect command received"
 # define ERR_BADINPUT "Error: Incorrect input"
@@ -79,7 +79,7 @@ void		load_input(t_stack *stack, int32_t *tab);
 int         char_at(const char *s, char c);
 int			is_in(char c, const char *s);
 void		sort_array(int32_t *begin, int32_t *end);
-void        check_duplicates(int32_t *tab);
+void        update_tab(int32_t *tab);
 
 
 void        com_swap(t_stack *stack, int32_t *tab, int32_t flag);
